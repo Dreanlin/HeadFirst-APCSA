@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>My Sketch</title>
+
+	<!-- Load the Processing.js library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+</head>
+
+<body>
+	<script type="application/processing">
+			size(200, 300);
+			
+			//draw green stem
+			strokeWeight(10);
+			stroke(0, 128, 0);
+			line(100, 100, 100, 300);
+			
+			//leafs
+			ellipse(105, 200, 10, 10);
+			ellipse(95, 225, 10, 10);
+			
+			//change stroke back to thin black line
+			strokeWeight(1);
+			stroke(0);
+			
+			//draw petals
+			fill(255, 100, 0);
+			ellipse(50, 50, 100, 100);
+			ellipse(150, 50, 100, 100);
+			ellipse(50, 150, 100, 100);
+			ellipse(150, 150, 100, 100);
+			
+			//draw middle part
+			fill(255, 128, 0);
+			ellipse(100, 100, 100, 100);
+		</script>
+	<canvas> </canvas>
+</body>
+
+</html>
