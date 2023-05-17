@@ -1,42 +1,63 @@
 <h3 id="什么是编程">什么是编程？</h3>
+<p>编程，自然就是编写程序。那么随之而来又出现了一个问题，程序又是什么呢？<br />
+我猜，提到程序是什么，你多半脑海里可能会有诸如以下片段的代码（<a href="/reference/Example-Mouse2D.html">点此可以查看以下代码的实际效果</a>）：</p>
 
-<p>狭义地来说，编程暨编写程序，就是你按照某种 <em>计算机程序语言（Java、Python、Processing等）</em> 的语法规则，编写一段 <em>程序</em>，这段程序作为 <em>命令</em>，指挥计算机替你完成某项任务。</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">setup</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">size</span><span class="o">(</span><span class="mi">1000</span><span class="o">,</span> <span class="mi">500</span><span class="o">);</span> 
+  <span class="n">noStroke</span><span class="o">();</span>
+  <span class="n">rectMode</span><span class="o">(</span><span class="no">CENTER</span><span class="o">);</span>
+<span class="o">}</span>
 
-<p>比如在Processing中，我们直接输入如下代码，就可以让计算机通过画出多个简单几何图形组成花朵图案。（<a href="/reference/Example-DrawFlower.html">点击此处查看结果</a>）：</p>
+<span class="kt">void</span> <span class="nf">draw</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">background</span><span class="o">(</span><span class="mi">51</span><span class="o">);</span> 
+  <span class="n">fill</span><span class="o">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">204</span><span class="o">);</span>
+  <span class="n">rect</span><span class="o">(</span><span class="n">mouseX</span><span class="o">,</span> <span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="o">,</span> <span class="n">mouseY</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">10</span><span class="o">,</span> <span class="n">mouseY</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">10</span><span class="o">);</span>
+  <span class="n">fill</span><span class="o">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">204</span><span class="o">);</span>
+  <span class="kt">int</span> <span class="n">inverseX</span> <span class="o">=</span> <span class="n">width</span><span class="o">-</span><span class="n">mouseX</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">inverseY</span> <span class="o">=</span> <span class="n">height</span><span class="o">-</span><span class="n">mouseY</span><span class="o">;</span>
+  <span class="n">rect</span><span class="o">(</span><span class="n">inverseX</span><span class="o">,</span> <span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="o">,</span> <span class="o">(</span><span class="n">inverseY</span><span class="o">/</span><span class="mi">2</span><span class="o">)+</span><span class="mi">10</span><span class="o">,</span> <span class="o">(</span><span class="n">inverseY</span><span class="o">/</span><span class="mi">2</span><span class="o">)+</span><span class="mi">10</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java">   <span class="n">size</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+<p>狭义来说程序确实是代码，也就是我们编程时写下的一行行文本；广义地、从本质上来说，程序就是软件，它是我们用来指示计算机硬件（CPU等）执行某个任务而制作的产物。<br />
+想象一下在非计算机领域的语境下我们提到“程序”时一般会怎么说？我们会说“要完成这个事情需要经过这么一个<strong>程序</strong>（或者<strong>过程/步骤</strong>），第一步…第二步…”。在计算机领域也是如此，把计算机想象成一个只能执行一些<em>固定功能</em>（比如：加减乘除、判断是或否）的机器人，此时你要指挥它完成一项工作，你必须考虑到它能做的这些<em>固定功能</em>，然后明确地告诉它用怎么样的<strong>步骤</strong>来执行它会的这些基本操作，从而完成这个复杂工作。</p>
 
-   <span class="c1">//draw green stem
-</span>
-   <span class="n">strokeWeight</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-   <span class="n">stroke</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">128</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-   <span class="n">line</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+<p>想象一个非常简单的实例：
+你现在有一个非常简陋的计算机（或者机器人），它的几个<em>固定功能</em>包括：</p>
+<ul>
+  <li>它会按你给的指令的顺序一步一步向下执行，除非你的指令内容明确让它去执行别的某一步、或者明确让它结束执行</li>
+  <li>它没有记忆力，但是它可以看着一个数字然后把它念出来</li>
+  <li>它有两块黑板，这两个黑板它可以在上面写下数字、修改数字、读出上面的数字；但是你是看不见黑板上的数字的</li>
+  <li>它会加法和减法，并且能暂时记住最近一次算过的加减法计算的结果</li>
+  <li>它会判断数字的大小</li>
+</ul>
 
-   <span class="c1">//leafs
-</span>
-   <span class="n">ellipse</span><span class="o">(</span><span class="mi">105</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
-   <span class="n">ellipse</span><span class="o">(</span><span class="mi">95</span><span class="o">,</span> <span class="mi">225</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+<p>在这种情况下，如果你需要指挥它完成
+         <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+            <semantics>
+              <mrow>
+                <mn>3</mn>
+                <mo>×</mo>
+                <mn>2</mn>
+              </mrow>
+            </semantics>
+         </math>
+的计算，你要怎么指挥它？以下是一串可以做到这个任务的命令，虽然很呆板，但是方便我们之后继续解释程序的概念：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 在 **黑板A** 上写下 **0**
+2. 在 **黑板B** 上写下 **2**
+3. 判断 **黑板B** 上的数字，如果等于 **0** 就执行第9步命令；否则执行第4步命令
+4. 计算 **黑板A** 上的数字加上 **3** 后的结果
+5. 把 **黑板A** 上的数字修改成最近一次（其实就是上一步加法）计算的结果
+6. 计算 **黑板B** 上的数字减去 **1** 后的结果
+7. 把 **黑板B** 上的数字修改成最近一次（其实就是上一步减法）计算的结果
+8. 回到第3步执行
+9. 读出 **黑板A** 上的数字
+10. 结束执行
+</code></pre></div></div>
+<p>现在你可以把自己当作计算机，用我准备的这两块“黑板”执行上面这一串命令：<br />
+<label for="fname">黑板A:</label>
+<input type="text" id="fname" name="fname" />
+<label for="lname">黑板B:</label>
+<input type="text" id="lname" name="lname" /><br /></p>
 
-   <span class="c1">//change stroke back to thin black line
-</span>
-   <span class="n">strokeWeight</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-   <span class="n">stroke</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-
-   <span class="c1">//draw petals
-</span>
-   <span class="n">fill</span><span class="o">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-   <span class="n">ellipse</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
-   <span class="n">ellipse</span><span class="o">(</span><span class="mi">150</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
-   <span class="n">ellipse</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
-   <span class="n">ellipse</span><span class="o">(</span><span class="mi">150</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
-
-   <span class="c1">//draw middle part
-</span>
-   <span class="n">fill</span><span class="o">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">128</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-   <span class="n">ellipse</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
-<span class="c1">//这段代码含义暂时不理解也没事，马上我们就会讲到</span></code></pre></figure>
-
-<p>广义的来说，使用各种各样的<em>软件</em>，你通过各种不同的<em>操作</em>，使用计算机完成某些任务的过程，都可以看作编程。只是这个过程中，你使用的“计算机程序语言”是你使用这个软件时执行的一些</p>
-
-<p>自然地，我们会好奇，人怎么能和计算机这种机器进行沟通？我们通过文字字符(如：字母、数字)编写的近似人类自然语言的程序怎么会被用电驱动的硅基生物理解？既然聊到这了，我们不妨就用拟人和形象的方式来介绍一下这个问题：</p>
+<p>其实我们完全可以把上述的一串命令就称为程序，现在我们在回过头来观察一下这段程序的特点，从它的本质来定义它。</p>
 
