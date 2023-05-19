@@ -20,11 +20,11 @@
 <span class="o">}</span></code></pre></figure>
 
 <p>狭义来说程序确实是代码，也就是我们编程时写下的一行行文本；广义地、从本质上来说，程序就是软件，它是我们用来指示计算机硬件（CPU等）执行某个任务而制作的产物。<br />
-想象一下在非计算机领域的语境下我们提到“程序”时一般会怎么说？我们会说“要完成这个事情需要经过这么一个<strong>程序</strong>（或者<strong>过程/步骤</strong>），第一步…第二步…”。在计算机领域也是如此，把计算机想象成一个只能执行一些<em>固定功能</em>（比如：加减乘除、判断是或否）的机器人，此时你要指挥它完成一项工作，你必须考虑到它能做的这些<em>固定功能</em>，然后明确地告诉它用怎么样的<strong>步骤</strong>来执行它会的这些基本操作，从而完成这个复杂工作。</p>
+想象一下在非计算机领域的语境下我们提到“程序”时一般会怎么说？我们会说“要完成这个事情需要经过这么一个<strong>程序</strong>（或者<strong>过程/步骤</strong>），第一步…第二步…”。<br />
+在计算机领域也是如此，把计算机想象成一个只能执行一些<em>固定功能</em>（比如：加减乘除、判断是或否）的机器人，此时你要指挥它完成一项工作，你必须考虑到它能做的这些<em>固定功能</em>，然后明确地告诉它用怎么样的<strong>步骤</strong>来执行它会的这些基本操作，从而完成这个复杂工作。</p>
 
 <p>想象一个非常简单的实例：
 你现在有一个非常简陋的计算机（或者机器人），它的几个<em>固定功能</em>包括：</p>
-
 <ul>
   <li>它会按你给的指令的顺序一步一步向下执行，除非你的指令内容明确让它去执行别的某一步、或者明确让它结束执行</li>
   <li>它没有记忆力，但是它可以把你指定的某个黑板上的数字打印出来</li>
@@ -45,21 +45,24 @@
          </math>
 的计算，你要怎么指挥它？以下是一串可以做到这个任务的<strong>程序</strong>（仅使用上面提到的它的<em>固定功能</em>），虽然很呆板，但是方便我们之后继续解释程序的概念：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 在 <b>黑板A</b> 上写下 <b>0</b>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+1. 在 <b>黑板A</b> 上写下 <b>0</b>
 2. 在 <b>黑板B</b> 上写下 <b>2</b>
 3. 判断 <b>黑板B</b> 上的数字，如果等于 <b>0</b> 就执行<b>第7步</b>命令；否则执行<b>第4步</b>命令
 4. 计算 <b>黑板A</b> 上的数字加上 <b>3</b> 后的结果，再把 <b>黑板A</b> 上的数字修改成计算的结果
 5. 计算 <b>黑板B</b> 上的数字减去 <b>1</b> 后的结果，再把 <b>黑板B</b> 上的数字修改成计算的结果
-6. 回到第3步执行
+6. 回到<b>第3步</b>执行
 7. 打印出 <b>黑板A</b> 上的数字
 8. 结束执行
 </code></pre></div></div>
 
 <p>现在你可以把自己当作计算机，用我准备的这两块“黑板”执行上面这一串命令：<br />
-<label for="fname">黑板A:</label>
+<label for="fname">黑板A上的数字:</label>
 <input type="text" id="fname" name="fname" />
-<label for="lname">黑板B:</label>
-<input type="text" id="lname" name="lname" /><br /></p>
+<label for="lname">黑板B上的数字:</label>
+<input type="text" id="lname" name="lname" /><br />
+<label for="nextInstruction">下一步你要执行第几条命令:</label>
+<input type="text" id="nextInstruction" name="nextInstruction" /><br /></p>
 
 <p>如果我们仔细观察上面的这段程序，虽然它是一段自然语言，但是它的结构非常固定，比如：</p>
 
@@ -75,54 +78,54 @@
     <tr>
       <th style="text-align: left">程序的命令原文</th>
       <th style="text-align: left">翻译后的命令文本</th>
-      <th style="text-align: left">翻译规则</th>
+      <th style="text-align: left">翻译规则讲解</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left">“1. 在 <strong>黑板A</strong> 上写下 <strong>0</strong>”</td>
       <td style="text-align: left">STEP1: A = 0;</td>
-      <td style="text-align: left"><em>待补充</em></td>
+      <td style="text-align: left">用“STEP1:”表示是第1步指令，用字母“A”表示黑板A，用“=”表示要向“=”左边的黑板上写下一个数，指令最后用分号表示这条指令结束</td>
     </tr>
     <tr>
       <td style="text-align: left">“2. 在 <strong>黑板B</strong> 上写下 <strong>2</strong>”</td>
       <td style="text-align: left">STEP2: B = 2;</td>
-      <td style="text-align: left"><em>待补充</em></td>
+      <td style="text-align: left">同上类似</td>
     </tr>
     <tr>
       <td style="text-align: left">“3. 判断 <strong>黑板B</strong> 上的数字，如果等于 <strong>0</strong> 就执行<strong>第7步</strong>命令；否则执行<strong>第4步</strong>命令”</td>
       <td style="text-align: left">STEP3:<br />if(B == 0){<br />goto STEP7;<br />}<br />else{<br />goto STEP4;<br />}</td>
-      <td style="text-align: left"><em>待补充</em></td>
+      <td style="text-align: left">用“if(B==0)”表示“判断黑板B上的数字是否等于0”，<br />用紧跟着的{}里的指令表示如果黑板B上的数字等于0（即”B==0”时）则计算机要执行的命令，也就是“goto STEP7;”——让计算机跳转去执行第7步命令，<br />用”else{goto STEP4;}”大括号里的内容表示前面”if()”里的条件不满足时（也就是黑板B上不是0时），<br />计算机该执行的命令则是跳转去执行第4步命令。</td>
     </tr>
     <tr>
       <td style="text-align: left">“4. 计算 <strong>黑板A</strong> 上的数字加上 <strong>3</strong> 后的结果，再把 <strong>黑板A</strong> 上的数字修改成计算的结果”</td>
       <td style="text-align: left">STEP4: A = A + 3;</td>
-      <td style="text-align: left"><em>待补充</em></td>
+      <td style="text-align: left">用“STEP4:”表示是第4步指令，用字母“A”表示黑板A，用“=”表示要向“=”左边的黑板上写下一个数，“A + 3”表示计算黑板A上面的数字加上3的结果，分号表示这条指令结束。<br />计算机会从右到左理解整行指令：用黑板A上现有的数字加3，并把计算结果写在黑板A上。</td>
     </tr>
     <tr>
       <td style="text-align: left">“5. 计算 <strong>黑板B</strong> 上的数字减去 <strong>1</strong> 后的结果，再把 <strong>黑板B</strong> 上的数字修改成计算的结果”</td>
       <td style="text-align: left">STEP5: B = B - 1;</td>
-      <td style="text-align: left"><em>待补充</em></td>
+      <td style="text-align: left">同上条类似，只是“B - 5”表示计算黑板B上现有的数字减去1的结果</td>
     </tr>
     <tr>
       <td style="text-align: left">“6. 回到第3步执行”</td>
       <td style="text-align: left">STEP6: goto STEP3;</td>
-      <td style="text-align: left"><em>待补充</em></td>
+      <td style="text-align: left">“STEP6:”表示是第6步指令，“goto STEP3”表示让计算机跳转去执行第3条指令，分号表示这条指令结束</td>
     </tr>
     <tr>
       <td style="text-align: left">“7. 打印出 <strong>黑板A</strong> 上的数字”</td>
       <td style="text-align: left">STEP7: printf(“%d”, A);</td>
-      <td style="text-align: left"><em>待补充</em></td>
+      <td style="text-align: left">“printf”表示让计算机打印其后的括号里的值，<br />“(“d”,A)”则表示打印的具体内容是黑板A上的整数<br />（”d”相当于是提醒计算机，把A上的数字当整数打印出来）</td>
     </tr>
     <tr>
       <td style="text-align: left">“8. 结束执行”</td>
       <td style="text-align: left">STEP8: return 0;</td>
-      <td style="text-align: left"><em>待补充</em></td>
+      <td style="text-align: left">“return 0;”表示告诉计算机整个程序运行到此结束</td>
     </tr>
   </tbody>
 </table>
 
-<p>其实我们完全可以把这一串<strong>翻译后的命令文本</strong>称为程序：</p>
+<p>其实我们完全可以把表格第二列这一串<strong>翻译后的命令文本</strong>称为程序：</p>
 
 <figure class="highlight"><pre><code class="language-c" data-lang="c">  <span class="nl">STEP1:</span> <span class="n">A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="n">STEP2</span><span class="o">:</span> <span class="n">B</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -139,10 +142,11 @@
   <span class="n">STEP7</span><span class="o">:</span> <span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">A</span><span class="p">);</span>
   <span class="n">STEP8</span><span class="o">:</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></code></pre></figure>
 
-<p>而事实上，这就是一段C语言的程序代码，你可以在这个在线编程环境里不停点击“Next&gt;”按钮尝试运行它。<br />
-代码左侧的绿红箭头表示计算机刚执行完的代码命令和下一步要执行的代码命令，并且关注这个程序运行过程中，在右侧<strong>Stack</strong>下方的“黑板A”、“黑板B”以及右侧上方的“打印结果（Print output）”的数值变化。<br />
-<em>注意：代码里每行的//右边的内容都是注释，代码在被编译器转换成计算机可以理解的二进制文件之前，编译器会先直接把注释都删除，注释存在的目的单纯的是给我们自己或者其他读我们代码的人加一下提示内容用的，所以你可以直接当下面的注释不存在</em>：</p>
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=int%20main%28%29%20%7B%0A%20%20%0A%20%20int%20A%3B//%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E5%87%86%E5%A4%87%E6%AD%A5%E9%AA%A4%EF%BC%8C%E7%BB%99%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%80%E5%9D%97%E9%BB%91%E6%9D%BFA%0A%20%20int%20B%3B//%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E5%87%86%E5%A4%87%E6%AD%A5%E9%AA%A4%EF%BC%8C%E7%BB%99%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%80%E5%9D%97%E9%BB%91%E6%9D%BFB%0A%20%20%0A%20%20//%E4%BB%A5%E4%B8%8B%E5%B0%B1%E6%98%AF%E6%88%91%E4%BB%AC%E7%BF%BB%E8%AF%91%E5%87%BA%E6%9D%A5%E7%9A%84%E6%8C%87%E4%BB%A4%EF%BC%8C%E5%AE%83%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AF%E4%B8%80%E6%AE%B5C%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%EF%BC%8C%0A%20%20//%E8%A6%81%E8%BF%90%E8%A1%8CC%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%E5%BF%85%E9%A1%BB%E5%B0%86%E4%BB%A3%E7%A0%81%E6%94%BE%E5%9C%A8int%20main%28%29%20%7B%7D%E7%9A%84%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%B9%8B%E4%B8%AD%EF%BC%8C%0A%20%20//C%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8%E6%89%8D%E8%83%BD%E8%AF%86%E5%88%AB%E5%AE%83%E5%B9%B6%E6%8A%8A%E5%AE%83%E7%BC%96%E8%AF%91%E6%88%90%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%EF%BC%8C%E6%9D%A5%E8%AE%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%A7%A3%E5%92%8C%E8%BF%90%E8%A1%8C%0A%20%20STEP1%3A%20A%20%3D%200%3B%0A%20%20STEP2%3A%20B%20%3D%202%3B%0A%20%20STEP3%3A%0A%20%20if%28B%20%3D%3D%200%29%7B%0A%20%20goto%20STEP7%3B%0A%20%20%7D%0A%20%20else%7B%0A%20%20goto%20STEP4%3B%0A%20%20%7D%0A%20%20STEP4%3A%20A%20%3D%20A%20%2B%203%3B%0A%20%20STEP5%3A%20B%20%3D%20B%20-%201%3B%0A%20%20STEP6%3A%20goto%20STEP3%3B%0A%20%20STEP7%3A%20printf%28%22%25d%22,%20A%29%3B%0A%20%20STEP8%3A%20return%200%3B%0A%20%20%0A%7D&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe>
+<p>事实上，这就是一段C语言的程序代码，你可以在下方这个在线编程环境里不停点击“Next&gt;”按钮尝试运行它。</p>
+<blockquote>
+  <p>在线环境使用简介：代码左侧的绿红箭头表示计算机刚执行完的代码命令和下一步要执行的代码命令；你可以关注这个程序运行过程中，在右侧<strong>Stack</strong>下方的“黑板A”、“黑板B”以及右侧上方的“打印结果（Print output）”的数值变化。</p>
+</blockquote>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=//%E6%B3%A8%E6%84%8F%EF%BC%9A%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%E9%87%8C%E6%AF%8F%E8%A1%8C%E7%9A%84%22//%22%E5%8F%B3%E8%BE%B9%E7%9A%84%E5%86%85%E5%AE%B9%E9%83%BD%E6%98%AF%E6%B3%A8%E9%87%8A%EF%BC%8C%0A//%E4%BB%A3%E7%A0%81%E5%9C%A8%E8%A2%AB%E7%BC%96%E8%AF%91%E5%99%A8%E8%BD%AC%E6%8D%A2%E6%88%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%AF%E4%BB%A5%E7%90%86%E8%A7%A3%E5%92%8C%E5%92%8C%E6%89%A7%E8%A1%8C%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%B9%8B%E5%89%8D%EF%BC%8C%0A//%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%9A%E5%85%88%E7%9B%B4%E6%8E%A5%E6%8A%8A%E6%B3%A8%E9%87%8A%E9%83%BD%E5%88%A0%E9%99%A4%EF%BC%8C%0A//%E6%B3%A8%E9%87%8A%E5%AD%98%E5%9C%A8%E7%9A%84%E7%9B%AE%E7%9A%84%E5%8D%95%E7%BA%AF%E7%9A%84%E6%98%AF%E7%BB%99%E6%88%91%E4%BB%AC%E8%87%AA%E5%B7%B1%E6%88%96%E8%80%85%E5%85%B6%E4%BB%96%E8%AF%BB%E6%88%91%E4%BB%AC%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BA%BA%E6%8F%90%E7%A4%BA%E7%94%A8%E7%9A%84%EF%BC%8C%0A//%E6%89%80%E4%BB%A5%E4%BD%A0%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E5%BD%93%E6%89%80%E6%9C%89%E7%9A%84%E6%B3%A8%E9%87%8A%E4%B8%8D%E5%AD%98%E5%9C%A8%0A%0Aint%20main%28%29%20%7B%0A%20%20%0A%20%20int%20A%3B//%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E5%87%86%E5%A4%87%E6%AD%A5%E9%AA%A4%EF%BC%8C%E7%BB%99%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%80%E5%9D%97%E9%BB%91%E6%9D%BFA%0A%20%20int%20B%3B//%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E5%87%86%E5%A4%87%E6%AD%A5%E9%AA%A4%EF%BC%8C%E7%BB%99%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%80%E5%9D%97%E9%BB%91%E6%9D%BFB%0A%20%20%0A%20%20//%E4%BB%A5%E4%B8%8B%E5%B0%B1%E6%98%AF%E6%88%91%E4%BB%AC%E7%BF%BB%E8%AF%91%E5%87%BA%E6%9D%A5%E7%9A%84%E6%8C%87%E4%BB%A4%EF%BC%8C%E5%AE%83%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AF%E4%B8%80%E6%AE%B5C%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%EF%BC%8C%0A%20%20//%E8%A6%81%E8%BF%90%E8%A1%8CC%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%E5%BF%85%E9%A1%BB%E5%B0%86%E4%BB%A3%E7%A0%81%E6%94%BE%E5%9C%A8int%20main%28%29%20%7B%7D%E7%9A%84%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%B9%8B%E4%B8%AD%EF%BC%8C%0A%20%20//C%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8%E6%89%8D%E8%83%BD%E8%AF%86%E5%88%AB%E5%AE%83%E5%B9%B6%E6%8A%8A%E5%AE%83%E7%BC%96%E8%AF%91%E6%88%90%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%EF%BC%8C%E6%9D%A5%E8%AE%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%A7%A3%E5%92%8C%E8%BF%90%E8%A1%8C%0A%20%20STEP1%3A%20A%20%3D%200%3B%0A%20%20STEP2%3A%20B%20%3D%202%3B%0A%20%20STEP3%3A%0A%20%20if%28B%20%3D%3D%200%29%7B%0A%20%20goto%20STEP7%3B%0A%20%20%7D%0A%20%20else%7B%0A%20%20goto%20STEP4%3B%0A%20%20%7D%0A%20%20STEP4%3A%20A%20%3D%20A%20%2B%203%3B%0A%20%20STEP5%3A%20B%20%3D%20B%20-%201%3B%0A%20%20STEP6%3A%20goto%20STEP3%3B%0A%20%20STEP7%3A%20printf%28%22%25d%22,%20A%29%3B%0A%20%20STEP8%3A%20return%200%3B%0A%20%20%0A%7D&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe>
 
 <p>现在我们在回过头来观察一下这段程序的特点，从它的本质来定义 <strong>程序</strong>。</p>
 
