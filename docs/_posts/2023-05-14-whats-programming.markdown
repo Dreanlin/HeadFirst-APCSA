@@ -65,7 +65,9 @@ void draw() {
 <label for="lname">黑板B上的数字:</label>
 <input type="text" id="lname" name="lname"><br>
 <label for="nextInstruction">下一步你要执行第几条命令:</label>
-<input type="text" id="nextInstruction" name="nextInstruction"><br>
+<input type="text" id="nextInstruction" name="nextInstruction">
+<label for="print">你打印出来的结果:</label>
+<input type="text" id="print" name="print"><br>
 
 如果我们仔细观察上面的这段程序，虽然它是一段自然语言，但是它的结构非常固定，比如：
 
