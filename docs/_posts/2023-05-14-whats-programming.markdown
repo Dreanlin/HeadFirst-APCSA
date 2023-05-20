@@ -59,15 +59,14 @@ void draw() {
 8. 结束执行
 </code></pre></div></div>
 
-现在你可以把自己当作计算机，用我准备的这两块“黑板”执行上面这一串命令：  
+现在你可以把自己当作计算机，用下面我准备的这两块“黑板”执行上面这一串命令（[或者查看动画演示]）：  
 <label for="fname">黑板A上的数字:</label>
 <input type="text" id="fname" name="fname">
 <label for="lname">黑板B上的数字:</label>
 <input type="text" id="lname" name="lname"><br>
 <label for="nextInstruction">下一步你要执行第几条命令:</label>
 <input type="text" id="nextInstruction" name="nextInstruction">
-<label for="print">你打印出来的结果:</label>
-<input type="text" id="print" name="print"><br>
+
 
 如果我们仔细观察上面的这段程序，虽然它是一段自然语言，但是它的结构非常固定，比如：
 
@@ -116,4 +115,5 @@ void draw() {
 
 所以可以说，程序 = ( 指令 + 数据 ) X 流程，而编程，就是编写这样的程序的过程。
 
-[点此可以查看以下代码的实际效果]:{{ "/reference/Example-Mouse2D.html" | relative_url }}
+[点此可以查看以下代码的实际效果]:{{ "/reference/post-whats_programming/Example-Mouse2D.html" | relative_url }}
+[或者查看动画演示]:{{ "/reference/post-whats_programming/mock_robot.gif" | relative_url }}
