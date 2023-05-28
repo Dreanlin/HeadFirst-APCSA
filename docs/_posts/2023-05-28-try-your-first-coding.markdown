@@ -23,9 +23,19 @@ ellipse(50,50,15,15);
 ```
 马上在下面的编程环境里试试吧：
 
-[codepen_embed height="342.6666564941406" default_tab="html,result" slug_hash="bGmjEwE" preview="true" editable="true" user="dreanlin"]See the Pen <a href="https://codepen.io/dreanlin/pen/bGmjEwE">
-  ExamplePrintCalResult</a> by Dreanlin (<a href="https://codepen.io/dreanlin">@dreanlin</a>)
-  on <a href="https://codepen.io">CodePen</a>.[/codepen_embed]
+<div class="codepen" data-height="342.6666564941406" data-default-tab="html,result" data-slug-hash="bGmjEwE" data-editable="true" data-user="dreanlin"  data-prefill='{"title":"TryYourFirstCoding","tags":[],"scripts":["https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"],"stylesheets":[]}'>
+  <pre data-lang="html">&lt;script type="application/processing">
+//像你正在读的我这几行中文讲解，是写在两个连续 / 符号右侧的“代码注释”
+//Processing读入代码的时候会把“代码注释”直接无视
+//这些注释单纯是我们写在代码里方便自己理解的提示信息
+//你也可以按照需求在代码中写注释提示自己一些注意点
+//现在你可以将上文中那行真正的代码 ellipse(50,50,15,15); 写在下面
+//然后等待程序执行结束
+//注意别忘了每行代码的最后，要用【英文分号】表示这行代码的结尾
+
+&lt;/script>
+&lt;canvas> &lt;/canvas></pre></div>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 
 [什么是编程]:https://hwfdf
