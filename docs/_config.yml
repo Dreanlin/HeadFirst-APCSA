@@ -24,7 +24,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   本教程尝试先通过Processing语言帮助初学者学习编程基础概念，再丝滑过渡到 AP-CSA 考试范围内的 Java 语言编程概念来帮助读者掌握编程、快速备考。
 baseurl: HeadFirst-APCSA # the subpath of your site, e.g. /blog
 url: https://my-site.github.io # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
+# twitter_username: jekyllrb
 github_username:  jekyll
 bilibili_username: YOLO在讲课
 markdown: kramdown
