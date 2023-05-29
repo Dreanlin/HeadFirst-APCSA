@@ -26,6 +26,7 @@ baseurl: HeadFirst-APCSA # the subpath of your site, e.g. /blog
 url: https://my-site.github.io # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
+bilibili_username: YOLO在讲课
 markdown: kramdown
 # Build settings
 theme: minima
