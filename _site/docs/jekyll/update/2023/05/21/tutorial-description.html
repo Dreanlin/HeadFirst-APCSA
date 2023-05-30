@@ -7,6 +7,7 @@
 <h3 id="教程内容">教程内容</h3>
 
 <p>本教程的内容主要包括以下模块：</p>
+
 <ol>
   <li>AP-CSA 考试涉及到的<a href="https://www.runoob.com/java/java-intro.html">Java编程语言</a>相关概念以及使用Java语言编写程序
     <ul>
@@ -31,38 +32,21 @@
 
 <h3 id="编程语言选择">编程语言选择</h3>
 
-<p>本教程系列中，我们学习 Java 语言的原因是：Java 语言足够成熟、Java 应用足够广泛、为了准备 AP-CSA 考试（考的就是 Java 编程）。但是我们为什么要选择在最开始的时候使用 Processing 语言呢？A long story···</p>
+<p>本教程系列中，我们学习 Java 语言的原因是：Java 语言足够成熟、Java 应用足够广泛、为了准备 AP-CSA 考试（考的就是 Java 编程）。但是我们为什么要选择在最开始的时候使用 Processing 语言呢？</p>
 
-<p>在《<a href="https://dreanlin.github.io/HeadFirst-APCSA/jekyll/update/2023/05/14/whats-programming.html">什么是编程</a>》这篇教程的最后，我们已经知道，程序就是使用编程语言，让计算机按照指定的流程（英文：flow），根据咱们代码里的指令（英文：instruction）和数据（英文：data）来完成任务。那么我们要能使用某种语言写码来操作计算机，首先我们肯定得知道：</p>
+<p>在《<a href="https://dreanlin.github.io/HeadFirst-APCSA/jekyll/update/2023/05/14/whats-programming.html">什么是编程</a>》中我们知道了几乎任何图灵完备的编程语言都是通用语言，只是每种语言各有所长。而Processing 语言的特点就在于它非常容易用来绘图、制作动画、声光效果，相比于 Java 它更生动；同时，它的语法几乎和 Java 一模一样但是更简单易懂，非常方便初学者入门又便于无缝衔接到 Java 学习，比如分别用 Java 和 Processing 打印 “Hello World”：</p>
 
-<ol>
-  <li>这个编程语言提供了哪些指令</li>
-  <li>这些指令需要什么数据来执行</li>
-</ol>
-
-<p>以上两点在使用不同的编程语言来写码的时候，是有区别的，比如《什么是编程》中我们举例用到的 C 语言程序：</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nl">STEP1:</span> <span class="n">A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="n">STEP2</span><span class="o">:</span> <span class="n">B</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="n">STEP3</span><span class="o">:</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">B</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
-         <span class="k">goto</span> <span class="n">STEP7</span><span class="p">;</span>
-         <span class="p">}</span>
-         <span class="k">else</span><span class="p">{</span>
-         <span class="k">goto</span> <span class="n">STEP4</span><span class="p">;</span>
-         <span class="p">}</span>
-  <span class="n">STEP4</span><span class="o">:</span> <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="n">STEP5</span><span class="o">:</span> <span class="n">B</span> <span class="o">=</span> <span class="n">B</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="n">STEP6</span><span class="o">:</span> <span class="k">goto</span> <span class="n">STEP3</span><span class="p">;</span>
-  <span class="n">STEP7</span><span class="o">:</span> <span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">A</span><span class="p">);</span>
-  <span class="n">STEP8</span><span class="o">:</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Java版</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
-<p>其中的 “goto” 指令，在现代的绝大多数高级编程语言（Processing、python）中都是没有的，每行代码最前面的 “STEPx: ” 在 Processing 中也是不支持的。</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Processing版</span>
+<span class="n">println</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">);</span>
+</code></pre></div></div>
 
-<p>另外即使是起同样作用的指令，我们调用时需要给它的数据、以及调用语法也是不一样的：<br />
-比如同样是<strong>打印</strong>指令，在打印整数 <em>10</em> 的时候，C 语言是<code class="language-plaintext highlighter-rouge">print("%d", 10);</code>、Processing 是<code class="language-plaintext highlighter-rouge">print(10);</code>、而 Python 是<code class="language-plaintext highlighter-rouge">print(10)</code>。<br />
-可以看到，C 语言的<strong>打印</strong>指令除了需要我们给它被打印的数字 <em>10</em> 以外，还需要一个参数 <em>“%d”</em> ，而 Python 和 Processing 都只需要整数 <em>10</em> 即可。并且对比 Processing 和 Python 的<strong>打印</strong>指令我们发现，即使是同一个指令并且打印的数字都一样，但是 Processing 语言是要求每个指令的结束必须用分号显性标记，而 Python 不需要。</p>
-
-<p>如果这些编程语言各自差距都这么大，</p>
+<p>做个离谱但是形象的比喻，可以将 Processing 和 Java 的关系简单地理解成说明文之类的作文文体（Processing）和中文语言（Java）的关系。直接学会熟练、随心使用中文比较难，先学最基本的中文语法然后在说明文的框架下写文章就简单很多，并且还可以拿着被说明的物件实实在在地理解文字、词汇的含义。</p>
 

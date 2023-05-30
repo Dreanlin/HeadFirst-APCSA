@@ -118,6 +118,49 @@ void draw() {
 
 所以可以说，程序 = ( 指令 + 数据 ) X 流程，而编程，就是使用计算机语言编写这样的程序的过程。  
 
+### 编程语言概览
+
+现在我们已经知道，程序就是使用编程语言，让计算机按照指定的流程（英文：flow），根据咱们代码里的指令（英文：instruction）和数据（英文：data）来完成任务。那么我们要能使用某种语言写码来操作计算机，首先我们肯定得知道：
+
+1. 这个编程语言提供了哪些指令
+2. 这些指令需要什么数据来执行
+
+以上两点在使用不同的编程语言来写码的时候，是有区别的，比如《什么是编程》中我们举例用到的 C 语言程序：
+
+```c
+  STEP1: A = 0;
+  STEP2: B = 2;
+  STEP3:
+  if(B == 0){
+         goto STEP7;
+         }
+         else{
+         goto STEP4;
+         }
+  STEP4: A = A + 3;
+  STEP5: B = B - 1;
+  STEP6: goto STEP3;
+  STEP7: printf("%d", A);
+  STEP8: return 0;
+```
+
+其中的 “goto” 指令，在现代的绝大多数高级编程语言（Processing、python）中都是没有的，每行代码最前面的 “STEPx: ” 在 Processing 中也是不支持的。  
+
+另外即使是起同样作用的指令，我们调用时需要给它的数据、以及调用语法也是不一样的：  
+比如同样是**打印**指令，在打印整数 *10* 的时候，C 语言是`print("%d", 10);`、Processing 是`print(10);`、而 Python 是`print(10)`。  
+
+可以看到，C 语言的**打印**指令除了需要我们给它被打印的数字 *10* 以外，还需要一个参数 *"%d"* ，而 Python 和 Processing 都只需要整数 *10* 即可。并且对比 Processing 和 Python 的**打印**指令我们发现，即使是同一个指令并且打印的数字都一样，但是 Processing 语言是要求每个指令的结束必须用分号显性标记，而 Python 不需要。  
+
+如果这些编程语言各自差距都这么大，那我们是需要把所有的编程语言全都学一遍吗？当然不是！其实理论上来说，一个编程语言只要能提供某些**核心功能**的指令（想知道有哪些核心功能可以参考下面这个视频），达到[图灵完备]的效果（解说视频看不懂就忽略，我也看不懂2333），它就是一门通用的编程语言，其他语言能做到的它也能。不同语言直接的区别更多的在于，它们提供的除了某些**核心功能**以外的特有指令。
+
+> 说是特有指令其实不严谨，这里只是为了方便大家理解做的简单处理。其实可以理解成每个语言除了必备的核心功能，还有自己的某些特征，让它特别适合用来解决某一类问题。比如 Python 用于数据科学、Javascript 用于浏览器网页动效、C 语言用于操作系统和智能家居等需要直接控制硬件的软件开发。
+
+<iframe src="//player.bilibili.com/player.html?aid=21376839&bvid=BV1EW411u7th&cid=36505062&page=12" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+
+
 
 [点此可以查看以下代码的实际效果]:{{ "/reference/post-whats_programming/Example-Mouse2D.html" | relative_url }}
 [或者查看动画演示]:{{ "/reference/post-whats_programming/mock_robot.gif" | relative_url }}
+[图灵完备]:https://www.bilibili.com/video/BV1EW411u7th/?p=15&share_source=copy_web
