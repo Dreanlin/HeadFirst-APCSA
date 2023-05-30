@@ -1,9 +1,11 @@
 <h2 id="本教程使用说明">本教程使用说明</h2>
 
 <h3 id="教程创作目标">教程创作目标</h3>
+
 <p>我编写这个博客教程的目标简单来说就是：希望通过教授 AP-CSA 考试范围内的 Java 语言编程概念来帮助读者入门编程。所以该系列取名为 <strong>HeadFirst-APCSA</strong> 也参照有名的计算机科学入门书系：HeadFirst 系列。</p>
 
 <h3 id="教程内容">教程内容</h3>
+
 <p>本教程的内容主要包括以下模块：</p>
 <ol>
   <li>AP-CSA 考试涉及到的<a href="https://www.runoob.com/java/java-intro.html">Java编程语言</a>相关概念以及使用Java语言编写程序
@@ -13,18 +15,54 @@
   </li>
   <li>使用<a href="https://baike.baidu.com/item/Processing/378062">Processing创意编程</a>的入门介绍
     <ul>
-      <li>可以将 Processing 和 Java 的关系简单地理解成某种作文文体（Processing）和中文语言（Java）的关系，虽然这个比喻非常离谱~</li>
       <li>考虑到本系列的读者多是编程新手，并且本系列的主体内容是 Java 编程。而 Processing 将 Java 的语法简化并将其运算结果可视化，让初学者能很快享有声光兼备的交互式多媒体作品，所以它是一个理想的入门工具。我们会在本系列最开始通过 Processing 编程快速上手，然后过度到完全的 Java 编程。</li>
     </ul>
   </li>
   <li>计算机科学基础概念和编程基础概念的入门科普
     <ul>
       <li>虽然本教程主要关注 Java 编程内容，但是也会简单介绍一些诸如“计算机内部到底怎么做到这个”、“程序指令为啥就能操作计算机做到这个”之类的知识，不求高精尖，但求通俗易懂。（其实是能力有限讲不了太深奥、高精尖的东西）</li>
-      <li>除了 Java 语法，还会简单介绍一些与具体的编程语言无关的，编写优秀程序的建议和技巧</li>
     </ul>
   </li>
 </ol>
 
 <h3 id="目标读者">目标读者</h3>
+
 <p>本教程主要内容涉及 AP-CSA 考试内容，所以参考 AP-CSA 对学生群体的先修要求，只需要读者具有高中一年级数学的知识，了解线性函数、函数组合的概念，以及能够使用平面直角坐标系来表示平面上的点。</p>
+
+<h3 id="编程语言选择">编程语言选择</h3>
+
+<p>本教程系列中，我们学习 Java 语言的原因是：Java 语言足够成熟、Java 应用足够广泛、为了准备 AP-CSA 考试（考的就是 Java 编程）。但是我们为什么要选择在最开始的时候使用 Processing 语言呢？A long story···</p>
+
+<p>在《<a href="https://dreanlin.github.io/HeadFirst-APCSA/jekyll/update/2023/05/14/whats-programming.html">什么是编程</a>》这篇教程的最后，我们已经知道，程序就是使用编程语言，让计算机按照指定的流程（英文：flow），根据咱们代码里的指令（英文：instruction）和数据（英文：data）来完成任务。那么我们要能使用某种语言写码来操作计算机，首先我们肯定得知道：</p>
+
+<ol>
+  <li>这个编程语言提供了哪些指令</li>
+  <li>这些指令需要什么数据来执行</li>
+</ol>
+
+<p>以上两点在使用不同的编程语言来写码的时候，是有区别的，比如《什么是编程》中我们举例用到的 C 语言程序：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nl">STEP1:</span> <span class="n">A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">STEP2</span><span class="o">:</span> <span class="n">B</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">STEP3</span><span class="o">:</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">B</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+         <span class="k">goto</span> <span class="n">STEP7</span><span class="p">;</span>
+         <span class="p">}</span>
+         <span class="k">else</span><span class="p">{</span>
+         <span class="k">goto</span> <span class="n">STEP4</span><span class="p">;</span>
+         <span class="p">}</span>
+  <span class="n">STEP4</span><span class="o">:</span> <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="n">STEP5</span><span class="o">:</span> <span class="n">B</span> <span class="o">=</span> <span class="n">B</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">STEP6</span><span class="o">:</span> <span class="k">goto</span> <span class="n">STEP3</span><span class="p">;</span>
+  <span class="n">STEP7</span><span class="o">:</span> <span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">A</span><span class="p">);</span>
+  <span class="n">STEP8</span><span class="o">:</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>其中的 “goto” 指令，在现代的绝大多数高级编程语言（Processing、python）中都是没有的，每行代码最前面的 “STEPx: ” 在 Processing 中也是不支持的。</p>
+
+<p>另外即使是起同样作用的指令，我们调用时需要给它的数据、以及调用语法也是不一样的：<br />
+比如同样是<strong>打印</strong>指令，在打印整数 <em>10</em> 的时候，C 语言是<code class="language-plaintext highlighter-rouge">print("%d", 10);</code>、Processing 是<code class="language-plaintext highlighter-rouge">print(10);</code>、而 Python 是<code class="language-plaintext highlighter-rouge">print(10)</code>。<br />
+可以看到，C 语言的<strong>打印</strong>指令除了需要我们给它被打印的数字 <em>10</em> 以外，还需要一个参数 <em>“%d”</em> ，而 Python 和 Processing 都只需要整数 <em>10</em> 即可。并且对比 Processing 和 Python 的<strong>打印</strong>指令我们发现，即使是同一个指令并且打印的数字都一样，但是 Processing 语言是要求每个指令的结束必须用分号显性标记，而 Python 不需要。</p>
+
+<p>如果这些编程语言各自差距都这么大，</p>
 
