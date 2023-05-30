@@ -155,7 +155,7 @@ void draw() {
 
 > 说是特有指令其实不严谨，这里只是为了方便大家理解做的简单处理。其实可以理解成每个语言除了必备的核心功能，还有自己的某些特征，让它特别适合用来解决某一类问题。比如 Python 用于数据科学、Javascript 用于浏览器网页动效、C 语言用于操作系统和智能家居等需要直接控制硬件的软件开发。
 
-<iframe src="//player.bilibili.com/player.html?aid=21376839&bvid=BV1EW411u7th&cid=36505062&page=12" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=21376839&bvid=BV1EW411u7th&cid=36505062&page=12" width="80%" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 
