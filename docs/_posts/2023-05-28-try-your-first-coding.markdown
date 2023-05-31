@@ -64,14 +64,51 @@ $$f(x) = 2x + 1$$
 
 了解了函数指令的含义，现在我们就来多学一些 Processing 语言里**可供直接调用**的、用于绘制简单图形的函数指令吧，想了解更全面的函数指令可以查阅 Processing 官网的[参考列表]：
 
-1. `rect(a, b, c, d);`表示在画布上画出一个矩形
-   - 参数a：
-   - 参数b：
+1. `size(width,height);`表示设置一块宽为 width 高为 height 的画布（英文：canvas），且按照我们前文提到的，画布的左上角是整个坐标系的原点，之后绘制的图形只要没有超出画布范围（x 坐标不超过 width 值，y 坐标不超过 height 值）就可以正常显示在画布上。这个函数需要在所有其他的绘图函数之前调用，毕竟没有画布就没法画画了；但是如果你忘记调用这个 size 函数也不用惊慌，Processing 发现你没主动调用 size 函数就会自动在最开始先调用`size(100,100);`，要不然我们之前的那个直接调用`ellipse(40,50,15,20);`的例子也不可能画出椭圆来。
+   - 参数width：设置画布的宽度
+   - 参数height：设置画布的高度
 
-2. `triangle(x1, y1, x2, y2, x3, y3);`表示在画布上画出一个三角形
-   - 参数x1：
-   - 参数x2：
+2. `rect(a, b, c, d);`表示在画布上画出一个矩形
+   - 参数a：矩形**左上角**的点的x轴坐标
+   - 参数b：矩形**左上角**的点的y轴坐标
+   - 参数c：矩形的宽度
+   - 参数d：矩形的高度
+
+3. `triangle(x1, y1, x2, y2, x3, y3);`表示在画布上画出一个三角形
+   - 参数x1：第一个点的x轴坐标
+   - 参数y1：第一个点的y轴坐标
+   - 参数x2：第二个点的x轴坐标
+   - 参数y2：第二个点的y轴坐标
+   - 参数x3：第三个点的x轴坐标
+   - 参数y3：第三个点的y轴坐标  
+
+4. `fill(v1, v2, v3);`表示设置绘制图形时的填充色，只要调用这个函数，之后画出来的图形（比如上面提到的矩形和三角形）的填充色都会是你在这次调用中设定的颜色，颜色通过 v1、v2、v3三个值按照[RGB法则]设定（这三个参数的范围限定为0~255的整数）。
+   - 参数v1：表示填充色的Red值
+   - 参数v2：表示填充色的Green值
+   - 参数v3：表示填充色的Blue值
+
+现在就让我们用目前学习的这几个函数来绘制一些简单的图形吧：
+
+<div class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="oNaMbLQ" data-editable="true" data-user="dreanlin"  data-prefill='{"title":"BasicShape","tags":[],"scripts":["https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"],"stylesheets":[]}'>
+  <pre data-lang="html">&lt;script type="application/processing">
+
+// 注意：之前提过，在Processing中两个斜杠符号后的本行内容是注释，不是程序的内容，我们可以随意编辑一些用来提示自己的内容
+size(500,400);// 通过左边这个size函数调用，我们让Processing准备一块宽500，高400的画布
+
+fill(133,0,133);// 通过左边这个fill函数调用，我们让Processing给接下来画的图形都用上RGB值为(133,0,133)的颜色，也就是紫色，你可以谷歌一下RGB颜色表来查找自己喜欢的颜色的RGB，然后调用fill函数画出这种填充色的图形
+rect(20,20,50,40);// 通过左边这个rect函数调用，我们让Processing以(x=20,y=20)为左上角坐标点，画出一个宽50、高40的矩形；因为上一步我们用fill设置了填充色为紫色，现在这个矩形内部就是紫色的
+triangle(80,80,120,80,100,120);// 通过左边这个triangle函数调用，我们让Processing在以(80,80)(120,80)(100,120)三个点为顶点画出一个三角形；因为我们上一次调用的fill函数设置的填充色是(133,0,133)所以现在三角形填充色还是紫色
+fill(0,100,0);// 现在我们再次调用fill函数并且设置RGB值为(0,100,0)，这样接下来画的图形就是这个RGB值对应的绿色了
+ellipse(200,200,100,80);// 通过左边这个ellipse函数调用，我们让Processing以点(x=200,y=200)为中心，画出了一个宽为100、高为80的椭圆；因为上一步我们调用了fill(0,100,0)，所以现在画出来的图形填充色都是绿色了
+
+&lt;/script>
+&lt;canvas> &lt;/canvas></pre></div>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+现在你已经知道了椭圆、圆（宽高一样的椭圆）、矩形、正方形（宽高一样的矩形）、三角形怎么绘制，也知道了怎么改变填充色，直接试试在上面这个环境中修改代码然后绘制自己喜欢的图形吧。如果还需要查询绘制其它更多图形的函数，可以去 Processing [参考列表]查询，比如画[线段]、画[弧形]等。
 
 [Processing]:https://baike.baidu.com/item/Processing/378062
 [点此跳转至图片来源]:https://processing.org/cd3baea53c123bf79e619a7c2b9afb2c/drawing-10.svg
 [参考列表]:https://processing.org/reference
+[线段]:https://processing.org/reference/line_.html
+[弧形]:https://processing.org/reference/arc_.html
