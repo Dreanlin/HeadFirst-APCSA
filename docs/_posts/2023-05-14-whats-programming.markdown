@@ -147,7 +147,7 @@ void draw() {
 其中的 “goto” 指令，在现代的绝大多数高级编程语言（Processing、python）中都是没有的，每行代码最前面的 “STEPx: ” 在 Processing 中也是不支持的。  
 
 另外即使是起同样作用的指令，我们调用时需要给它的数据、以及调用语法也是不一样的：  
-比如同样是**打印**指令，在打印整数 *10* 的时候，C 语言是`print("%d", 10);`、Processing 是`print(10);`、而 Python 是`print(10)`。  
+比如同样是**打印**指令，在打印整数 *10* 的时候，C 语言是`printf("%d", 10);`、Processing 是`print(10);`、而 Python 是`print(10)`。  
 
 可以看到，C 语言的**打印**指令除了需要我们给它被打印的数字 *10* 以外，还需要一个参数 *"%d"* ，而 Python 和 Processing 都只需要整数 *10* 即可。并且对比 Processing 和 Python 的**打印**指令我们发现，即使是同一个指令并且打印的数字都一样，但是 Processing 语言是要求每个指令的结束必须用分号显性标记，而 Python 不需要。  
 
