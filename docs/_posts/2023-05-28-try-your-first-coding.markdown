@@ -39,6 +39,7 @@ ellipse(40,50,15,20);
 &lt;canvas> &lt;/canvas></pre></div>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
+
 ### 指令和函数
 
 我们已经知道，程序只是按照一定流程编排的指令+数据。前几篇教程中，我们看到的都是一些最简单的指令，比如加减乘除的运算，假设我们把 “+”、“-” 符号看成代码中的指令，把符号两侧的数看作数据，这也是符合我们最初的定义的。但是除了这些运算符，在 Processing 中还有一种更普遍的指令形式，就是**函数**（英文：function）。  
@@ -109,6 +110,7 @@ ellipse(200,200,100,80);// 通过左边这个ellipse函数调用，我们让Proc
 &lt;/script>
 &lt;canvas> &lt;/canvas></pre></div>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
 
 现在你已经知道了椭圆、圆（宽高一样的椭圆）、矩形、正方形（宽高一样的矩形）、三角形怎么绘制，也知道了怎么改变填充色，直接试试在上面这个环境中修改代码然后绘制自己喜欢的图形吧。如果还需要查询绘制其它更多图形的函数，可以去 Processing [参考列表]查询，比如画[线段]、画[弧形]等。
 

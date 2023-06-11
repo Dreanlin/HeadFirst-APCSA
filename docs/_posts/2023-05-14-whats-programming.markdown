@@ -108,7 +108,7 @@ void draw() {
 
 事实上，这就是一段C语言的程序代码，你可以在下方这个在线编程环境里不停点击“Next>”按钮尝试运行它。  
 > 在线环境使用简介：代码左侧的绿红箭头表示计算机刚执行完的代码命令和下一步要执行的代码命令；你可以关注这个程序运行过程中，在右侧**Stack**下方的“黑板A”、“黑板B”以及右侧上方的“打印结果（Print output）”的数值变化。  
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=//%E6%B3%A8%E6%84%8F%EF%BC%9A%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%E9%87%8C%E6%AF%8F%E8%A1%8C%E7%9A%84%22//%22%E5%8F%B3%E8%BE%B9%E7%9A%84%E5%86%85%E5%AE%B9%E9%83%BD%E6%98%AF%E6%B3%A8%E9%87%8A%EF%BC%8C%0A//%E4%BB%A3%E7%A0%81%E5%9C%A8%E8%A2%AB%E7%BC%96%E8%AF%91%E5%99%A8%E8%BD%AC%E6%8D%A2%E6%88%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%AF%E4%BB%A5%E7%90%86%E8%A7%A3%E5%92%8C%E5%92%8C%E6%89%A7%E8%A1%8C%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%B9%8B%E5%89%8D%EF%BC%8C%0A//%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%9A%E5%85%88%E7%9B%B4%E6%8E%A5%E6%8A%8A%E6%B3%A8%E9%87%8A%E9%83%BD%E5%88%A0%E9%99%A4%EF%BC%8C%0A//%E6%B3%A8%E9%87%8A%E5%AD%98%E5%9C%A8%E7%9A%84%E7%9B%AE%E7%9A%84%E5%8D%95%E7%BA%AF%E7%9A%84%E6%98%AF%E7%BB%99%E6%88%91%E4%BB%AC%E8%87%AA%E5%B7%B1%E6%88%96%E8%80%85%E5%85%B6%E4%BB%96%E8%AF%BB%E6%88%91%E4%BB%AC%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BA%BA%E6%8F%90%E7%A4%BA%E7%94%A8%E7%9A%84%EF%BC%8C%0A//%E6%89%80%E4%BB%A5%E4%BD%A0%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E5%BD%93%E6%89%80%E6%9C%89%E7%9A%84%E6%B3%A8%E9%87%8A%E4%B8%8D%E5%AD%98%E5%9C%A8%0A%0Aint%20main%28%29%20%7B%0A%20%20%0A%20%20int%20A%3B//%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E5%87%86%E5%A4%87%E6%AD%A5%E9%AA%A4%EF%BC%8C%E7%BB%99%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%80%E5%9D%97%E9%BB%91%E6%9D%BFA%0A%20%20int%20B%3B//%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E5%87%86%E5%A4%87%E6%AD%A5%E9%AA%A4%EF%BC%8C%E7%BB%99%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%80%E5%9D%97%E9%BB%91%E6%9D%BFB%0A%20%20%0A%20%20//%E4%BB%A5%E4%B8%8B%E5%B0%B1%E6%98%AF%E6%88%91%E4%BB%AC%E7%BF%BB%E8%AF%91%E5%87%BA%E6%9D%A5%E7%9A%84%E6%8C%87%E4%BB%A4%EF%BC%8C%E5%AE%83%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AF%E4%B8%80%E6%AE%B5C%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%EF%BC%8C%0A%20%20//%E8%A6%81%E8%BF%90%E8%A1%8CC%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%E5%BF%85%E9%A1%BB%E5%B0%86%E4%BB%A3%E7%A0%81%E6%94%BE%E5%9C%A8int%20main%28%29%20%7B%7D%E7%9A%84%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%B9%8B%E4%B8%AD%EF%BC%8C%0A%20%20//C%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8%E6%89%8D%E8%83%BD%E8%AF%86%E5%88%AB%E5%AE%83%E5%B9%B6%E6%8A%8A%E5%AE%83%E7%BC%96%E8%AF%91%E6%88%90%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%EF%BC%8C%E6%9D%A5%E8%AE%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%A7%A3%E5%92%8C%E8%BF%90%E8%A1%8C%0A%20%20STEP1%3A%20A%20%3D%200%3B%0A%20%20STEP2%3A%20B%20%3D%202%3B%0A%20%20STEP3%3A%0A%20%20if%28B%20%3D%3D%200%29%7B%0A%20%20goto%20STEP7%3B%0A%20%20%7D%0A%20%20else%7B%0A%20%20goto%20STEP4%3B%0A%20%20%7D%0A%20%20STEP4%3A%20A%20%3D%20A%20%2B%203%3B%0A%20%20STEP5%3A%20B%20%3D%20B%20-%201%3B%0A%20%20STEP6%3A%20goto%20STEP3%3B%0A%20%20STEP7%3A%20printf%28%22%25d%22,%20A%29%3B%0A%20%20STEP8%3A%20return%200%3B%0A%20%20%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>  
+<iframe width="800" height="640" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=//%E6%B3%A8%E6%84%8F%EF%BC%9A%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%E9%87%8C%E6%AF%8F%E8%A1%8C%E7%9A%84%22//%22%E5%8F%B3%E8%BE%B9%E7%9A%84%E5%86%85%E5%AE%B9%E9%83%BD%E6%98%AF%E6%B3%A8%E9%87%8A%EF%BC%8C%0A//%E4%BB%A3%E7%A0%81%E5%9C%A8%E8%A2%AB%E7%BC%96%E8%AF%91%E5%99%A8%E8%BD%AC%E6%8D%A2%E6%88%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%AF%E4%BB%A5%E7%90%86%E8%A7%A3%E5%92%8C%E5%92%8C%E6%89%A7%E8%A1%8C%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%B9%8B%E5%89%8D%EF%BC%8C%0A//%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%9A%E5%85%88%E7%9B%B4%E6%8E%A5%E6%8A%8A%E6%B3%A8%E9%87%8A%E9%83%BD%E5%88%A0%E9%99%A4%EF%BC%8C%0A//%E6%B3%A8%E9%87%8A%E5%AD%98%E5%9C%A8%E7%9A%84%E7%9B%AE%E7%9A%84%E5%8D%95%E7%BA%AF%E7%9A%84%E6%98%AF%E7%BB%99%E6%88%91%E4%BB%AC%E8%87%AA%E5%B7%B1%E6%88%96%E8%80%85%E5%85%B6%E4%BB%96%E8%AF%BB%E6%88%91%E4%BB%AC%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BA%BA%E6%8F%90%E7%A4%BA%E7%94%A8%E7%9A%84%EF%BC%8C%0A//%E6%89%80%E4%BB%A5%E4%BD%A0%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E5%BD%93%E6%89%80%E6%9C%89%E7%9A%84%E6%B3%A8%E9%87%8A%E4%B8%8D%E5%AD%98%E5%9C%A8%0A%0Aint%20main%28%29%20%7B%0A%20%20%0A%20%20int%20A%3B//%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E5%87%86%E5%A4%87%E6%AD%A5%E9%AA%A4%EF%BC%8C%E7%BB%99%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%80%E5%9D%97%E9%BB%91%E6%9D%BFA%0A%20%20int%20B%3B//%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E5%87%86%E5%A4%87%E6%AD%A5%E9%AA%A4%EF%BC%8C%E7%BB%99%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%80%E5%9D%97%E9%BB%91%E6%9D%BFB%0A%20%20%0A%20%20//%E4%BB%A5%E4%B8%8B%E5%B0%B1%E6%98%AF%E6%88%91%E4%BB%AC%E7%BF%BB%E8%AF%91%E5%87%BA%E6%9D%A5%E7%9A%84%E6%8C%87%E4%BB%A4%EF%BC%8C%E5%AE%83%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AF%E4%B8%80%E6%AE%B5C%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%EF%BC%8C%0A%20%20//%E8%A6%81%E8%BF%90%E8%A1%8CC%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%E5%BF%85%E9%A1%BB%E5%B0%86%E4%BB%A3%E7%A0%81%E6%94%BE%E5%9C%A8int%20main%28%29%20%7B%7D%E7%9A%84%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%B9%8B%E4%B8%AD%EF%BC%8C%0A%20%20//C%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8%E6%89%8D%E8%83%BD%E8%AF%86%E5%88%AB%E5%AE%83%E5%B9%B6%E6%8A%8A%E5%AE%83%E7%BC%96%E8%AF%91%E6%88%90%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%EF%BC%8C%E6%9D%A5%E8%AE%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%A7%A3%E5%92%8C%E8%BF%90%E8%A1%8C%0A%20%20STEP1%3A%20A%20%3D%200%3B%0A%20%20STEP2%3A%20B%20%3D%202%3B%0A%20%20STEP3%3A%0A%20%20if%28B%20%3D%3D%200%29%7B%0A%20%20goto%20STEP7%3B%0A%20%20%7D%0A%20%20else%7B%0A%20%20goto%20STEP4%3B%0A%20%20%7D%0A%20%20STEP4%3A%20A%20%3D%20A%20%2B%203%3B%0A%20%20STEP5%3A%20B%20%3D%20B%20-%201%3B%0A%20%20STEP6%3A%20goto%20STEP3%3B%0A%20%20STEP7%3A%20printf%28%22%25d%22,%20A%29%3B%0A%20%20STEP8%3A%20return%200%3B%0A%20%20%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>  
 
 <br>
 现在我们在回过头来观察一下这段程序的特点，尝试从它的本质来定义 **程序**：  
@@ -125,7 +125,7 @@ void draw() {
 1. 这个编程语言提供了哪些指令
 2. 这些指令需要什么数据来执行
 
-以上两点在使用不同的编程语言来写码的时候，是有区别的，比如《什么是编程》中我们举例用到的 C 语言程序：
+以上两点在使用不同的编程语言来写码的时候，是有区别的，比如前文我们举例用到的 C 语言程序：
 
 ```c
   STEP1: A = 0;
@@ -151,16 +151,17 @@ void draw() {
 
 可以看到，C 语言的**打印**指令除了需要我们给它被打印的数字 *10* 以外，还需要一个参数 *"%d"* ，而 Python 和 Processing 都只需要整数 *10* 即可。并且对比 Processing 和 Python 的**打印**指令我们发现，即使是同一个指令并且打印的数字都一样，但是 Processing 语言是要求每个指令的结束必须用分号显性标记，而 Python 不需要。  
 
-如果这些编程语言各自差距都这么大，那我们是需要把所有的编程语言全都学一遍吗？当然不是！其实理论上来说，一个编程语言只要能提供某些**核心功能**的指令（想知道有哪些核心功能可以参考下面这个视频），达到[图灵完备]的效果（解说视频看不懂就忽略，我也看不懂2333），它就是一门通用的编程语言，其他语言能做到的它也能。不同语言直接的区别更多的在于，它们提供的除了某些**核心功能**以外的特有指令。
+如果这些编程语言各自差距都这么大，那我们是需要把所有的编程语言全都学一遍吗？当然不是！其实理论上来说，一个编程语言只要能提供某些**核心功能**的指令，达到[图灵完备]的效果（这个链接的解释看不懂就忽略，我也看不懂2333），它就是一门通用的编程语言，其他语言能做到的它也能。不同编程语言的区别更多在于，它们除了某些相似的**核心功能**以外的特有指令。
 
 > 说是特有指令其实不严谨，这里只是为了方便大家理解做的简单处理。其实可以理解成每个语言除了必备的核心功能，还有自己的某些特征，让它特别适合用来解决某一类问题。比如 Python 用于数据科学、Javascript 用于浏览器网页动效、C 语言用于操作系统和智能家居等需要直接控制硬件的软件开发。
+
+一个（常见的）通用编程语言需要有哪些**核心功能**可以参考下面这个视频：
 
 <iframe src="//player.bilibili.com/player.html?aid=21376839&bvid=BV1EW411u7th&cid=36505062&page=12" width="80%" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
-
-
-
 [点此可以查看以下代码的实际效果]:{{ "/reference/post-whats_programming/Example-Mouse2D.html" | relative_url }}
+
 [或者查看动画演示]:{{ "/reference/post-whats_programming/mock_robot.gif" | relative_url }}
+
 [图灵完备]:https://www.bilibili.com/video/BV1EW411u7th/?p=15&share_source=copy_web
