@@ -6,6 +6,10 @@ categories: jekyll update
 
 ## 什么是编程？
 
+### 配套讲解视频
+
+<iframe src="//player.bilibili.com/player.html?aid=402152939&bvid=BV1wo4y1N7gG&cid=1161643432&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ### 尝试定义它
 编程，自然就是编写程序。那么随之而来又出现了一个问题，程序又是什么呢？  
 我猜，提到程序是什么，你多半脑海里可能会有诸如以下片段的代码（[点此可以查看以下代码的实际效果]）：  
@@ -157,7 +161,7 @@ void draw() {
 
 一个（常见的）通用编程语言需要有哪些**核心功能**可以参考下面这个视频：
 
-<iframe src="//player.bilibili.com/player.html?aid=21376839&bvid=BV1EW411u7th&cid=36505062&page=12" width="80%" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=21376839&bvid=BV1EW411u7th&cid=36505062&page=12" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 [点此可以查看以下代码的实际效果]:{{ "/reference/post-whats_programming/Example-Mouse2D.html" | relative_url }}

@@ -6,6 +6,10 @@ categories: jekyll update
 
 ## 本教程使用说明
 
+### 配套讲解视频
+
+<iframe src="//player.bilibili.com/player.html?aid=571992282&bvid=BV1Zz4y1q7Gu&cid=1155017662&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ### 教程创作目标
 
 我编写这个博客教程的目标简单来说就是：希望通过教授 AP-CSA 考试范围内的 Java 语言编程概念来帮助读者入门编程。所以该系列取名为 **HeadFirst-APCSA** 也参照有名的计算机科学入门书系：HeadFirst 系列。  

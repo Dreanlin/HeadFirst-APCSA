@@ -9,7 +9,7 @@ categories: jekyll update
 
 ### 编程环境介绍
 
-通常，完全的编程新手鼓足勇气踏入程序世界的第一步就会碰到一个让人“入新手村而中道崩殂”的大障碍：搭建编程环境。新人即使对着保姆级的环境搭建教程和软件安装说明书，也很有可能因为自己的电脑环境与教程的演示环境有些许差别而碰上整日无法解决的问题。考虑到这一点，我们接下来将直接使用嵌入浏览器网页中的 [Processing] 编辑器（英文：editor）来编程。如果想要用它编程，你只需要将代码写在如下所示的位置
+通常，完全的编程新手鼓足勇气踏入程序世界的第一步就会碰到一个让人“出师未捷身先死”的大障碍：搭建编程环境。新人即使对着保姆级的环境搭建教程和软件安装说明书，也很有可能因为自己的电脑环境与教程的演示环境有些许差别而碰上整日无法解决的问题。考虑到这一点，我们接下来将直接使用嵌入浏览器网页中的 [Processing] 编辑器（英文：editor）来编程。如果想要用它编程，你只需要将代码写在如下所示的位置
 
 ```javascript
 <script type="application/processing">
@@ -45,9 +45,80 @@ ellipse(40,50,15,20);
 我们已经知道，程序只是按照一定流程编排的指令+数据。前几篇教程中，我们看到的都是一些最简单的指令，比如加减乘除的运算，假设我们把 “+”、“-” 符号看成代码中的指令，把符号两侧的数看作数据，这也是符合我们最初的定义的。但是除了这些运算符，在 Processing 中还有一种更普遍的指令形式，就是**函数**（英文：function）。  
 
 在上一部分我们看到的`ellipse(40,50,15,20);`就是一个函数，之所以叫“函数”，是因为它和我们所熟悉的数学中的函数表达式非常相像。比如我们定义一个一次函数：
-$$f(x) = 2x + 1$$
 
-我们知道$f$的含义是，它代表了一种法则：它需要你给他一个参数$x$，然后它会返回给你$2 \times x + 1$的值。在数学试卷上你想表示用这个函数来求某个值（比如 7）时，只需要写上$f(7)$大家就能明白你的意思是调用$2x+1$的法则来算出$x=7$时的结果。  
+<math
+              xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+              <semantics>
+                <mrow>
+                  <mi>f</mi>
+                  <mo stretchy="false">(</mo>
+                  <mi>x</mi>
+                  <mo stretchy="false">)</mo>
+                  <mo>=</mo>
+                  <mn>2</mn>
+                  <mi>x</mi>
+                  <mo>+</mo>
+                  <mn>1</mn>
+                </mrow>
+                <annotation encoding="application/x-tex">f(x) = 2x + 1</annotation>
+              </semantics>
+</math>
+
+我们知道<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+            <semantics>
+              <mrow>
+                <mi>f</mi>
+              </mrow>
+              <annotation encoding="application/x-tex">f</annotation>
+            </semantics>
+          </math>的含义是，它代表了一种法则：它需要你给他一个参数<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+            <semantics>
+              <mrow>
+                <mi>x</mi>
+              </mrow>
+              <annotation encoding="application/x-tex">x</annotation>
+            </semantics>
+          </math>，然后它会返回给你<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+            <semantics>
+              <mrow>
+                <mn>2</mn>
+                <mo>×</mo>
+                <mi>x</mi>
+                <mo>+</mo>
+                <mn>1</mn>
+              </mrow>
+              <annotation encoding="application/x-tex">2 \times x + 1</annotation>
+            </semantics>
+          </math>的值。在数学试卷上你想表示用这个函数来求某个值（比如 7）时，只需要写上<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+            <semantics>
+              <mrow>
+                <mi>f</mi>
+                <mo stretchy="false">(</mo>
+                <mn>7</mn>
+                <mo stretchy="false">)</mo>
+              </mrow>
+              <annotation encoding="application/x-tex">f(7)</annotation>
+            </semantics>
+          </math>大家就能明白你的意思是调用<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+            <semantics>
+              <mrow>
+                <mn>2</mn>
+                <mi>x</mi>
+                <mo>+</mo>
+                <mn>1</mn>
+              </mrow>
+              <annotation encoding="application/x-tex">2x+1</annotation>
+            </semantics>
+          </math>的法则来算出<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+            <semantics>
+              <mrow>
+                <mi>x</mi>
+                <mo>=</mo>
+                <mn>7</mn>
+              </mrow>
+              <annotation encoding="application/x-tex">x=7</annotation>
+            </semantics>
+          </math>时的结果。  
 
 同样的，Processing 语言中的函数`ellipse`也代表了一种法则：只要你把参数（英文：parameter）写在紧跟着它的括号里，它就会用你给的参数来画出一个椭圆。那它画椭圆时是怎么用我们给的参数的？  
 
@@ -88,6 +159,11 @@ $$f(x) = 2x + 1$$
    - 参数v2：表示填充色的Green值
    - 参数v3：表示填充色的Blue值
 
+5. `background(v1, v2, v3);`表示设置整个画布的背景色，画布的默认颜色是灰色，调用这个函数就可以自定义地改变画布颜色，颜色通过 v1、v2、v3三个值按照[RGB法则]设定（这三个参数的范围限定为0~255的整数）。
+   - 参数v1：表示填充色的Red值
+   - 参数v2：表示填充色的Green值
+   - 参数v3：表示填充色的Blue值
+
 现在就让我们用目前学习的这几个函数来绘制一些简单的图形吧：
 
 <div class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="oNaMbLQ" data-editable="true" data-user="dreanlin"  data-prefill='{"title":"BasicShape","tags":[],"scripts":["https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"],"stylesheets":[]}'>
@@ -96,7 +172,9 @@ $$f(x) = 2x + 1$$
 // 注意：之前提过，在Processing中两个斜杠符号后的本行内容是注释，不是程序的内容，我们可以随意编辑一些用来提示自己的内容
 
 size(500,400);// 通过左边这个size函数调用，我们让Processing准备一块宽500，高400的画布
-
+  
+background(0,0,200);//把画布背景色变成蓝色
+  
 fill(133,0,133);// 通过左边这个fill函数调用，我们让Processing给接下来画的图形都用上RGB值为(133,0,133)的颜色，也就是紫色，你可以谷歌一下RGB颜色表来查找自己喜欢的颜色的RGB，然后调用fill函数画出这种填充色的图形
 
 rect(20,20,50,40);// 通过左边这个rect函数调用，我们让Processing以(x=20,y=20)为左上角坐标点，画出一个宽50、高40的矩形；因为上一步我们用fill设置了填充色为紫色，现在这个矩形内部就是紫色的
@@ -110,10 +188,86 @@ ellipse(200,200,100,80);// 通过左边这个ellipse函数调用，我们让Proc
 &lt;/script>
 &lt;canvas> &lt;/canvas></pre></div>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  
+以上示例中的代码，去掉注释后单独摘出来长这样：
 
+```java
+size(500,400);
+background(0,0,200);
 
+fill(133,0,133);
+rect(20,20,50,40);
+triangle(80,80,120,80,100,120);
+fill(0,100,0);
+ellipse(200,200,100,80);
+```
+
+按照我们前面在对这些函数指令的简介我们知道，除了`size()`函数是用来**设定**（英文：setup）画布的尺寸大小，其余这几个都是实实在在涉及到**绘图**（英文：draw）的函数。因此，除了上面这种很直接的*简易模式*写法，Processing 语言有一种更推荐的写法如下：
+
+```java
+void setup(){
+   size(500,400);
+   background(0,0,200);
+}
+
+void draw(){
+   fill(133,0,133);
+   rect(20,20,50,40);
+   triangle(80,80,120,80,100,120);
+   fill(0,100,0);
+   ellipse(200,200,100,80);
+}
+```
+
+如上所述，我们把需要提前执行的如`size()`之类的**设定**相关函数放在`void setup(){}`这个大括号中，然后把**绘画**相关函数放在`void draw(){}`这个大括号中。当 Processing 开始运行代码的时候，就是先一行接一行的运行`void setup(){}`里的代码，再一行一行运行`void draw(){}`里的代码。我们可以看到，这段代码的实际绘画效果和之前的是完全一样的：
+
+<div class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="VwVeweG" data-editable="true" data-user="dreanlin"  data-prefill='{"title":"setup&amp;draw","tags":[],"scripts":["https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"],"stylesheets":[]}'>
+  <pre data-lang="html">&lt;script type="application/processing">
+void setup(){
+   size(500,400);
+   background(0,0,200);//background()函数也可以放到后面的draw大括号里，这个没有严格的限制，只是一种建议写法
+}
+
+void draw(){
+   fill(133,0,133);//fill()函数也可以放到前面的setup大括号里，这个没有严格的限制，只是一种建议写法
+  
+   //但是画矩形、三角形这些函数必须放在draw大括号里，毕竟只有前面的setup大括号里执行了size()函数，给了你一块画布，你才能画图
+   rect(20,20,50,40);
+   triangle(80,80,120,80,100,120);
+   fill(0,100,0);
+   ellipse(200,200,100,80);
+}
+&lt;/script>
+&lt;canvas> &lt;/canvas></pre></div>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  
 现在你已经知道了椭圆、圆（宽高一样的椭圆）、矩形、正方形（宽高一样的矩形）、三角形怎么绘制，也知道了怎么改变填充色，直接试试在上面这个环境中修改代码然后绘制自己喜欢的图形吧。如果还需要查询绘制其它更多图形的函数，可以去 Processing [参考列表]查询，比如画[线段]、画[弧形]等。
 
+### 小测验
+
+现在我们就用这节课学到的知识画一朵花吧，颜色大小形状都可以自定义，下面这个只是给大家一个参考答案，大家可以自由（放肆）修改代码，画出自己独一无二的花朵。
+> 我希望大家能把我的示例代码从**简易模式**改成使用`void setup(){}`和`void draw(){}`的**标准模式**。
+> 如果代码运行有问题了，记得检查一下是不是忘了在每个命令的末尾加上英文分号表示本命令结束，或者代码里掺杂了中文符号。
+> `ellipse()`这种函数调用时，如果括号里是数学算式，会先把算式的结果算出来，再把这个结果作为参数用来调用这个函数.
+
+<div class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="JjeGjme" data-editable="true" data-user="dreanlin"  data-prefill='{"title":"DrawYourFlower","tags":[],"scripts":["https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"],"stylesheets":[]}'>
+  <pre data-lang="html">&lt;script type="application/processing">
+size(150, 150);
+
+background(0, 200, 0);
+
+fill(255, 128, 0);
+ellipse(150/4, 150/4, 150/2, 150/2);
+ellipse(150*.75, 150/4, 150/2, 150/2);
+ellipse(150/4, 150*.75, 150/2, 150/2);
+ellipse(150*.75, 150*.75, 150/2, 150/2);
+
+fill(255, 0, 0);
+ellipse(150/2, 150/2, 150/2, 150/2);
+&lt;/script>
+&lt;canvas> &lt;/canvas></pre></div>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  
 [Processing]:https://baike.baidu.com/item/Processing/378062
 [点此跳转至图片来源]:https://processing.org/cd3baea53c123bf79e619a7c2b9afb2c/drawing-10.svg
 [参考列表]:https://processing.org/reference
