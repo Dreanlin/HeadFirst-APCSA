@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Try your first coding"
+title:  "slide-demo"
 categories: jekyll update
 ---
 <link rel="stylesheet" href="/HeadFirst-APCSA/reference/revealJS/dist/reset.css">
