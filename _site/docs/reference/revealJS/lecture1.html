@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/league.css">
+	<link rel="stylesheet" href="dist/theme/serif.css">
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -21,76 +21,6 @@
 			<!-- slides首页 -->
 			<section>
 				<img src="resources\lecture-1\HF-APCSA-cover.png" alt="HeadFirst-APCSA cover page">
-			</section>
-
-			<!-- 本次课的考点和学习目标 -->
-			<section data-visibility="hidden" data-transition="zoom">
-				<div class="r-stack">
-					<div class="fragment fade-out" data-fragment-index="3">
-						<p>Topic 1.2: Variables and Data Types</p>
-						<table>
-							<tr style="font-size: 30px;">
-								<th>
-									Learning Objetive
-								</th>
-								<th>
-									Essential Knowledge（考点）
-								</th>
-							</tr>
-
-							<tr style="font-size: 20px;">
-								<td>
-									Identify the most appropriate data type category for a particular specification.
-								</td>
-								<td class="fragment current-visible" data-fragment-index="2">
-									<span style="color: greenyellow;">VAR-1.B.1 ~ VAR-1.B.3</span>
-								</td>
-							</tr>
-
-							<tr style="font-size: 20px;">
-								<td>
-									Declare variables of the correct types to represent primitive data.
-								</td>
-								<td class="fragment current-visible" data-fragment-index="2">
-									<span style="color: greenyellow;">VAR-1.C.1 ~ VAR-1.C.4</span>
-								</td>
-							</tr>
-						</table>
-						<br>
-						<p>Topic 1.3: Expressions and Assignment Statements</p>
-						<table>
-							<tr style="font-size: 30px;">
-								<th>
-									Learning Objetive
-								</th>
-								<th>
-									Essential Knowledge（考点）
-								</th>
-							</tr>
-
-							<tr style="font-size: 20px;">
-								<td>
-									Evaluate arithmetic expressions in a program code.
-								</td>
-								<td class="fragment current-visible" data-fragment-index="2">
-									<span style="color: greenyellow;">CON-1.A.1 ~ CON-1.A.8</span>
-								</td>
-							</tr>
-
-							<tr style="font-size: 20px;">
-								<td>
-									Evaluate what is stored in a variable as a result of an expression
-									with an assignment statement.
-								</td>
-								<td class="fragment current-visible" data-fragment-index="2">
-									<span style="color: greenyellow;">CON-1.B.1 ~ CON-1.B.3</span>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<img src="resources\lecture-1\EssentialKnowledge.png" class="fragment fade-in-then-out"
-						data-fragment-index="1">
-				</div>
 			</section>
 
 			<!-- 45乘5乘8的计算器演示 -->
@@ -173,29 +103,29 @@
 
 			<!-- 考纲封面 -->
 			<section>
-				<img style="height: 700px;" src="resources\lecture-1\APCSA-CED-cover.jpg">
+				<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\APCSA-CED-cover.jpg">
 			</section>
 
 			<!-- 本次课的考纲原文截图 -->
 			<section data-transition="convex">
 				<div class="r-stack">
-					<img style="height: 700px;" src="resources\lecture-1\Unit1-glance.jpg" data-fragment-index="0"
+					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\Unit1-glance.jpg" data-fragment-index="0"
 						class="fragment fade-out">
-					<img style="height: 700px;" src="resources\lecture-1\Unit1-glance-tagged.png"
+					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\Unit1-glance-tagged.png"
 						data-fragment-index="0" class="fragment current-visible">
 				</div>
 			</section>
 
 			<!-- 考察运算符的AP真题 -->
 			<section data-auto-animate>
-				<img src="resources/lecture-1/AP-practice-operator-1.png" />
+				<img style="border: 3px solid #555;" src="resources/lecture-1/AP-practice-operator-1.png" />
 			</section>
 			<section data-auto-animate>
 				<p>
 					<b>Learning Objective CON-1.A</b>
 				</p>
 				<p>Evaluate arithmetic expressions in a program code.</p>
-				<img src="resources/lecture-1/AP-practice-operator-1.png" />
+				<img style="border: 3px solid #555;" src="resources/lecture-1/AP-practice-operator-1.png" />
 			</section>
 
 			<!-- 取余符号在往年真题代码题中的妙用 -->
@@ -205,56 +135,16 @@
 				</p>
 				<ol style="font-size: 30px;">
 					<li class="fragment">Use it to check for odd or even numbers (<span
-							style="font-size: 24px;color: pink;">num % 2 == 1 is odd and num % 2 == 0 is even</span>).
+							style="font-size: 24px;color: darkviolet;">num % 2 == 1 is odd and num % 2 == 0 is even</span>).
 					</li>
 					<li class="fragment">Use it to get the last digit from an integer number (<span
-							style="font-size: 24px;color: pink;">num % 10 = last digit on right</span>). This approach
+							style="font-size: 24px;color: darkviolet;">num % 10 = last digit on right</span>). This approach
 						could be used on the free response question Self Divisor. <br>——<b>Question 1 from 2007</b></li>
 					<li class="fragment">Use it to get the number of minutes left when you convert to hours (<span
-							style="font-size: 24px;color: pink;">num % 60</span>). Also whenever you have limited
+							style="font-size: 24px;color: darkviolet;">num % 60</span>). Also whenever you have limited
 						storage and you need to wrap around to the front if the value goes over the
 						limit.<br>——<b>Question 3 from 2007</b></li>
 				</ol>
-			</section>
-
-
-
-
-			<!-- 2的16次方 等于 16个2相乘 -->
-			<section data-visibility="hidden" data-auto-animate>
-				<img style="width: 10%;" align="center" src="https://i.upmath.me/svg/2%5E%7B16%7D" alt="2^{16}" />
-			</section>
-			<section data-visibility="hidden" data-auto-animate>
-				<img style="width: 10%;" align="center" src="https://i.upmath.me/svg/2%5E%7B16%7D" alt="2^{16}" />
-				<img style="width: 100%;" align="center"
-					src="https://i.upmath.me/svg/2%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202"
-					alt="2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2" />
-			</section>
-
-			<!-- 2的16次方拆成4个16相乘 -->
-			<section data-visibility="hidden" data-auto-animate>
-				<img style="width: 50%;" align="center"
-					src="https://i.upmath.me/svg/2%5E%7B16%7D%20%3D%202%5E8%20%5Ctimes%202%5E8%20%3D%202%5E4%20%5Ctimes%202%5E4%20%5Ctimes%202%5E4%20%5Ctimes%202%5E4"
-					alt="2^{16} = 2^8 \times 2^8 = 2^4 \times 2^4 \times 2^4 \times 2^4" />
-			</section>
-			<section data-visibility="hidden" data-auto-animate>
-				<img style="width: 50%;" align="center"
-					src="https://i.upmath.me/svg/2%5E%7B16%7D%20%3D%202%5E8%20%5Ctimes%202%5E8%20%3D%202%5E4%20%5Ctimes%202%5E4%20%5Ctimes%202%5E4%20%5Ctimes%202%5E4"
-					alt="2^{16} = 2^8 \times 2^8 = 2^4 \times 2^4 \times 2^4 \times 2^4" />
-				<img style="width: 50%;" align="center"
-					src="https://i.upmath.me/svg/%3D%2016%20%5Ctimes%2016%20%5Ctimes%2016%20%5Ctimes%2016"
-					alt="= 16 \times 16 \times 16 \times 16" />
-			</section>
-
-			<!-- 23的16次方 等于 4个23的4次方相乘 -->
-			<section data-visibility="hidden" data-auto-animate>
-				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
-			</section>
-			<section data-visibility="hidden" data-auto-animate>
-				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
-				<img style="width: 100%;" align="center"
-					src="https://i.upmath.me/svg/23%5E%7B16%7D%20%3D%2023%5E8%20%5Ctimes%2023%5E8%20%3D%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4"
-					alt="23^{16} = 23^8 \times 23^8 = 23^4 \times 23^4 \times 23^4 \times 23^4" />
 			</section>
 
 		</div>

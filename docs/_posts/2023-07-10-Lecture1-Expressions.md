@@ -13,8 +13,9 @@ categories: jekyll update
 
 ### AP-CSA course and exam description
 
-<a href="file:///D:/ComputerScience/AP-CSA/ap-computer-science-a-course-and-exam-description.pdf">AP-computer-science-a-course-and-exam-description</a>
+[AP-computer-science-a-course-and-exam-description](https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-course-and-exam-description.pdf)
 
 ### Online Jshell environment
 
+> If this online env is out of connection, refresh this whole web page.
 <iframe src="https://tryjshell.org/" style="width:100%; height:500px;"></iframe>

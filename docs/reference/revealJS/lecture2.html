@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/serif.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- slides首页 -->
+			<section>
+				<img src="resources\lecture-1\HF-APCSA-cover.png" alt="HeadFirst-APCSA cover page">
+			</section>
+
+			<!--  -->
+			<section data-markdown>
+                <textarea data-template></textarea>
+			</section>
+
+			<!-- 2的16次方 等于 16个2相乘 -->
+			<section data-auto-animate>
+				<img style="width: 10%;" align="center" src="https://i.upmath.me/svg/2%5E%7B16%7D" alt="2^{16}" />
+			</section>
+			<section data-auto-animate>
+				<img style="width: 10%;" align="center" src="https://i.upmath.me/svg/2%5E%7B16%7D" alt="2^{16}" />
+				<img style="width: 100%;" align="center"
+					src="https://i.upmath.me/svg/2%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202%20%5Ctimes%202"
+					alt="2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2" />
+			</section>
+
+			<!-- 2的16次方拆成4个16相乘 -->
+			<section data-auto-animate>
+				<img style="width: 50%;" align="center"
+					src="https://i.upmath.me/svg/2%5E%7B16%7D%20%3D%202%5E8%20%5Ctimes%202%5E8%20%3D%202%5E4%20%5Ctimes%202%5E4%20%5Ctimes%202%5E4%20%5Ctimes%202%5E4"
+					alt="2^{16} = 2^8 \times 2^8 = 2^4 \times 2^4 \times 2^4 \times 2^4" />
+			</section>
+			<section data-auto-animate>
+				<img style="width: 50%;" align="center"
+					src="https://i.upmath.me/svg/2%5E%7B16%7D%20%3D%202%5E8%20%5Ctimes%202%5E8%20%3D%202%5E4%20%5Ctimes%202%5E4%20%5Ctimes%202%5E4%20%5Ctimes%202%5E4"
+					alt="2^{16} = 2^8 \times 2^8 = 2^4 \times 2^4 \times 2^4 \times 2^4" />
+				<img style="width: 50%;" align="center"
+					src="https://i.upmath.me/svg/%3D%2016%20%5Ctimes%2016%20%5Ctimes%2016%20%5Ctimes%2016"
+					alt="= 16 \times 16 \times 16 \times 16" />
+			</section>
+
+			<!-- 23的16次方 等于 4个23的4次方相乘 -->
+			<section data-auto-animate>
+				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
+			</section>
+			<section data-auto-animate>
+				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
+				<img style="width: 100%;" align="center"
+					src="https://i.upmath.me/svg/23%5E%7B16%7D%20%3D%2023%5E8%20%5Ctimes%2023%5E8%20%3D%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4"
+					alt="23^{16} = 23^8 \times 23^8 = 23^4 \times 23^4 \times 23^4 \times 23^4" />
+			</section>
+
+			<!-- 考纲封面 -->
+			<section>
+				<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\APCSA-CED-cover.jpg">
+			</section>
+
+			<!-- 本次课的考纲原文截图 -->
+			<section data-transition="convex">
+				<div class="r-stack">
+					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\Unit1-glance.jpg" data-fragment-index="0"
+						class="fragment fade-out">
+					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-2\Unit1-glance-tagged2.jpg"
+						data-fragment-index="0" class="fragment current-visible">
+				</div>
+			</section>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
+	<script src='https://unpkg.com/mermaid@8.1.0/dist/mermaid.min.js'></script>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
