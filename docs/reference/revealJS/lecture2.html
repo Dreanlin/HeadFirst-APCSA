@@ -13,6 +13,8 @@
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.4/mermaid.min.js"></script>
 </head>
 
 <body>
@@ -21,11 +23,6 @@
 			<!-- slides首页 -->
 			<section>
 				<img src="resources\lecture-1\HF-APCSA-cover.png" alt="HeadFirst-APCSA cover page">
-			</section>
-
-			<!--  -->
-			<section data-markdown>
-                <textarea data-template></textarea>
 			</section>
 
 			<!-- 2的16次方 等于 16个2相乘 -->
@@ -53,6 +50,148 @@
 					src="https://i.upmath.me/svg/%3D%2016%20%5Ctimes%2016%20%5Ctimes%2016%20%5Ctimes%2016"
 					alt="= 16 \times 16 \times 16 \times 16" />
 			</section>
+
+            <!-- 1.5的12次方拆成3个1.5的4次方，也就是3个6.025相乘 -->
+            <section data-auto-animate>
+                <img style="width: 20%;" align="center" src="https://i.upmath.me/svg/1.5%5E%7B12%7D" alt="1.5^{12}" />
+            </section>
+            <section data-auto-animate>
+                <img style="width: 20%;" align="center" src="https://i.upmath.me/svg/1.5%5E%7B12%7D" alt="1.5^{12}" />
+                <br>
+                <img style="width: 50%;" align="center" src="https://i.upmath.me/svg/%3D%201.5%5E4%20%5Ctimes%201.5%5E4%20%5Ctimes%201.5%5E4" alt="= 1.5^4 \times 1.5^4 \times 1.5^4" />
+            </section>
+            <section data-auto-animate data-transition-speed="slow">
+                <img style="width: 20%;" align="center" src="https://i.upmath.me/svg/1.5%5E%7B12%7D" alt="1.5^{12}" />
+                <br>
+                <img style="width: 50%;" align="center" src="https://i.upmath.me/svg/%3D%201.5%5E4%20%5Ctimes%201.5%5E4%20%5Ctimes%201.5%5E4" alt="= 1.5^4 \times 1.5^4 \times 1.5^4" />
+                <br>
+                <img data-id="DoubleNumber" style="width: 60%;" align="center" src="https://i.upmath.me/svg/%3D%205.0625%20%5Ctimes%205.0625%20%5Ctimes%205.0625" alt="= 5.0625 \times 5.0625 \times 5.0625" />
+            </section>
+            <!-- 变量的语义解释 -->
+			<section data-auto-animate>
+				<img data-id="DoubleNumber" style="width: 50%;" align="center" src="https://i.upmath.me/svg/x%20%5Ctimes%20x%20%5Ctimes%20x" alt="x \times x \times x" />
+			</section>
+			<section data-auto-animate>
+				<h3 class="fragment fade-out" data-fragment-index="1">How do we use a shorter symbol to replace the long number?</h3>
+				<h3 class="fragment" data-fragment-index="2">Can we just ask Java to:</h3>
+				<p class="fragment" data-fragment-index="2">"Java, regard all of the single <b>x</b> letters <b>as</b> a <b>double</b> precision floating point <b>5.0625</b>, in my following codes"</p>
+			</section>
+			<section data-auto-animate>
+				<p style="font-size: 20px;">"Java, regard all of the single <b style="font-size: 36px;color: green;">x</b> letters <b style="font-size: 36px;">as</b> a <b style="font-size: 36px;color: green;">double</b> precision floating point <b style="font-size: 36px;">5.0625</b>, in my following codes"</p>
+			</section>
+			<section data-auto-animate>
+				<span style="font-size: 20px;">"Java, regard all of the single</span> <span style="font-size: 36px;color: green;" data-id="Var">x</span> <span style="font-size: 20px;">letters</span> <b style="font-size: 36px;" data-id="Assign">as</b> <span style="font-size: 20px;">a</span> <b style="font-size: 36px;color: green;" data-id="Type">double</b> <span style="font-size: 20px;">precision floating point</span> <b style="font-size: 36px;" data-id="Value">5.0625</b> <span style="font-size: 20px;">, in my following codes."</span>
+			</section>
+			<section data-auto-animate>
+				<span style="font-size: 36px;color: green;" data-id="Var">x</span> <b style="font-size: 36px;" data-id="Assign">as</b> <b style="font-size: 36px;color: green;" data-id="Type">double</b> <b style="font-size: 36px;" data-id="Value">5.0625</b>
+			</section>
+			<section data-markdown data-auto-animate>
+				<textarea data-template>
+					### More optimizations?
+
+					> Sort words:<!-- .element: class="fragment" data-fragment-index="1"--> **double**<!-- .element: class="fragment" data-fragment-index="1" style="font-size: 36px;color: green;" -->  **x**<!-- .element: class="fragment" data-fragment-index="1" style="font-size: 36px;color: green;" -->  **as**<!-- .element: class="fragment" data-fragment-index="1" style="font-size: 36px" -->  **5.0625**<!-- .element: class="fragment" data-fragment-index="1" style="font-size: 36px;" -->
+					
+					> Lines in a Java program that express a complete action such as assigning a value to a variable must end with a semicolon (;). Such a line is called a statement. You can think of the semicolon (;) in Java like a period (.) in English. <!-- .element: class="fragment" data-fragment-index="2" style="font-size: 30px;" -->
+					
+					> And can we replace "as" with a simpler symbol, like "="?<!-- .element: class="fragment" data-fragment-index="3" style="font-size: 30px;" -->
+					
+					---
+					```java
+					double x = 5.0625;
+					```
+
+					---
+					"Java, regard all of the single x letters as a double precision floating point 5.0625, in my following codes"
+					---
+					"Java, regard all of the single **x** letters **as** a **double** precision floating point **5.0625**, in my following codes"
+
+					&#8659;
+					
+					&#8659;
+
+					```java
+					double x = 5.0625;
+					```
+
+					---
+					"Java, regard all of the single **x** letters **as** a **double** precision floating point **5.0625**, in my following codes"
+
+					&#8659;
+
+					```java
+					double x = 5.0625;
+					```
+
+					### For other primitive data types...
+
+					---
+					```java
+					int myAge = 25;//for integers 
+					```
+					&#8659;
+
+					In following codes, every time when we call **myAge**, Java will regard it as **Integer 25**.
+
+					---
+					```java
+					boolean areYouAlive = true; //for boolean type 
+					```
+					&#8659;
+
+					In following codes, Java will regard all **areYouAlive** as the value **true** of boolean type.
+
+					---
+					### Declare
+					> VAR-1.C.1: To declare (create) a variable, you specify the type, leave at least one space, then the name for the variable and end the line with a semicolon (;). Java uses the keyword int for integer, double for a floating point number (a double precision number), and boolean for a Boolean value (true or false).
+					```java
+					int score;
+					```
+
+					---
+					### Assignment
+					> After declaring a variable, you can give it a value like below using an equals sign = followed by the value.
+					```java
+					int score;
+					score = 2;
+					```
+					> Or you can set an initial value for the variable in the variable declaration.
+					```java
+					double myMoney = 12.55;
+					```
+
+					---
+					#### What actually happened in the computer when we declared and initialized a (primitive) variable?
+					> When you create a primitive variable Java will set aside enough bits in memory for that primitive type and associate that memory location with the name that you used.
+				</textarea>
+			  </section>
+
+			  <section data-markdown>
+				<textarea data-template>
+					When no code is executed, the memories are empty
+					![](resources/lecture-2/EmptyMemory.png)<!-- .element: style="height:600px;" -->
+				</textarea>
+			  </section>
+
+			  <section>
+				<section data-markdown>
+					<textarea data-template>
+						```java [1]
+						int a;
+						a = 5;
+						double rate = 1.2;
+						boolean won = true;
+						a = 32;
+						rate = 1.5;
+						won = true;
+						```
+					</textarea>
+				</section>
+				<section>
+					<img src="" style="height:650px;"/>
+				</section>
+			  </section>
+
+            <!-- 变量的内存解释 -->
 
 			<!-- 23的16次方 等于 4个23的4次方相乘 -->
 			<section data-auto-animate>
@@ -95,7 +234,8 @@
 			hash: true,
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			autoAnimateDuration: 1.2,
 		});
 	</script>
 </body>

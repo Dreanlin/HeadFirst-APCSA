@@ -3,7 +3,7 @@ layout: post
 title:  "Lecture-1: Arithmetic expressions"
 categories: jekyll update
 ---
-### Lecture video
+### Lecture video (on the way)
 
 <iframe>To be added</iframe>
 
