@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/serif.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.4/mermaid.min.js"></script>
+</head>
+
+<body>
+	<div class="reveal">
+        <div class="slides">
+            <!-- slides首页 -->
+			<section>
+				<img src="resources\lecture-1\HF-APCSA-cover.png" alt="HeadFirst-APCSA cover page">
+			</section>
+
+			<!-- 23的16次方 等于 4个23的4次方相乘 -->
+			<section data-auto-animate>
+				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
+			</section>
+			<section data-auto-animate>
+				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
+				<img style="width: 100%;" align="center"
+					src="https://i.upmath.me/svg/23%5E%7B16%7D%20%3D%2023%5E8%20%5Ctimes%2023%5E8%20%3D%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4"
+					alt="23^{16} = 23^8 \times 23^8 = 23^4 \times 23^4 \times 23^4 \times 23^4" />
+			</section>
+
+        </div>
+	</div>
+	<script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
+	<script src='https://unpkg.com/mermaid@8.1.0/dist/mermaid.min.js'></script>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			autoAnimateDuration: 1.2,
+		});
+	</script>
+</body>
+
+</html>

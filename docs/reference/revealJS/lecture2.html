@@ -121,10 +121,16 @@
 					```java
 					double x = 5.0625;
 					```
+					
+					&#8659;
 
-					### For other primitive data types...
+					```java
+					x * x * x;
+					```
 
 					---
+					### For other primitive data types...
+
 					```java
 					int myAge = 25;//for integers 
 					```
@@ -133,13 +139,42 @@
 					In following codes, every time when we call **myAge**, Java will regard it as **Integer 25**.
 
 					---
+					### For other primitive data types...
+
 					```java
 					boolean areYouAlive = true; //for boolean type 
 					```
 					&#8659;
 
 					In following codes, Java will regard all **areYouAlive** as the value **true** of boolean type.
+					
+					---
+					```java
+					double x = 5.0625;
+					int myAge = 25;//for integers
+					boolean areYouAlive = true; //for boolean type
+					```
 
+					---
+					```java
+					double x = 5.0625;
+					int myAge = 25;//for integers
+					boolean areYouAlive = true; //for boolean type
+					```
+
+					#### *x*, *myAge* and *areYouAlive* are called **Variable**
+
+					---
+					```java
+					double x = 5.0625;
+					int myAge = 25;//for integers
+					boolean areYouAlive = true; //for boolean type
+					```
+
+					#### *x*, *myAge* and *areYouAlive* are called **Variable**
+
+					> A variable is a name associated with a memory location in the computer, where you can store a value that can change or vary. 
+					
 					---
 					### Declare
 					> VAR-1.C.1: To declare (create) a variable, you specify the type, leave at least one space, then the name for the variable and end the line with a semicolon (;). Java uses the keyword int for integer, double for a floating point number (a double precision number), and boolean for a Boolean value (true or false).
@@ -149,25 +184,72 @@
 
 					---
 					### Assignment
-					> After declaring a variable, you can give it a value like below using an equals sign = followed by the value.
+					> CON-1.B.1: Assignment statements initialize or change the value stored in a variable using the assignment operator =.
 					```java
 					int score;
 					score = 2;
-					```
-					> Or you can set an initial value for the variable in the variable declaration.
-					```java
-					double myMoney = 12.55;
+					score = 0;
 					```
 
 					---
-					#### What actually happened in the computer when we declared and initialized a (primitive) variable?
-					> When you create a primitive variable Java will set aside enough bits in memory for that primitive type and associate that memory location with the name that you used.
+					> Or you can set an initial value for the variable in the variable declaration. An assignment statement always has a single variable on the left hand side. 
+					```java
+					int points = 3;
+					```
+
+					---
+					> CON-1.B.2: During execution, expressions are evaluated to produce a single value. The value of the expression (which can contain math operators and other variables) on the right of the = sign is stored in the variable on the left.
+					```java[5]
+					int score;
+					score = 2;
+					score = 0;
+					int points = 3;
+					score = 10 * points + 5;
+					```
+
+					---
+					> Instead of saying equals for the = in an assignment statement, say “gets” or “is assigned” to remember that the variable gets or is assigned the value on the right.
+					```java[5]
+					int score;
+					score = 2;
+					score = 0;
+					int points = 3;
+					score = 10 * points + 5;
+					```
+
+					---
+					![alt assignment](resources/lecture-2/assignment.png)
+
+					> In the figure above score is assigned the value of the expression 10 times points (which is another variable) plus 5.
+
+					---
+					```java
+					double mySalary = 8008.95;
+					mySalary = mySalary + 100;
+					```
+
+					> The formula looks a little crazy in math class,
+
+					> but it makes sense in coding because the variable on the left is set to the value of the arithmetic expression on the right. So, the mySalary variable is set to the previous value of mySalary plus 100. <!-- .element: class="fragment" data-fragment-index="2" style="font-size: 28px;" -->
+
+					---
+					### Two Questions
+					- Why do we have to **Specify Data Type** of a variable in Java?
+					- Why cannot we assign a **double** number to an **Integer** variable?
+					<!-- jshell演示 newVar = 32.2; int newVar = 32.3; double newVar = 32.33; -->
+
+					---
+					#### What actually happened in the computer when we declared and initialized a **primitive** variable?
+					
+					> When you declare a primitive variable Java will set aside **enough bits in memory** for that primitive type and **associate** that memory location with the **name** that you used.
 				</textarea>
 			  </section>
 
+            <!-- 变量的内存解释 -->
 			  <section data-markdown>
 				<textarea data-template>
-					When no code is executed, the memories are empty
+					Computers store all values using bits (binary digits). A bit can represent two values and we usually say that the value of a bit is either 0 or 1.
+					When no code is executed, all bits are empty and not allocated.<!-- .element: style="font-size:20px;" -->
 					![](resources/lecture-2/EmptyMemory.png)<!-- .element: style="height:600px;" -->
 				</textarea>
 			  </section>
@@ -187,22 +269,129 @@
 					</textarea>
 				</section>
 				<section>
-					<img src="" style="height:650px;"/>
+					<img src="resources/lecture-2/DeclareIntA.png" style="height:650px;"/>
 				</section>
 			  </section>
 
-            <!-- 变量的内存解释 -->
+			  <section>
+				<section data-markdown>
+					<textarea data-template>
+						```java [1-2]
+						int a;
+						a = 5;
+						double rate = 1.2;
+						boolean won = true;
+						a = 32;
+						rate = 1.5;
+						won = true;
+						```
+					</textarea>
+				</section>
+				<section>
+					<img src="resources/lecture-2/InitiateIntA.png" style="height:650px;"/>
+				</section>
+			  </section>
 
-			<!-- 23的16次方 等于 4个23的4次方相乘 -->
-			<section data-auto-animate>
-				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
-			</section>
-			<section data-auto-animate>
-				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
-				<img style="width: 100%;" align="center"
-					src="https://i.upmath.me/svg/23%5E%7B16%7D%20%3D%2023%5E8%20%5Ctimes%2023%5E8%20%3D%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4"
-					alt="23^{16} = 23^8 \times 23^8 = 23^4 \times 23^4 \times 23^4 \times 23^4" />
-			</section>
+			  <section>
+				<section data-markdown>
+					<textarea data-template>
+						```java [1-3]
+						int a;
+						a = 5;
+						double rate = 1.2;
+						boolean won = true;
+						a = 32;
+						rate = 1.5;
+						won = true;
+						```
+					</textarea>
+				</section>
+				<section>
+					<img src="resources/lecture-2/DeclareAndInitDoubleRate.png" style="height:650px;"/>
+				</section>
+			  </section>
+
+			  <section>
+				<section data-markdown>
+					<textarea data-template>
+						```java [1-4]
+						int a;
+						a = 5;
+						double rate = 1.2;
+						boolean won = true;
+						a = 32;
+						rate = 1.5;
+						won = true;
+						```
+					</textarea>
+				</section>
+				<section>
+					<img src="resources/lecture-2/DeclareAndInitBoolean.png" style="height:650px;"/>
+				</section>
+			  </section>
+
+			  <section>
+				<section data-markdown>
+					<textarea data-template>
+						```java [1-5]
+						int a;
+						a = 5;
+						double rate = 1.2;
+						boolean won = true;
+						a = 32;
+						rate = 1.5;
+						won = true;
+						```
+					</textarea>
+				</section>
+				<section>
+					<img src="resources/lecture-2/ChangeIntValue.png" style="height:650px;"/>
+				</section>
+			  </section>
+			  
+			  <section>
+				<section data-markdown>
+					<textarea data-template>
+						```java [1-6]
+						int a;
+						a = 5;
+						double rate = 1.2;
+						boolean won = true;
+						a = 32;
+						rate = 1.5;
+						won = true;
+						```
+					</textarea>
+				</section>
+				<section>
+					<img src="resources/lecture-2/ChangeDoubleValue.png" style="height:650px;"/>
+				</section>
+			  </section>
+			  			  
+			  <section>
+				<section data-markdown>
+					<textarea data-template>
+						```java [1-7]
+						int a;
+						a = 5;
+						double rate = 1.2;
+						boolean won = true;
+						a = 32;
+						rate = 1.5;
+						won = true;
+						```
+					</textarea>
+				</section>
+				<section>
+					<img src="resources/lecture-2/SameBooleanValue.png" style="height:650px;"/>
+				</section>
+			  </section>
+
+			  <section data-markdown>
+				<textarea data-template>
+					> Tip1: Name of Variables
+				</textarea>
+			  </section>
 
 			<!-- 考纲封面 -->
 			<section>
@@ -214,7 +403,7 @@
 				<div class="r-stack">
 					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\Unit1-glance.jpg" data-fragment-index="0"
 						class="fragment fade-out">
-					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-2\Unit1-glance-tagged2.jpg"
+					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-2\Unit1-glance-tagged.png"
 						data-fragment-index="0" class="fragment current-visible">
 				</div>
 			</section>
