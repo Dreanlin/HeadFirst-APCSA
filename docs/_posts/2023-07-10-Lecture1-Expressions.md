@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Lecture-1: Arithmetic expressions"
+title:  "Lecture-1.1: Arithmetic expression"
 categories: jekyll update
 ---
 ### Lecture video (on the way)
