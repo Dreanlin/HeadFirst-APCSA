@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Lecture-1.2: Variable and Assignment Statement"
+title:  "Lecture-1.3: Casting and Range of data type"
 categories: jekyll update
 ---
 
@@ -8,9 +8,9 @@ categories: jekyll update
 
 <iframe>To be added</iframe>
 
-### Slides for lecture-2
+### Slides for lecture-3
 
-<iframe src='{{ "/reference/revealJS/lecture2.html" | relative_url }}' style="width:100%; height:500px;"></iframe>
+<iframe src='{{ "/reference/revealJS/lecture3.html" | relative_url }}' style="width:100%; height:500px;"></iframe>
 
 ### Online Jshell environment
 

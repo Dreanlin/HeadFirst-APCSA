@@ -25,17 +25,280 @@
 				<img src="resources\lecture-1\HF-APCSA-cover.png" alt="HeadFirst-APCSA cover page">
 			</section>
 
-			<!-- 23的16次方 等于 4个23的4次方相乘 -->
+			<!-- 7 等于 4个7的4次方相乘 -->
 			<section data-auto-animate>
-				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
+				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/7%5E%7B16%7D" alt="7^{16}" />
 			</section>
 			<section data-auto-animate>
-				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/23%5E%7B16%7D" alt="23^{16}" />
-				<img style="width: 100%;" align="center"
-					src="https://i.upmath.me/svg/23%5E%7B16%7D%20%3D%2023%5E8%20%5Ctimes%2023%5E8%20%3D%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4%20%5Ctimes%2023%5E4"
-					alt="23^{16} = 23^8 \times 23^8 = 23^4 \times 23^4 \times 23^4 \times 23^4" />
+				<img style="width: 15%;" align="center" src="https://i.upmath.me/svg/7%5E%7B16%7D" alt="7^{16}" />
+				<img style="width: 100%;" align="center" src="https://i.upmath.me/svg/7%5E%7B16%7D%20%3D%207%5E8%20%5Ctimes%207%5E8%20%3D%207%5E4%20%5Ctimes%207%5E4%20%5Ctimes%207%5E4%20%5Ctimes%207%5E4" alt="7^{16} = 7^8 \times 7^8 = 7^4 \times 7^4 \times 7^4 \times 7^4" />
+			</section>
+			<section data-markdown data-auto-animate>
+				<textarea data-template>
+					![alt 7^{16}](https://i.upmath.me/svg/7%5E%7B16%7D) <!-- .element: style="width:15%;" -->
+					![alt 7^{16} = 7^8 \times 7^8 = 7^4 \times 7^4 \times 7^4 \times 7^4](https://i.upmath.me/svg/7%5E%7B16%7D%20%3D%207%5E8%20%5Ctimes%207%5E8%20%3D%207%5E4%20%5Ctimes%207%5E4%20%5Ctimes%207%5E4%20%5Ctimes%207%5E4) <!-- .element: style="width:100%;" -->
+					```java
+					int a = 7;
+					a = a * a * a * a; //after this line, a is supposed to be 7^4
+					a = a * a * a * a; //after this line, a is supposed to be (7^4)^4
+					```
+
+					Is the result reasonable? <!-- .element: class="fragment" -->
+
+					---
+					> CON-1.C.5: Integer values in Java are represented by
+					values of type int, which are stored using a
+					finite amount (32 bits) of memory.
+
+					Try this:
+					```java
+					int num = 12345678987654321;
+					```
+
+					---
+					> Therefore, an int value must be in the range from Integer.MIN_VALUE to Integer.MAX_VALUE inclusive.
+					
+					Try this:
+
+					```java
+					Integer.MIN_VALUE;
+					Integer.MAX_VALUE;
+					```
+					
+					---
+					```java
+					Integer.MIN_VALUE;
+					Integer.MAX_VALUE;
+					```
+
+					>CON-1.C.6: If an expression would evaluate to an int
+					value outside of the allowed range, an integer
+					**overflow** occurs. This could result in an
+					incorrect value within the allowed range.
+					
+					```java
+					int a = 7;
+					a = a * a * a * a; 
+					a = a * a * a * a; //so a was setted the WRONG value -1526366847
+					```
+
+					---
+					### How do we fix this problem?
+
+					---
+					### How do we fix this problem?
+										
+					&#8659;
+
+					Reason
+
+					&#8659;
+
+					> The integer value(7^16) outside of the allowed range, which is determined by the finite memory(32 bits) to store an int data type.
+				
+					---
+					> The integer value(7^16) outside of the allowed range, which is determined by the finite memory(32 bits) to store an int data type.
+					
+					&#8659;
+
+					Solution: More bits to store the value(7^16)
+
+					&#8659;
+
+					Use **double** variable(64 bits) to store the big value.
+
+					---
+					Several implementations:
+
+					```java
+						double a = 7.0;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+					```
+
+					---
+					Several implementations:
+
+					```java
+					double a = 7.0;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					```
+
+					```java[3]
+					int a = 7;
+					a = a * a * a * a;
+					double b = 1.0 * a * a * a * a;
+					```
+
+					---
+					Several implementations:
+
+					```java
+					double a = 7.0;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					```
+
+					```java[3]
+					int a = 7;
+					a = a * a * a * a;
+					double b = 1.0 * a * a * a * a; //cannot be `double a =` or `int b =`
+					```
+
+					```java[3]
+					int a = 7;
+					a = a * a * a * a;
+					double b = (double)a * a * a * a;
+					```
+
+					---
+					```java[3]
+					int a = 7;
+					a = a * a * a * a;
+					double b = (double)a * a * a * a; //first (double), then *
+					```
+
+					> CON-1.C.1
+					The casting operators (int) and (double)
+					can be used to create a temporary value
+					converted to a different data type.
+
+					---
+					```java[3]
+					int a = 7;
+					a = a * a * a * a;
+					double b = (double)a * a * a * a; //first (double), then *
+					```
+
+					**Usage:** If you have integers and you want a double result from some mathematical operation cast one of the integers to a double using (double) as shown above.
+					
+					> CON-1.C.3
+					Some programming code causes int values
+					to be automatically cast (widened) to double
+					values.
+
+					---
+					What will happen if converting an integer value to double?
+					
+					---
+					What will happen if converting an integer value to double?
+
+					> CON-1.C.2
+					Casting a double value to an int causes
+					the digits to the right of the decimal point to be
+					truncated. 
+
+					---
+					What will happen if converting an integer value to double?
+
+					```java
+					int x = (int) (5.0 / 3);
+					```
+
+					Java will truncate 1.67 to 1 to give an int result.
+
+					---
+					However, we usually round up any answer .5 and above.
+
+					```java
+					double number = 5.0 / 3;
+					int nearestInt = (int)(number + 0.5);
+					```
+
+					---
+					```java
+					double number = 5.0 / 3;
+					int nearestInt = (int)(number + 0.5);
+					```
+
+					> CON-1.C.4
+					Values of type double can be rounded to the
+					nearest integer by (int)(x + 0.5) or
+					(int)(x – 0.5) for negative numbers.
+
+					---
+					Supplementary 1
+					> CON-1.B.4&5: Compound assignment operators are shortcuts that do a math operation and assignment in one step. 
+
+					![alt shortcuts](resources/lecture-3/shortcuts.png)
+					
+					---
+					You can use x++ or ++x to add one to the value of x.
+
+					![alt shortcuts](resources/lecture-3/shortcuts.png)
+
+					> The AP exam will never use a shortcut in an assignment statement, so you don’t need to worry about the difference between ++x or x++.
+
+					---
+					Supplementary 2
+					> MOD-1.A.1
+					**System.out.print** and **System.out.
+					println** display information on the computer
+					monitor.
+
+					> MOD-1.A.2
+					**System.out.println** moves the cursor to a
+					new line after the information has been displayed,
+					while **System.out.print** does not.
+
+					---
+					They can print primitive values, primitive variables, strings and expressions.
+
+					```java
+					/*this is valid in jshell but invalid in standard java,
+					it's treated as an assigntment automatically in jshell*/
+					12;
+					System.out.print(12); //MOD-1.A.1
+					System.out.println(12); //MOD-1.A.2
+
+					double num = 2.5;
+					System.out.print(num);
+					System.out.print("num");
+					/*so, never quote a variable 
+					if you want to use the value of the variable*/
+
+					System.out.println(12 * num);
+					```
+				</textarea>
 			</section>
 
+			<!-- 考纲封面 -->
+			<section>
+				<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\APCSA-CED-cover.jpg">
+			</section>
+
+			<!-- 本次课的考纲原文截图 -->
+			<section data-transition="convex">
+				<div class="r-stack">
+					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\Unit1-glance.jpg"
+						data-fragment-index="0" class="fragment fade-out">
+					<img style="height: 700px; border: 3px solid #555;"
+						src="resources\lecture-3\Unit1-glance-tagged.jpg" data-fragment-index="0"
+						class="fragment current-visible">
+				</div>
+			</section>
+
+			<!-- Tests for learning objectives -->
+			<section data-markdown>
+				<textarea data-template>
+					### Exercises For Learning Objective
+					
+					- **CON-1.C**: *Evaluate arithmetic expressions that use casting*
+
+					- **MOD-1.A**: *Call System class methods to generate output to the console.*
+
+					Evaluate the result of codes below:
+
+					```java
+					double base = 4234.9;
+					base *= 1.15;
+					int salary = (int) base + 60;
+					System.out.println("salary:");
+					System.out.print(salary);
+					```
+				</textarea>
+			</section>
         </div>
 	</div>
 	<script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
