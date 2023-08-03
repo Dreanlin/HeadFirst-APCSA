@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/serif.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- slides首页 -->
+			<section>
+				<img src="resources\lecture-1\HF-APCSA-cover.png" alt="HeadFirst-APCSA cover page">
+			</section>
+
+			<section>
+				<b>We have calculated these:</b>
+				<br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<semantics>
+						<mrow>
+							<msup>
+								<mn>1.5</mn>
+								<mn>16</mn>
+							</msup>
+						</mrow>
+						<annotation encoding="application/x-tex">1.5^{16}</annotation>
+					</semantics>
+				</math>
+				<br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<semantics>
+						<mrow>
+							<msup>
+								<mn>7.0</mn>
+								<mn>16</mn>
+							</msup>
+						</mrow>
+						<annotation encoding="application/x-tex">7.0^{16}</annotation>
+					</semantics>
+				</math>
+			</section>
+
+			<section>
+				<b>What if we need to calculate:</b>
+				<br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<semantics>
+						<mrow>
+							<msup>
+								<mn>3.0</mn>
+								<mn>16</mn>
+							</msup>
+						</mrow>
+						<annotation encoding="application/x-tex">3.0^{16}</annotation>
+					</semantics>
+				</math>
+				<br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<semantics>
+						<mrow>
+							<msup>
+								<mn>4.0</mn>
+								<mn>16</mn>
+							</msup>
+						</mrow>
+						<annotation encoding="application/x-tex">4.0^{16}</annotation>
+					</semantics>
+				</math>
+				<br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<semantics>
+						<mrow>
+							<msup>
+								<mn>5.0</mn>
+								<mn>16</mn>
+							</msup>
+						</mrow>
+						<annotation encoding="application/x-tex">5.0^{16}</annotation>
+					</semantics>
+				</math>
+				<br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<semantics>
+						<mrow>
+							<msup>
+								<mn>6.5</mn>
+								<mn>16</mn>
+							</msup>
+						</mrow>
+						<annotation encoding="application/x-tex">6.5^{16}</annotation>
+					</semantics>
+				</math>
+				<br>
+				<b>and so on ...?</b>
+			</section>
+
+			<section data-markdown data-auto-animate>
+				<textarea data-template>
+					Should we type these codes?
+
+					```java
+					double a = 3.0;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+
+					a = 4.0;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+
+					a = 6.5;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+					```
+
+					---
+					## No !!! <!-- .element: style="color:red;" -->
+
+					---
+					## No !!!
+					### Coders are too lazy to type!! <!-- .element: style="color:red;" -->
+
+					---
+					## No !!!
+					### Coders are too lazy to type!!
+					#### They cannot stand this repeated codes! <!-- .element: style="color:red;" -->
+
+					---
+					So how can we simplify this?
+					
+					```java
+					double a = 3.0;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+
+					a = 4.0;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+
+					a = 6.5;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+					```
+
+					---
+					### We can tell
+
+					The DATA &#8658; **variable**
+
+					```java
+					double a = ?; // ? can be 3.0, 6.5 or any floating number we are calculating
+					```
+
+					```java
+					a = ?;
+					```
+
+					The PROCEDURES &#8658; *fixed*
+
+					```java
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+					```
+
+					---
+					Why not representing the fixed codes
+
+					```java
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+					```
+
+					with a fixed and simpler symbol, like *myFunc()*
+
+					---
+					Then the codes can be like:
+
+					```java
+					double a = 3.0;
+					myFunc();
+
+					a = 4.0;
+					myFunc();
+
+					a = 6.5;
+					myFunc();
+					```
+
+					---
+					If we want Java or anybody to
+
+					> representing these *fixed codes* with a fixed and simpler symbol, like *myFunc()*
+
+					we have to ask them **specifically** like
+
+					```java
+					double a = 3.0;
+					Java, treat all following 'myFunc()' as these codes
+					{
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					---
+					Then you can execute the following
+
+					```java[8-12]
+					double a = 3.0;
+					Java, treat all following 'myFunc()' as these codes
+					{
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc();
+					a = 4.0;
+					myFunc();
+					a = 6.5;
+					myFunc();
+					```
+
+					---
+					Of course, we won't write these codes in real Java, 
+
+					```java
+					double a = 3.0;
+					Java, treat all following 'myFunc()' as these codes
+					{
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					but we use a simpler one
+
+					```java
+					double a = 3.0;
+					public void myFunc(){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					---
+					The whole codes now are
+
+					```java
+					double a = 3.0;
+					public void myFunc(){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc();
+
+					a = 4.0;
+					myFunc();
+
+					a = 6.5;
+					myFunc();
+					```
+
+					In the snippet, we say that *myFunc* is a **method**.
+
+					(Often called functions or procedures in other languages.) <!-- .element: style="font-size:26px;" -->
+
+
+					---
+					rather than
+
+					```java
+					double a = 3.0;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+
+					a = 4.0;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+
+					a = 6.5;
+					a = a * a * a * a; 
+					a = a * a * a * a;
+					System.out.println(a);
+					```
+					
+					---
+					A **method** is a Procedural Abstraction.
+
+					We can **name a block of code** as a method
+					
+					```java
+					double a = 3.0;
+					public void myFunc(){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+					
+					There are two parts to a **method declaration**:
+
+					1. the signature <!-- .element: style="font-size:30px;" -->
+					2. the code body in brackets <!-- .element: style="font-size:30px;" -->
+
+					---
+					We can **name a block of code** as a method 
+
+					and **call** it whenever we need it, abstracting away the details of how it works.
+					
+					```java					
+					myFunc();
+					```
+
+					To use a method you need to call it.
+					To do so you use the **method name** and **parentheses**.
+					---
+					### WITHDRAW
+
+					1. Users have to declare a variable before defining a method using the variable.
+
+					```java[1]
+					double a = 3.0;
+					public void myFunc(){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					---
+					### WITHDRAW
+
+					2. Users have to change the variable value before using this method to calculate another valure.
+					
+					```java
+					a = 4.0;				
+					myFunc();
+
+					a = 6.5;				
+					myFunc();
+					```
+
+					---
+					### WITHDRAW
+
+					1. Users have to declare a variable before defining a method using the variable.
+
+					2. Users have to change the variable value before using this method to calculate another valure.
+					
+					> These force users to check method details to know what variables should be declared and changed before defining and calling methods.
+					
+					---
+					How do Java solve it?
+
+					---
+					We originally used this snippet in Java
+
+					```java
+					double a = 3.0;
+					public void myFunc(){ //method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(); //method call
+					a = 4.0;				
+					myFunc(); //method call
+					```
+
+					to express the following meaning
+
+					```java
+					double a = 3.0;
+					Java, treat all following 'myFunc()' as these codes
+					{
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc();
+					a = 4.0;				
+					myFunc();
+					```
+
+					---
+					Actually, we can choose this expression.
+
+					```java
+					Java, treat all following 'myFunc(value)' as these codes in brackets
+					and 'value' in these codes is the double value in 'myFunc(value)'
+					{
+						double a = value;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0);
+					
+					myFunc(4.0);
+					```
+
+					---
+					```java
+					Java, treat all following 'myFunc(value)' as these codes in brackets
+					and 'value' in these codes is the double value in 'myFunc(value)'
+					{
+						double a = value;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0);
+					
+					myFunc(4.0);
+					```
+
+					The key words here are
+					
+					**'myFunc(value)'**, **{...codes...}**
+
+					and the **double value** in 'myFunc(value)'
+
+					---
+					Java does support these expressions
+
+					```java
+					Java, treat all following 'myFunc(value)' as these codes in brackets
+					and 'value' in these codes is the double value in 'myFunc(value)'
+					{
+						double a = value;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0);
+					
+					myFunc(4.0);
+					```
+
+					by the following real Java codes
+					```java
+					public void myFunc(double a){ //new method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0); //new method call
+					
+					myFunc(4.0); //new method call
+					```
+
+					---
+					Now we can compare the new method to the old method
+
+					```java
+					public void myFunc(double a){ //new method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0); //new method call
+					
+					myFunc(4.0); //new method call
+					```
+
+					```java
+					double a = 3.0;
+					public void myFunc(){ //old method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(); //old method call
+					a = 4.0;				
+					myFunc(); //old method call
+					```
+
+					---
+					```java
+					public void myFunc(double a){ //new method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0); //new method call
+					
+					myFunc(4.0); //new method call
+					```
+
+					```java
+					double a = 3.0;
+					public void myFunc(){ //old method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(); //old method call
+					a = 4.0;				
+					myFunc(); //old method call
+					```
+
+					The two snippets are all valid, and we can now summarize what a method is.
+
+					---
+					### As we said
+					A **method** is a Procedural Abstraction.
+
+					We can **name a block of code** as a method
+					
+					and **call** it whenever we need it.
+					
+					---
+					We can **name a block of code** as a method
+
+					aka **declare a method**
+
+					```java
+					public void myFunc(double a){ //new method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					```java[2-6]
+					double a = 3.0;
+					public void myFunc(){ //old method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+					
+					There are two parts to a **method declaration**:
+
+					1. **the signature** <!-- .element: style="font-size:30px;" -->
+					2. the code body in brackets <!-- .element: style="font-size:30px;" -->
+
+					---
+					**Components of the signature**
+
+					```java[1]
+					public void myFunc(double a){ //new method declaration
+						a = a * a * a * a;
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					- *Access Modifier*: public<!-- .element: style="font-size:34px;" -->
+					- *Return Type*: void<!-- .element: style="font-size:34px;" -->
+					- *Method Name*: myFunc<!-- .element: style="font-size:34px;" -->
+					- *Parameter list in parenthesis*: (double a)<!-- .element: style="font-size:34px;" -->
+						- The "formal parameters" are part of the method signature<!-- .element: style="font-size:30px;" -->
+						- Parameter arguments are the actual values given to the method<!-- .element: style="font-size:30px;" -->
+
+					---
+					### As we said
+					A **method** is a Procedural Abstraction.
+
+					We can **name a block of code** as a method
+					
+					and **call** it whenever we need it.
+					
+					---
+					and **call** it whenever we need it.
+
+					aka **method calling**
+
+					```java
+					myFunc(3.0); //new method call
+					myFunc(4.0); //new method call
+					```
+
+					```java[1,7-9]
+					double a = 3.0;
+					public void myFunc(){ //old method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(); //old method call
+					a = 4.0;				
+					myFunc(); //old method call
+					```
+
+					---
+					**Key points about method calling**
+
+					```java
+					myFunc(3.0); //new method call
+					myFunc(4.0); //new method call
+					```
+
+					```java[1,7-9]
+					double a = 3.0;
+					public void myFunc(){ //old method declaration
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(); //old method call
+					a = 4.0;				
+					myFunc(); //old method call
+					```
+
+					1. To use a method you need to call it. To do so you use the method name and match the parameters with values you want to use: myFunc(4.0)<!-- .element: style="font-size:30px;" -->
+					
+					---
+					**Key points about method calling**
+
+					```java
+					public void printSalary(double base, double bonusRate){
+						double salary = base + base * bonusRate;
+						System.out.println(salary);
+					}
+
+					double yourBase = 8991.5;
+					double yourBonusRate = 0.13;
+					double myBase = 9108;
+					double myBonusRate = 0.22;
+
+					printSalary(yourBase, yourBonusRate);
+					printSalary(myBase, myBonusRate);
+					```
+
+					2. Values provided in the arguments in a method call need to correspond and match to the order and type of the parameters in the method signature.<!-- .element: style="font-size:30px;" -->
+
+					---
+					**Key points about method calling**
+
+					Normally, you can't have a method with the same name as another one. <!-- .element: style="font-size:30px;" -->
+
+					```java
+					public void printSalary(double base, double bonusRate){
+						double salary = base + base * bonusRate;
+						System.out.println(salary);
+					}
+
+					public void printSalary(){
+						System.out.println("I have no salary!!!");
+					}
+
+					printSalary(4783.3, 0.55);
+
+					printSalary();
+					```
+					
+					3. <!-- .element: style="font-size:32px;" -->You can overload a method name by using the same name, but having different parameters: 
+					   - <!-- .element: style="font-size:24px;" -->Different number of parameters, and/or
+					   - <!-- .element: style="font-size:24px;" -->Different types of parameters
+
+					---
+					### Summary
+					
+					1. **Procedural Abstraction** (creating methods) reduces the complexity and repetition of code. We can name a block of code as a method and call it whenever we need it, abstracting away the details of how it works.
+					
+					2. To write methods, write a **method definition** with a **method signature** like “public void chorus()” and a **method body** in {} and method calls using the method **name and arguments** whenever you need it to do its job.
+					
+					---
+					### Summary
+
+					3. When you call a method, you can give or pass in **arguments** or **actual parameters** to it inside the parentheses **method(arguments)**. The arguments are saved in local **formal parameter** variables that are declared in the method header, for example: public void method(type param1, type param2) {…}
+					
+					4. Values provided in the arguments in a method call need to correspond to the **order** and **type** of the parameters in the method signature.
+				</textarea>
+			</section>
+
+			<!-- 考纲封面 -->
+			<section>
+				<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\APCSA-CED-cover.jpg">
+			</section>
+
+			<!-- 本次课的考纲原文截图 -->
+			<section data-transition="convex">
+				<div class="r-stack">
+					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-4\Unit5-glance.png"
+						data-fragment-index="0" class="fragment fade-out">
+					<img style="height: 700px; border: 3px solid #555;"
+						src="resources\lecture-4\Unit5-glance-tagged.png" data-fragment-index="0"
+						class="fragment current-visible">
+				</div>
+			</section>
+
+			<!-- 本次课的练习和method示例 -->
+			<section data-markdown data-auto-animate>
+				<textarea data-template>
+					### Exercise 1
+
+					Describe the snippet below
+					
+					What is it doing? What will happen?
+
+					```java
+					public void areaRectangle(double width, int height){
+						System.out.println(width * height);
+					}
+
+					areaRectangle(4.5, 5);
+					areaRectangle(4, 5.5);
+					areaRectangle(10.0, 10.0);
+					```
+
+					---
+					### Exercise 2
+
+					Describe the snippet below
+					
+					What is it doing? What will happen?
+
+					```java
+					public void sameNameMethod(double num){
+						System.out.println("This method take a double floating number.");
+					}
+					public void sameNameMethod(int num){
+						System.out.println("This method take an integer number.");
+					}
+					public void sameNameMethod(double num1, int num2){
+						System.out.println("This method take a double num and an integer num.");
+					}
+
+					sameNameMethod(27);
+					sameNameMethod(17.0);
+					sameNameMethod(9.7, 10);
+					sameNameMethod(10, 9.7);
+					```
+
+					---
+					### Exercise 3
+
+					Write a method, when users call it with parameters:
+					- employeeAge<!-- .element: style="font-size:32px;" -->
+					- employeeWorkYear<!-- .element: style="font-size:32px;" -->
+					- base<!-- .element: style="font-size:32px;" -->
+					- healthBonus<!-- .element: style="font-size:32px;" -->
+					- workBonus<!-- .element: style="font-size:32px;" -->
+
+					prints out the *totalSalary*, which are calculated by:
+
+					```java
+					base + employeeAge * 0.1 * healthBonus + employeeWorkYear * 0.15 * workBonus
+					```
+
+					---
+					### Exercise 3
+
+					```java
+					base + employeeAge * 0.1 * healthBonus + employeeWorkYear * 0.15 * workBonus
+					```
+
+					- employeeAge<!-- .element: style="font-size:32px;" -->
+					- employeeWorkYear<!-- .element: style="font-size:32px;" -->
+					- base<!-- .element: style="font-size:32px;" -->
+					- healthBonus<!-- .element: style="font-size:32px;" -->
+					- workBonus<!-- .element: style="font-size:32px;" -->
+
+					> TIP: You are up to name your method and define the formal parameters
+
+					---
+					### Exercise 3
+
+					Now call the method you implemented with values:
+
+					- employeeAge = 43<!-- .element: style="font-size:32px;" -->
+					- employeeWorkYear = 20<!-- .element: style="font-size:32px;" -->
+					- base = 18730.5<!-- .element: style="font-size:32px;" -->
+					- healthBonus = 150.05<!-- .element: style="font-size:32px;" -->
+					- workBonus = 234.75<!-- .element: style="font-size:32px;" -->
+
+					Does it print out the right result? Calculate it by hand.
+
+					```java
+					base + employeeAge * 0.1 * healthBonus + employeeWorkYear * 0.15 * workBonus
+					```
+				</textarea>
+			</section>
+			
+		</div>
+	</div>
+	<script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
+	<script src='https://unpkg.com/mermaid@8.1.0/dist/mermaid.min.js'></script>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
