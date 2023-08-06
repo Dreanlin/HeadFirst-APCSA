@@ -19,13 +19,13 @@
 
 <body>
 	<div class="reveal">
-        <div class="slides">
-            <!-- slides首页 -->
+		<div class="slides">
+			<!-- slides首页 -->
 			<section>
 				<img src="resources\lecture-1\HF-APCSA-cover.png" alt="HeadFirst-APCSA cover page">
 			</section>
 
-            <!-- 通过类比数学函数，引入纯函数/有return值的方法 的概念-->
+			<!-- 通过类比数学函数，引入纯函数/有return值的方法 的概念-->
 			<section data-markdown data-auto-animate>
 				<textarea data-template>
 					**Do you know anything similar to method?**
@@ -82,13 +82,607 @@
 			</section>
 
 			<section>
-				<h4>1. Define a function</h4>
-				<img align="center" style="width: 100%;" src="https://i.upmath.me/svg/f(x)%3Dx%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x" alt="f(x)=x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x" />
+				<h3><b>Function</b> in math</h3>
+				<h4><b>1. Define a function</b></h4>
+				<img align="center" style="width: 100%;"
+					src="https://i.upmath.me/svg/f(x)%3Dx%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x%20%5Ctimes%20x"
+					alt="f(x)=x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x \times x" />
 				<h4>
-					2. Call the function
+					<b>2. Call the function</b>
+					<br>
+					<img style="width: 10%;" align="center" src="https://i.upmath.me/svg/f(4.0)" alt="f(4.0)" /><br>
+					<img style="width: 30%;" align="center" src="https://i.upmath.me/svg/f(1.5)%20%2B%20f(6.5)%20-%2013"
+						alt="f(1.5) + f(6.5) - 13" /><br>
+					<img style="width: 20%;" align="center" src="https://i.upmath.me/svg/f(f(5)%2B4.3)"
+						alt="f(f(5)+4.3)" />
 				</h4>
 			</section>
-        </div>
+
+			<!-- 演示说明现有的method定义无法支持组合method或者嵌套method进行计算 -->
+			<section data-markdown data-auto-animate="">
+				<textarea data-template>
+					We make this *myFunc* **Java method** to raise a decimal to the sixteenth power.
+
+					```java
+					public void myFunc(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					---
+					We know that it is the same to name the **method** *g*
+
+					```java
+					public void g(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					or *f*
+
+					```java
+					public void f(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					---
+					but can this **method** *f* be manipulated 
+
+					```java
+					public void f(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					as a **function** in math?
+
+					<img style="width: 10%;" align="center" src="https://i.upmath.me/svg/f(4.0)" alt="f(4.0)" /><br>
+					<img style="width: 30%;" align="center" src="https://i.upmath.me/svg/f(1.5)%20%2B%20f(6.5)%20-%2013"
+							alt="f(1.5) + f(6.5) - 13" /><br>
+					<img style="width: 20%;" align="center" src="https://i.upmath.me/svg/f(f(5)%2B4.3)"
+							alt="f(f(5)+4.3)" />
+
+					---
+					**Function** in math
+
+					<img style="width: 10%;" align="center" src="https://i.upmath.me/svg/f(4.0)" alt="f(4.0)" /><br>
+					<img style="width: 30%;" align="center" src="https://i.upmath.me/svg/f(1.5)%20%2B%20f(6.5)%20-%2013"
+							alt="f(1.5) + f(6.5) - 13" /><br>
+					<img style="width: 20%;" align="center" src="https://i.upmath.me/svg/f(f(5)%2B4.3)"
+							alt="f(f(5)+4.3)" />
+
+					What will happen if we run this snippet?
+
+					```java
+					f(4.0);
+					f(1.5) + f(6.5) - 13;
+					f(f(5) + 4.3);
+					```
+
+					---
+					Only first line executed well.
+
+					```java[1]
+					f(4.0);
+					f(1.5) + f(6.5) - 13;
+					f(f(5) + 4.3);
+					```
+
+					We know that a **method** is regarded as a **code block** in the method body by Java.
+
+					```java
+					public void f(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					---
+					So when
+					
+					```java
+					f(4.0);
+					```
+
+					was run, Java actually executed this snippet
+
+					```java
+					{
+						double a = 4.0;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					and this codes always run well and println result of <img align="center" style="width: 10%;"  src="https://i.upmath.me/svg/4.0%5E%7B16%7D" alt="4.0^{16}" />
+
+					---
+					---
+					So when
+					
+					```java
+					f(4.0);
+					```
+
+					was run, Java actually executed this snippet
+
+					```java
+					{
+						double a = 4.0;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					and this codes always run well and println
+
+					**4,294,967,296**
+					
+					---
+					But Java cannot calculate
+					
+					the result of **arithmetic operations** on **code blocks**,
+
+					```java
+					f(1.5) + f(6.5) - 13;
+					```
+
+					is not
+
+					```java
+					{
+						double a = 1.5;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					+
+					{
+						double a = 6.5;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					-
+					13;
+					```
+
+					---
+					And of course
+
+					```java
+					f(4.3 + f(5));
+					```
+
+					is not
+
+					```java
+					{
+						double a = 4.3 + {
+											double a = 5;
+											a = a * a * a * a; 
+											a = a * a * a * a;
+											System.out.println(a);
+										 }
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					---
+					Can we or Java make these true?
+
+					```java
+					f(1.5) + f(6.5) - 13;
+					f(f(5) + 4.3);
+					```
+
+					---
+					If this is true, we can break down a *large problem*
+					
+					into smaller *subproblems* by creating
+					
+					methods to solve each *individual subproblem*.
+
+					```java
+					f(1.5) + f(6.5) - 13;
+					f(f(5) + 4.3);
+					```
+
+					---
+					For example, we can calculate
+					
+					<img align="center" style="width:20%;" src="https://i.upmath.me/svg/value%5E%7B256%7D" alt="value^{256}" /></p>
+					<p align="center">
+					
+					by just use the ready-made method *f* in this way
+
+					```java[1,4,7]
+					public void f(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						//secret codes
+					}
+
+					f(f(value));
+					```
+ 
+				</textarea>
+			</section>
+
+			<!-- 开始介绍Java提供的有return值的method的定义和使用方法 -->
+			<section data-markdown data-auto-animate>
+				<textarea data-template>
+
+					Can we or Java make these true?
+
+					```java
+					f(1.5) + f(6.5) - 13;
+					f(f(5) + 4.3);
+					```
+
+					### YES! <!-- .element: style="color:red;" -->
+
+					Let's recall how the meaning of method.
+
+					---
+					### Recall
+					We learned that a method below
+
+					```java
+					public void myFunc(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0);
+					```
+
+					expresses this
+
+					```java
+					Java, treat all following 'myFunc(value)' as these codes in brackets
+					and 'value' in these codes is the double value in 'myFunc(value)'
+					{
+						double a = value;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0);
+					```
+
+					---
+					### Recall
+					```java
+					Java, treat all following 'myFunc(value)' as these codes in brackets
+					and 'value' in these codes is the double value in 'myFunc(value)'
+					{
+						double a = value;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0);
+					```
+
+					The key words here are
+					
+					**'myFunc(value)'**, **{...codes...}**
+
+					and the **double value** in 'myFunc(value)'
+
+					---
+					### Recall
+					```java
+					public void myFunc(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					myFunc(3.0);
+					```
+					
+					**Components of the signature**
+
+					- *Access Modifier*: public<!-- .element: style="font-size:34px;" -->
+					- *Return Type*: void<!-- .element: style="font-size:34px;" -->
+					- **Method Name**: myFunc<!-- .element: style="font-size:34px;" -->
+					- **Parameter list in parenthesis**: (double a)<!-- .element: style="font-size:34px;" -->
+						- The "formal parameters" are part of the method signature<!-- .element: style="font-size:30px;" -->
+						- Parameter arguments are the actual values given to the method<!-- .element: style="font-size:30px;" -->
+
+					---
+					After recalling those content,
+
+					you may guess how Java make this snippet true.
+
+					```java
+					f(1.5) + f(6.5) - 13;
+					f(f(5) + 4.3);
+					```
+
+					**Components of the signature**
+
+					- *Access Modifier*: public<!-- .element: style="font-size:34px;" -->
+					- *Return Type*: void<!-- .element: style="font-size:34px;" -->
+					- **Method Name**: myFunc<!-- .element: style="font-size:34px;" -->
+					- **Parameter list in parenthesis**: (double a)<!-- .element: style="font-size:34px;" -->
+
+					---
+					YES! By the **return type** and **return statement**
+
+					```java
+					public void f(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					f(1.5) + f(6.5) - 13;
+					f(f(5) + 4.3);
+					```
+					
+					**Components of the signature**
+
+					- **Return Type**: void<!-- .element: style="font-size:34px;" -->
+
+					---
+					**Return type** change from *void* to *double*
+
+					and a **return statement** is added into ...
+					```java[1,5]
+					public double f(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+						return a; //this line is the return statement
+					}
+					f(1.5) + f(6.5) - 13;
+					f(f(5) + 4.3);
+					```
+
+					**Components of the signature**
+
+					- **Return Type**: void<!-- .element: style="font-size:34px;" -->
+
+
+					---
+					Let's compare the old method to the new one
+
+					**OLD**
+
+					```java[1]
+					public void f(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					**NEW**
+					```java[1,5]
+					public double f(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+						return a; //this line is the return statement
+					}
+					```
+
+					---
+					We knew these:
+
+					**OLD CODES**
+
+					```java[1]
+					public void f(double a){
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					**OLD EXPRESSIONS**
+
+					```java
+					Java, treat all following 'f(value)' as these codes in brackets
+					with 'value' in these codes is the double value in 'f(value)'
+					{
+						double a = value;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+					}
+					```
+
+					---
+					**NEW CODES**
+
+					```java
+					public double f(double a){ //new method
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+						return a; //this line is the return statement
+					}
+					```
+
+					**OLD EXPRESSIONS** + 2 Additional Notes
+
+					```java
+					Java, run these codes in brackets when you see following 'f(value)' 
+					with 'value' in these codes is the double value in 'f(value)'
+					{
+						double a = value;
+						a = a * a * a * a; 
+						a = a * a * a * a;
+						System.out.println(a);
+						return a; //this line is the return statement
+					}
+					note1: STOP execute when seeing the RETURN statement
+					note2: treat the whole {...} as the returned DOUBLE value 
+					```
+
+					---
+					Example 1
+
+					```java
+					public int myXuSui(int myActualAge){
+						System.out.println("My XuSui is:");
+						return myActualAge + 1;
+					}
+
+					myXuSui(34) - myXuSui(10);
+					```
+
+					Example 2
+
+					```java
+					public double nextYearBalance(double currentBalance, double rate){
+						double result = currentBalance * (1 + rate);
+						return result;
+						System.out.println("Next year I have so much money:"); //won't work after return statement
+					}
+					double myMoneyNow = 20394.48;
+					double myBalanceInTwoYears = nextYearBalance(nextYearBalance(myMoneyNow));
+					System.out.println(myBalanceInTwoYears);
+					```
+
+					---
+					**Components**
+
+					- **Return Type**: *double* <!-- .element: style="font-size:34px;" -->
+					- **Return Statement** *return result* <!-- .element: style="font-size:34px;" -->
+
+					```java[1,3]
+					public double h(double a){
+						double result = a * a * a * a * a * a * a * a;
+						return result;
+					}
+					h(3.0);
+					```
+					
+					**Rules**
+
+					- You **must match** a return statement to a return type<!-- .element: style="font-size:34px;" -->
+					  - with a variable of the same type <!-- .element: style="font-size:30px;" -->
+					  - if there is no return statement, use VOID return type  <!-- .element: style="font-size:30px;" -->
+
+					---
+					### Facts about **Non-void methods**
+
+					- **Non-void methods** are methods that return values.
+					- **Non-void methods** typically do not have effects, and are called purely for the value they return, like functions in math.
+					- It will **stop** when it gets to a **return statement**
+					- If the method **has return statement**,  you can treat the **call as if it is a variable**, like functions in math.
+					  - i.e. *myXuSui(34) - myXuSui(10);* <!-- .element: style="font-size:30px;" -->
+					  - i.e. *nextYearBalance(nextYearBalance(myMoneyNow));* <!-- .element: style="font-size:30px;" -->
+					  
+				</textarea>
+			</section>
+
+			<!-- 考纲封面 -->
+			<section>
+				<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-1\APCSA-CED-cover.jpg">
+			</section>
+
+			<!-- 本次课的考纲原文截图 -->
+			<section data-transition="convex">
+				<div class="r-stack">
+					<img style="height: 700px; border: 3px solid #555;" src="resources\lecture-5\Unit5-glance.png"
+						data-fragment-index="0" class="fragment fade-out">
+					<img style="height: 700px; border: 3px solid #555;"
+						src="resources\lecture-5\Unit5-glance-tagged.png" data-fragment-index="0"
+						class="fragment current-visible">
+				</div>
+			</section>
+
+			<!-- AP真题和练习题 -->
+			<section data-markdown data-auto-animate>
+				<textarea data-template>
+					### AP Practice
+					Q1.  Consider the following method.
+
+					```java
+					public double calculatePizzaBoxes(int numOfPeople, double slicesPerBox){
+						/*implementation not shown */
+					}
+					```
+
+					Which of the following lines of code, if located in a method in the same class as calculatePizzaBoxes, will compile without an error? <!-- .element: style="font-size:34px;" -->
+
+					- A. int result = calculatePizzaBoxes(45, 9.0); <!-- .element: style="font-size:30px;" -->
+					- B. double result = calculatePizzaBoxes(45.0, 9.0); <!-- .element: style="font-size:30px;" -->
+					- C. int result = calculatePizzaBoxes(45.0, 9); <!-- .element: style="font-size:30px;" -->
+					- D. double result = calculatePizzaBoxes(45, 9.0); <!-- .element: style="font-size:30px;" -->
+					- E. result = calculatePizzaBoxes(45, 9); <!-- .element: style="font-size:30px;" -->
+
+					---
+					### AP Practice
+					Q2.  Consider the following class, which uses the instance variable dollars to represent the money in a wallet in dollars. <!-- .element: style="font-size:32px;" -->
+
+					```java
+					double dollars;
+					public double putMoneyInWallet(int amount)
+					{
+						/* missing code */
+					}
+					```
+
+					The putMoneyInWallet method is intended to increase the dollars in the wallet by the parameter amount and then return the updated dollars in the wallet. Which of the following snippet should replace missing code so that the putMoneyInWallet method will work as intended? <!-- .element: style="font-size:30px;" -->
+				
+					---
+					Q2. Which of the following snippet should replace missing code so that the putMoneyInWallet method will work as intended? <!-- .element: style="font-size:30px;" -->
+
+					```java
+					double dollars;
+					public double putMoneyInWallet(int amount)
+					{
+						/* missing code */
+					}
+					```
+
+					```java
+					amount += dollars; //choice A
+					return dollars;
+					```
+
+					```java
+					dollars = amount; //choice B
+					return amount;
+					```
+
+					```java
+					dollars += amount; //choice C
+					return dollars;
+					```
+
+					```java
+					dollars = dollars + amount; //choice D
+					return amount;
+					```
+
+					```java
+					amount = dollars + amount; //choice E
+					return dollars;
+					```
+
+				</textarea>
+			</section>
+		</div>
 	</div>
 	<script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
 	<script src='https://unpkg.com/mermaid@8.1.0/dist/mermaid.min.js'></script>
