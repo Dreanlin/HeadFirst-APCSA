@@ -21,7 +21,7 @@
 title: HeadFirst AP-CSA
 email: reborn4yolo@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  本教程尝试先通过Processing语言帮助初学者学习编程基础概念，再丝滑过渡到 AP-CSA 考试范围内的 Java 语言编程概念来帮助读者掌握编程、快速备考。
+  本课程带领学员使用jshell交互式编程环境入门Java语言，使Java学习如python之类的脚本语言一样简单，帮助学员快速、轻松从零备考APCSA考试。
 baseurl: HeadFirst-APCSA # the subpath of your site, e.g. /blog
 url: https://my-site.github.io # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
