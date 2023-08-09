@@ -3,13 +3,10 @@ layout: post
 title:  "Lecture-1.1: Arithmetic expression"
 categories: jekyll update
 ---
-### Lecture video (on the way)
+### Lecture video
 
 <div style="position:relative;width:fit-content;height:fit-content;">
-    <a style="position:absolute;top:20px;right:1rem;opacity:0.8;" href="https://clipchamp.com/watch/hheF66TuwLa?utm_source=embed&utm_medium=embed&utm_campaign=watch">
-        <img loading="lazy" style="height:22px;" src="https://clipchamp.com/e.svg" alt="Made with Clipchamp" />
-    </a>
-    <iframe allow="autoplay;" allowfullscreen style="border:none" src="https://clipchamp.com/watch/hheF66TuwLa/embed" width="640" height="360"></iframe>
+<iframe src="//player.bilibili.com/player.html?aid=232114687&bvid=BV1n8411R7cw&cid=1228232668&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 </div>
 
 ### Slides for lecture-1
