@@ -6,7 +6,7 @@ categories: jekyll update
 ### Lecture video
 
 <div style="position:relative;width:fit-content;height:fit-content;">
-<iframe src="//player.bilibili.com/player.html?aid=232114687&bvid=BV1n8411R7cw&cid=1228232668&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=447087565&bvid=BV1Nj41167Yg&cid=1229142142&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 </div>
 
 ### Slides for lecture-1
