@@ -165,6 +165,17 @@
 					converted to a different data type.
 
 					---
+					![casting example](resources\lecture-3\casting-example.png)
+
+					---
+					![casting example](resources\lecture-3\casting-example.png)
+
+					> CON-1.C.1 <!-- .element: style="font-size:34px" -->
+					The casting operators (int) and (double)
+					can be used to create a temporary value
+					converted to a different data type.
+
+					---
 					```java[3]
 					int a = 7;
 					a = a * a * a * a;
@@ -179,10 +190,10 @@
 					values.
 
 					---
-					What will happen if converting an integer value to double?
+					What will happen if converting an double value to integer?
 					
 					---
-					What will happen if converting an integer value to double?
+					What will happen if converting an double value to integer?
 
 					> CON-1.C.2
 					Casting a double value to an int causes
@@ -190,7 +201,7 @@
 					truncated. 
 
 					---
-					What will happen if converting an integer value to double?
+					What will happen if converting an double value to integer?
 
 					```java
 					int x = (int) (5.0 / 3);
@@ -245,20 +256,12 @@
 					---
 					They can print primitive values, primitive variables, strings and expressions.
 
-					```java
-					/*this is valid in jshell but invalid in standard java,
-					it's treated as an assigntment automatically in jshell*/
-					12;
-					System.out.print(12); //MOD-1.A.1
-					System.out.println(12); //MOD-1.A.2
-
-					double num = 2.5;
-					System.out.print(num);
-					System.out.print("num");
-					/*so, never quote a variable 
-					if you want to use the value of the variable*/
-
-					System.out.println(12 * num);
+					```java					
+					System.out.println(12);
+					double toPrint = 43.324;
+					System.out.println(toPrint);
+					System.out.println(toPrint + 23 - 5.6 * 3);
+					System.out.println("head first APCSA!");
 					```
 				</textarea>
 			</section>

@@ -254,9 +254,30 @@
 
 					---
 					### Two Questions
-					- Why do we have to **Specify Data Type** of a variable in Java?
-					- Why cannot we assign a **double** number to an **Integer** variable?
-					<!-- jshell演示 newVar = 32.2; int newVar = 32.3; double newVar = 32.33; -->
+					1. Why do we have to **Specify Data Type** of a variable in Java?
+
+					```python
+					apples = 30 # these are python codes
+					rice = 12.3 # you do not need declare variables in python
+					```
+
+					---
+					### Two Questions
+					1. Why do we have to **Specify Data Type** of a variable in Java?
+
+					```python
+					apples = 30 # these are python codes
+					rice = 12.3 # you do not need declare variables in python
+					```
+
+					2. Why cannot we declare a variable **twice or more times**?
+					
+					```java
+					double money;
+					money = 2324.53;
+					double money = 553.4;// this is wrong
+					int money;//this is wrong
+					```
 
 					---
 					#### What actually happened in the computer when we declared and initialized a **primitive** variable?
@@ -286,7 +307,7 @@
 						boolean won = true;
 						a = 32;
 						rate = 1.5;
-						won = true;
+					
 						```
 					</textarea>
 				</section>
@@ -307,7 +328,7 @@
 						boolean won = true;
 						a = 32;
 						rate = 1.5;
-						won = true;
+					
 						```
 					</textarea>
 				</section>
@@ -330,7 +351,7 @@
 						boolean won = true;
 						a = 32;
 						rate = 1.5;
-						won = true;
+					
 						```
 					</textarea>
 				</section>
@@ -353,7 +374,7 @@
 						boolean won = true;
 						a = 32;
 						rate = 1.5;
-						won = true;
+					
 						```
 					</textarea>
 				</section>
@@ -376,7 +397,7 @@
 						boolean won = true;
 						a = 32;
 						rate = 1.5;
-						won = true;
+					
 						```
 					</textarea>
 				</section>
@@ -399,7 +420,7 @@
 						boolean won = true;
 						a = 32;
 						rate = 1.5;
-						won = true;
+					
 						```
 					</textarea>
 				</section>
@@ -408,27 +429,31 @@
 				</section>
 			</section>
 
-			<section>
-				<section data-markdown>
-					<textarea data-template>
-						> VAR-1.C.2: Each variable has associated memory that is used to hold its value.
-						
-						> VAR-1.C.3: The memory associated with a variable of a primitive type holds an actual primitive value.
-						
-						```java [1-7]
-						int a;
-						a = 5;
-						double rate = 1.2;
-						boolean won = true;
-						a = 32;
-						rate = 1.5;
-						won = true;
-						```
-					</textarea>
-				</section>
-				<section>
-					<img src="resources/lecture-2/SameBooleanValue.png" style="height:650px;" />
-				</section>
+			<section data-markdown>
+				<textarea data-template>
+					
+					> A variable is a **name** associated with a **memory location** in the computer, where you can store a **value** that can **change** or vary. 
+					
+					> When you declare a primitive variable Java will set aside **enough bits in memory** for that primitive type and **associate** that memory location with the **name** that you used.
+
+					---
+					### Two Questions
+					1. Why do we have to **Specify Data Type** of a variable in Java?
+
+					```python
+					apples = 30 # these are python codes
+					rice = 12.3 # you do not need declare variables in python
+					```
+
+					2. Why cannot we declare a variable **twice or more times**?
+					
+					```java
+					double money;
+					money = 2324.53;
+					double money = 553.4;// this is wrong
+					int money;//this is wrong
+					```
+				</textarea>
 			</section>
 
 			<!-- 补充变量命名的TIP -->
@@ -473,10 +498,7 @@
 				</div>
 			</section>
 						<!-- 考察运算符的AP真题 -->
-						<section data-auto-animate>
-							<img style="border: 3px solid #555;" src="resources/lecture-1/AP-practice-operator-1.png" />
-						</section>
-						<section data-auto-animate>
+						<section>
 							<p>
 								<b>For Learning Objective</b>
 							</p>

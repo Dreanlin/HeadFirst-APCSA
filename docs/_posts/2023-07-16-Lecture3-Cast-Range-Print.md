@@ -4,15 +4,14 @@ title:  "Lecture-1.3: Casting and Range of data type"
 categories: jekyll update
 ---
 
-### Lecture video (on the way)
+### Lecture 1.3 video (on tht way)
 
 <iframe>To be added</iframe>
 
-### Slides for lecture-3
+### Slides for lecture-1.3
 
 <iframe src='{{ "/reference/revealJS/lecture3.html" | relative_url }}' style="width:100%; height:500px;"></iframe>
 
-### Online Jshell environment
+### Online jShell (standard version)
 
-> If this online env is out of connection, refresh this whole web page.
-<iframe src="https://tryjshell.org/" style="width:100%; height:500px;"></iframe>
+<iframe src="https://onecompiler.com/jshell/3zhq47f3s" style="width:100%; height:500px;"></iframe>
