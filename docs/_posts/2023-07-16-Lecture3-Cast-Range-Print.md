@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Lecture-1.3: Casting and Range of data type"
+title:  "Lecture-1.3: Casting and System.out.print method"
 categories: jekyll update
 ---
 

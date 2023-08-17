@@ -10,10 +10,10 @@ categories: jekyll update
 <iframe src="//player.bilibili.com/player.html?aid=359648029&bvid=BV18X4y1j7md&cid=1233432084&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 </div>
 
-### Lecture 1.2.b video (on tht way)
+### Lecture 1.2.b video
 
 <div style="position:relative;width:fit-content;height:fit-content;">
-<iframe>To be added</iframe>
+<iframe src="//player.bilibili.com/player.html?aid=659948568&bvid=BV1Ph4y1D7Y3&cid=1237403377&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 </div>
 
 ### Slides for lecture-1.2
