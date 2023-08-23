@@ -533,7 +533,7 @@
 						return a; //this line is the return statement
 					}
 					note1: STOP execute when seeing the RETURN statement
-					note2: treat the whole {...} as the returned DOUBLE value 
+					note2: treat the method call f(value) as the returned DOUBLE variable a 
 					```
 
 					---
@@ -557,7 +557,8 @@
 						System.out.println("Next year I have so much money:"); //won't work after return statement
 					}
 					double myMoneyNow = 20394.48;
-					double myBalanceInTwoYears = nextYearBalance(nextYearBalance(myMoneyNow));
+					double bankRate = 0.034;
+					double myBalanceInTwoYears = nextYearBalance(nextYearBalance(myMoneyNow, bankRate), bankRate);
 					System.out.println(myBalanceInTwoYears);
 					```
 
