@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>4.1 Class&Object</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/serif.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.4/mermaid.min.js"></script>
+</head>
+
+<body>
+    <div class="reveal">
+        <divb class="slides">
+            <!-- slides首页 -->
+            <section>
+                <img src="resources\lecture-1\HF-APCSA-cover.png" alt="HeadFirst-APCSA cover page">
+            </section>
+
+            <section data-markdown data-auto-animate data-separator-notes="^Note:">
+                <textarea data-template>
+                    ### 本次课的先修知识要求
+
+                    - 变量
+                    - 函数
+                        - 有参数无返回函数
+                        - 无参数无返回函数
+                    - 条件语句
+
+                    ---
+                    ### 背景问题
+                    我们先思考这样一个问题，假设有这样一个A银行，客户申请信用卡的时候，用户的背景不同会得到不同的结果。<!-- .element: style="font-size:34px;" -->
+                    这里是它计算结果的方式，客户可以申请到的信用卡的额度：<!-- .element: style="font-size:34px;" -->
+
+                    - 0【18岁以下申请人】<!-- .element: style="font-size:30px;" -->
+                    - 100 x 客户的年收入 x A银行的贷款系数 / ((客户的年龄-35)x(客户的年龄-35)+ (客户的工龄 - 10)x (客户的工龄 - 10) + 500)【18-65岁申请人】<!-- .element: style="font-size:30px;" -->
+                    - 5 x 客户每月退休金 x A银行的贷款系数 / ((客户的年龄 - 65)x(客户的年龄 - 65))【65岁以上申请人】<!-- .element: style="font-size:30px;" -->
+
+                    ---
+                    - 0【18岁以下申请人】<!-- .element: style="font-size:30px;" -->
+                    - 100 x 客户的年收入 x A银行的贷款系数 / ((客户的年龄-35)x(客户的年龄-35)+ (客户的工龄 - 10)x (客户的工龄 - 10) + 500)【18-65岁申请人】<!-- .element: style="font-size:30px;" -->
+                    - 5 x 客户每月退休金 x A银行的贷款系数 / ((客户的年龄 - 65)x(客户的年龄 - 65))【65岁以上申请人】<!-- .element: style="font-size:30px;" -->
+
+                    ```java
+                    double loanParameterBankA = 1.17;
+
+                    int ageAly = 27;
+                    double yearIncomeAly = 130824.3;
+                    int workYearAly = 4;
+                    double retireBonusAly = 0;
+
+                    int ageJudy = 54;
+                    double yearIncomeJudy = 274423.4;
+                    int workYearJudy = 28;
+                    double retireBonusJudy = 0;
+
+                    int ageVivi = 71;
+                    double yearIncomeVivi = 83522.34;
+                    int workYearVivi = 28;
+                    double retireBonusVivi = 6348.5;
+                    ```
+                    
+                    ---
+                    ```java
+                    double loanParameterBankA = 1.17;
+
+                    int ageAly = 27;
+                    double yearIncomeAly = 130824.3;
+                    int workYearAly = 4;
+                    double retireBonusAly = 0;
+
+                    int ageJudy = 54;
+                    double yearIncomeJudy = 274423.4;
+                    int workYearJudy = 28;
+                    double retireBonusJudy = 0;
+
+                    int ageVivi = 71;
+                    double yearIncomeVivi = 83522.34;
+                    int workYearVivi = 28;
+                    double retireBonusVivi = 6348.5;
+                    ```
+
+                    How to implement this function by Java?
+
+                    ---
+                    ```java[13-36]
+                    double loanParameterBankA = 1.17;
+
+                    int ageAly = 27;
+                    double yearIncomeAly = 130824.3;
+                    int workYearAly = 4;
+                    double retireBonusAly = 0;
+
+                    int ageJudy = 54;
+                    double yearIncomeJudy = 274423.4;
+                    int workYearJudy = 28;
+                    double retireBonusJudy = 0;
+
+                    int ageVivi = 71;
+                    double yearIncomeVivi = 83522.34;
+                    int workYearVivi = 28;
+                    double retireBonusVivi = 6348.5;
+
+                    public void creditCardLimit(int age, int workYear, double yearIncome, double retireBonus, double loanPara){
+                        double cardLimit;
+                        if(age&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(age&lt=65){
+                            cardLimit = 100 * yearIncome * loanPara / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonus * loanPara / ((age - 65)*(age - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    
+                    creditCardLimit(ageAly, workYearAly, yearIncomeAly, retireBonusAly, loanParameterBankA);
+                    creditCardLimit(ageJudy, workYearJudy, yearIncomeJudy, retireBonusJudy, loanParameterBankA);
+                    creditCardLimit(ageVivi, workYearVivi, yearIncomeVivi, retireBonusVivi, loanParameterBankA);
+                    ```
+                    
+                    A method taking customer info as formal parameters and printing the result.
+
+                    Let's run the codes in *s1.jsh*.
+
+                    ---
+                    ### Pros
+                    - If there is a new customer, we can simply call method *creditCardLimit()* with new info.
+
+                    - Like, if we have Dan:
+
+                    ```java
+                    int ageDan = 51;
+                    double yearIncomeDan = 274423.4;
+                    int workYearDan = 22;
+                    double retireBonusDan = 0;
+
+                    creditCardLimit(ageDan, workYearDan, yearIncomeDan, retireBonusDan, loanParameterBankA);
+                    ```
+
+                    Let's append this to *s1.jsh* and run it.
+
+                    ---
+                    ### Cons
+                    - Calling this method requirs too many parameters. If we have to call it times...
+
+                    ```java
+                    creditCardLimit(ageAly, workYearAly, yearIncomeAly, retireBonusAly, loanParameterBankA);
+                    creditCardLimit(ageJudy, workYearJudy, yearIncomeJudy, retireBonusJudy, loanParameterBankA);
+                    creditCardLimit(ageVivi, workYearVivi, yearIncomeVivi, retireBonusVivi, loanParameterBankA);
+                    creditCardLimit(ageDan, workYearDan, yearIncomeDan, retireBonusDan, loanParameterBankA);
+                    ```
+
+                    ---
+                    ### Cons
+                    - Calling this method requirs too many parameters. If we have to call it times...
+
+                    ```java
+                    creditCardLimit(ageAly, workYearAly, yearIncomeAly, retireBonusAly, loanParameterBankA);
+                    creditCardLimit(ageJudy, workYearJudy, yearIncomeJudy, retireBonusJudy, loanParameterBankA);
+                    creditCardLimit(ageVivi, workYearVivi, yearIncomeVivi, retireBonusVivi, loanParameterBankA);
+                    creditCardLimit(ageDan, workYearDan, yearIncomeDan, retireBonusDan, loanParameterBankA);
+                    ```
+
+                    How do we solve this?
+
+                    ---
+                    ### Why not putting customer info inside method body, rather than signature?
+
+                    ```java[13-68]
+                    double loanParameterBankA = 1.17;
+
+                    int ageAly = 27;
+                    double yearIncomeAly = 130824.3;
+                    int workYearAly = 4;
+                    double retireBonusAly = 0;
+                    
+                    int ageJudy = 54;
+                    double yearIncomeJudy = 274423.4;
+                    int workYearJudy = 28;
+                    double retireBonusJudy = 0;
+                    
+                    int ageVivi = 71;
+                    double yearIncomeVivi = 83522.34;
+                    int workYearVivi = 28;
+                    double retireBonusVivi = 6348.5;
+                    
+                    public void creditCardLimitAly(double loanParameterBank){
+                        double cardLimit;
+                        if(ageAly&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageAly&lt=65){
+                            cardLimit = 100 * yearIncomeAly * loanParameterBank / ((ageAly-35)*(ageAly-35)+ (workYearAly - 10)* (workYearAly - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusAly * loanParameterBank / ((ageAly - 65)*(ageAly - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    
+                    public void creditCardLimitJudy(double loanParameterBank){
+                        double cardLimit;
+                        if(ageJudy&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageJudy&lt=65){
+                            cardLimit = 100 * yearIncomeJudy * loanParameterBank / ((ageJudy-35)*(ageJudy-35)+ (workYearJudy - 10)* (workYearJudy - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusJudy * loanParameterBank / ((ageJudy - 65)*(ageJudy - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    
+                    public void creditCardLimitVivi(double loanParameterBank){
+                        double cardLimit;
+                        if(ageVivi&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageVivi&lt=65){
+                            cardLimit = 100 * yearIncomeVivi * loanParameterBank / ((ageVivi-35)*(ageVivi-35)+ (workYearVivi - 10)* (workYearVivi - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusVivi * loanParameterBank / ((ageVivi - 65)*(ageVivi - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    
+                    creditCardLimitAly(loanParameterBankA);
+                    creditCardLimitJudy(loanParameterBankA);
+                    creditCardLimitVivi(loanParameterBankA);
+                    ```
+
+                    Let's run the codes in *s2.jsh*.
+
+                    ---
+                    ### Pros
+                    - Calling this method is simple now.
+
+                    ```java
+                    public void creditCardLimitAly(double loanParameterBank){
+                        /*Implement not shown*/
+                    }
+                    
+                    public void creditCardLimitJudy(double loanParameterBank){
+                        /*Implement not shown*/
+                    }
+                    
+                    public void creditCardLimitVivi(double loanParameterBank){
+                        /*Implement not shown*/
+                    }
+                    
+                    creditCardLimitAly(loanParameterBankA);
+                    creditCardLimitJudy(loanParameterBankA);
+                    creditCardLimitVivi(loanParameterBankA);
+                    ```
+
+                    ---
+                    ### Cons
+                    - A new customer needs a new method definition.
+                        - Diffrent method name
+                        - Diffrent customer info variables in method body.
+                    
+                    ```java
+                    public void creditCardLimitAly(double loanParameterBank){
+                        double cardLimit;
+                        if(ageAly&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageAly&lt=65){
+                            cardLimit = 100 * yearIncomeAly * loanParameterBank / ((ageAly-35)*(ageAly-35)+ (workYearAly - 10)* (workYearAly - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusAly * loanParameterBank / ((ageAly - 65)*(ageAly - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    
+                    public void creditCardLimitJudy(double loanParameterBank){
+                        double cardLimit;
+                        if(ageJudy&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageJudy&lt=65){
+                            cardLimit = 100 * yearIncomeJudy * loanParameterBank / ((ageJudy-35)*(ageJudy-35)+ (workYearJudy - 10)* (workYearJudy - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusJudy * loanParameterBank / ((ageJudy - 65)*(ageJudy - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    
+                    public void creditCardLimitVivi(double loanParameterBank){
+                        double cardLimit;
+                        if(ageVivi&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageVivi&lt=65){
+                            cardLimit = 100 * yearIncomeVivi * loanParameterBank / ((ageVivi-35)*(ageVivi-35)+ (workYearVivi - 10)* (workYearVivi - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusVivi * loanParameterBank / ((ageVivi - 65)*(ageVivi - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    ```
+
+                    ---
+                    ### Cons
+                    - For example, if there is a new customer Bob
+                    
+                    ```java
+                    int ageBob = 44;
+                    double yearIncomeBob = 243213.4;
+                    int workYearBob = 20;
+                    double retireBonusBob = 0;
+
+                    public void creditCardLimitBob(double loanParameterBank){
+                        double cardLimit;
+                        if(ageBob&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageBob&lt=65){
+                            cardLimit = 100 * yearIncomeBob * loanParameterBank / ((ageBob-35)*(ageBob-35)+ (workYearBob - 10)* (workYearBob - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusBob * loanParameterBank / ((ageBob - 65)*(ageBob - 65));
+                        }
+
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+
+                    creditCardLimitBob(loanParameterBankA);
+                    ```
+
+                    Let's append this to *s2.jsh* and run it.
+
+                    ---
+                    ### Can we combine pros of the two way?
+                    1. Putting customer info in method signature as formal parameter.
+                        - If there is a new customer, we can simply call method *creditCardLimit()* with new info.
+                    2. Putting customer info in method body directly.
+                        - Calling the method requires less actual parameters and is simpler.
+                    
+                    ---
+                    ### Can we combine pros of the two way?
+
+                    ### YES!
+
+                    ### **CALSS** and **OBJECT**.
+
+                    ---
+                    Check codes of this way(the less parameter one):
+
+                    ```java
+                    double loanParameterBankA = 1.17;
+
+                    int ageAly = 27;
+                    double yearIncomeAly = 130824.3;
+                    int workYearAly = 4;
+                    double retireBonusAly = 0;
+                    public void creditCardLimitAly(double loanParameterBank){
+                        double cardLimit;
+                        if(ageAly&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageAly&lt=65){
+                            cardLimit = 100 * yearIncomeAly * loanParameterBank / ((ageAly-35)*(ageAly-35)+ (workYearAly - 10)* (workYearAly - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusAly * loanParameterBank / ((ageAly - 65)*(ageAly - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    
+                    int ageJudy = 54;
+                    double yearIncomeJudy = 274423.4;
+                    int workYearJudy = 28;
+                    double retireBonusJudy = 0;
+                    public void creditCardLimitJudy(double loanParameterBank){
+                        double cardLimit;
+                        if(ageJudy&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageJudy&lt=65){
+                            cardLimit = 100 * yearIncomeJudy * loanParameterBank / ((ageJudy-35)*(ageJudy-35)+ (workYearJudy - 10)* (workYearJudy - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusJudy * loanParameterBank / ((ageJudy - 65)*(ageJudy - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    
+                    int ageVivi = 71;
+                    double yearIncomeVivi = 83522.34;
+                    int workYearVivi = 28;
+                    double retireBonusVivi = 6348.5;
+                    public void creditCardLimitVivi(double loanParameterBank){
+                        double cardLimit;
+                        if(ageVivi&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(ageVivi&lt=65){
+                            cardLimit = 100 * yearIncomeVivi * loanParameterBank / ((ageVivi-35)*(ageVivi-35)+ (workYearVivi - 10)* (workYearVivi - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonusVivi * loanParameterBank / ((ageVivi - 65)*(ageVivi - 65));
+                        }
+                    
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    ```
+
+                    We can find that codes for the three customers are very similar!
+
+                    ---
+                    We can abstract the features of every snippet:
+
+                    ```java
+                    int age;
+                    double yearIncome;
+                    int workYear;
+                    double retireBonus;
+
+                    public void creditCardLimit(double loanParameterBank){
+                        double cardLimit;
+                        if(age&lt18){
+                            cardLimit = 0;
+                        }
+                        else if(age&lt=65){
+                            cardLimit = 100 * yearIncome * loanParameterBank / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                        }
+                        else {
+                            cardLimit = 5 * retireBonus * loanParameterBank / ((age - 65)*(age - 65));
+                        }
+
+                        System.out.println("The credit card limit is:");
+                        System.out.println(cardLimit);
+                    }
+                    ```
+
+                    by just delete customers' name from variable names and method names.
+
+                    ---
+                    Then, why do we have to give variables and methods different names ?
+
+                    ```java
+                    int ageAly = 27;
+                    int ageJudy = 54;
+                    int ageVivi = 71;
+
+                    double yearIncomeAly = 130824.3;
+                    double yearIncomeJudy = 274423.4;
+                    double yearIncomeVivi = 83522.34;
+
+                    int workYearAly = 4;
+                    int workYearJudy = 28;
+                    int workYearVivi = 28;
+
+                    double retireBonusAly = 0; 
+                    double retireBonusJudy = 0;
+                    double retireBonusVivi = 6348.5;
+                    public void creditCardLimitAly(double loanParameterBank){
+                        /*Implement not shown*/
+                    }
+                    
+                    public void creditCardLimitJudy(double loanParameterBank){
+                        /*Implement not shown*/
+                    }
+                    
+                    public void creditCardLimitVivi(double loanParameterBank){
+                        /*Implement not shown*/
+                    }
+                    ```
+                    ---
+                    Then, why do we have to give variables and methods different names ?
+
+                    ### To avoid ambiguous method calls.
+
+                    ```java
+                    creditCardLimitAly(loanParameterBankA);
+                    creditCardLimitJudy(loanParameterBankA);
+                    creditCardLimitVivi(loanParameterBankA);
+                    ```
+
+                    Let's do a method calling tracing in *s2.jsh*.
+
+                    ---
+                    Can this be achieved more easily in this way:
+
+                    ```java
+                    CustomerName{
+                        int age;
+                        double yearIncome;
+                        int workYear;
+                        double retireBonus;
+                        public void creditCardLimit(double loanParameterBank){
+                            double cardLimit;
+                            if(age&lt18){
+                                cardLimit = 0;
+                            }
+                            else if(age&lt=65){
+                                cardLimit = 100 * yearIncome * loanParameterBank / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                            }
+                            else {
+                                cardLimit = 5 * retireBonus * loanParameterBank / ((age - 65)*(age - 65));
+                            }
+                    
+                            System.out.println("The credit card limit is:");
+                            System.out.println(cardLimit);
+                        }
+                    }
+                    ```
+
+                    Let's do a method calling tracing in *s3.jsh*.
+
+                    and compare *s3.jsh* to *s4.jsh*.
+
+                    ---
+                    Sadly, Java doesn't has this syntax...&#129296;
+
+                    ### But <!-- .element: style="color:red;" class="fragment" data-fragment-index="1" -->
+
+                    ### It provides a better syntax! <!-- .element: class="fragment" data-fragment-index="1" -->
+
+                    ---
+                    Java can generate codes like this automatically:
+
+                    ```java
+                    Aly{
+                        int age = 27;
+                        double yearIncome = 130824.3;
+                        int workYear = 4;
+                        double retireBonus = 0;
+                        public void creditCardLimit(double loanParameterBank){
+                            double cardLimit;
+                            if(age&lt18){
+                                cardLimit = 0;
+                            }
+                            else if(age&lt=65){
+                                cardLimit = 100 * yearIncome * loanParameterBank / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                            }
+                            else {
+                                cardLimit = 5 * retireBonus * loanParameterBank / ((age - 65)*(age - 65));
+                            }
+                    
+                            System.out.println("The credit card limit is:");
+                            System.out.println(cardLimit);
+                        }
+                    }
+                    
+                    Judy{
+                        int age = 54;
+                        double yearIncome = 274423.4;
+                        int workYear = 28;
+                        double retireBonus = 0;
+                        public void creditCardLimit(double loanParameterBank){
+                            double cardLimit;
+                            if(age&lt18){
+                                cardLimit = 0;
+                            }
+                            else if(age&lt=65){
+                                cardLimit = 100 * yearIncome * loanParameterBank / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                            }
+                            else {
+                                cardLimit = 5 * retireBonus * loanParameterBank / ((age - 65)*(age - 65));
+                            }
+                    
+                            System.out.println("The credit card limit is:");
+                            System.out.println(cardLimit);
+                        }
+                    }
+                    
+                    Vivi{
+                        int age = 71;
+                        double yearIncome = 83522.34;
+                        int workYear = 28;
+                        double retireBonus = 6348.5;
+                        public void creditCardLimit(double loanParameterBank){
+                            double cardLimit;
+                            if(age&lt18){
+                                cardLimit = 0;
+                            }
+                            else if(age&lt=65){
+                                cardLimit = 100 * yearIncome * loanParameterBank / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                            }
+                            else {
+                                cardLimit = 5 * retireBonus * loanParameterBank / ((age - 65)*(age - 65));
+                            }
+                    
+                            System.out.println("The credit card limit is:");
+                            System.out.println(cardLimit);
+                        }
+                    }
+                    ```
+
+                    if you give it a template of the codes.
+
+                    ### Now let's see the steps to generate above codes <!-- .element: class="fragment" data-fragment-index="1" -->
+                    
+                    ---
+                    ### Now let's see the steps to generate above codes
+                    1. Create the codes template.
+                    2. Ask the computer to generate codes from the template.
+                    3. Get the generated codes to use.
+
+                    ### Let's implement these steps in *s5.jsh*.
+
+                    ---
+                    1. Create the codes template.
+                        - Make a shell of the template:
+
+                        ```java
+                        class Customer{
+                            //'Customer' is the template's name, you can name it as you like
+                        }
+                        ```
+
+                        - Put the template codes in the shell:
+
+                        ```java[2-21]
+                        class Customer{
+                            /*Customer is a CLASS*/
+                            int age;
+                            double yearIncome;
+                            int workYear;
+                            double retireBonus;
+                        
+                            public void creditCardLimit(double loanParameterBank){
+                                double cardLimit;
+                                if(age&lt18){
+                                    cardLimit = 0;
+                                }
+                                else if(age&lt=65){
+                                    cardLimit = 100 * yearIncome * loanParameterBank / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                                }
+                                else {
+                                    cardLimit = 5 * retireBonus * loanParameterBank / ((age - 65)*(age - 65));
+                                }
+                        
+                                System.out.println("The credit card limit is:");
+                                System.out.println(cardLimit);
+                            }
+                        }
+                        ```
+
+                    ---
+                    2. Ask to generate codes for Aly, Judy and Vivi from the template.
+                        - Codes like *s6.jsh* will be generated in memory after this:
+
+                        ```java
+                        /*Aly, Judy and Vivi are OBJECT*/
+                        Customer Aly = new Customer();
+                        Customer Judy = new Customer();
+                        Customer Vivi = new Customer();
+                        ```
+
+                        - Codes of *s6.jsh* in memory will be changed to *s7.jsh* after this:
+
+                        ```java
+                        Aly.age = 27;
+                        Aly.yearIncome = 130824.3;
+                        Aly.workYear = 4;
+                        Aly.retireBonus = 0;
+                        Judy.age = 54;
+                        Judy.yearIncome = 274423.4;
+                        Judy.workYear = 28;
+                        Judy.retireBonus = 0;
+                        Vivi.age = 71;
+                        Vivi.yearIncome = 83522.34;
+                        Vivi.workYear = 28;
+                        Vivi.retireBonus = 6348.5;
+                        ```
+
+                        > We can check the changes in memory by blueJ.
+                    ---
+                    3. Get the generated codes to use.
+                        - We used to call methods like this:
+
+                        ```java
+                        creditCardLimitAly(loanParameterBankA);
+                        creditCardLimitJudy(loanParameterBankA);
+                        creditCardLimitVivi(loanParameterBankA);
+                        ```
+
+                        - But we call them in this way:
+
+                        ```java
+                        Aly.creditCardLimit(loanParameterBankA);
+                        Judy.creditCardLimit(loanParameterBankA);
+                        Vivi.creditCardLimit(loanParameterBankA);
+                        ```
+
+                    ---
+                    ### Now we have the codes implementing below steps
+                    ### in *s5.jsh* and let's compare it to *s2.jsh*
+                    1. Create the codes template.
+                    2. Ask the computer to generate codes from the template.
+                    3. Get the generated codes to use.
+
+                    > Explain with blueJ make this more understandable.
+
+                    ---
+                    Now, even if we have new customers like San.
+
+                    We just need to add a new **OBJECT** for San in *s5.jsh*:
+
+                    ```java
+                    Customer San = new Customer();
+                    San.age = 41;
+                    San.yearIncome = 433234.44;
+                    San.workYear = 20;
+                    San.retireBonus = 0;
+                    ```
+
+                    Then we can call methods of San:
+
+                    ```java
+                    San.creditCardLimit(loanParameterBankA);
+                    ```
+
+                    ---
+                    ### Now, let's check this snippet again.
+                    ```java
+                    Customer San = new Customer();
+                    San.age = 41;
+                    San.yearIncome = 433234.44;
+                    San.workYear = 20;
+                    San.retireBonus = 0;
+                    ```
+
+                    It is the STEP2: creating an **object** of San.
+                    > 2. Ask the computer to generate codes from the template.
+
+                    ### Can we just simplify this? <!-- .element: class="fragment" data-fragment-index="1" -->
+
+                    ---
+                    ### Can we just simplify this?
+                    ### Of course! <!-- .element: style="color:red"-->
+
+                    We used to create an object for a new customer by this:
+
+                    ```java
+                    Customer San = new Customer();
+                    San.age = 41;
+                    San.yearIncome = 433234.44;
+                    San.workYear = 20;
+                    San.retireBonus = 0;
+                    ```
+
+                    ---
+                    Why don't we put these customer info into the *new Customer()*
+
+                    like calling a method with parameters?
+
+                    ```java
+                    Customer San = new Customer();
+                    San.age = 41;
+                    San.yearIncome = 433234.44;
+                    San.workYear = 20;
+                    San.retireBonus = 0;
+                    ```
+
+                    &#8659;
+
+                    ```java
+                    Customer San = new Customer(41, 433234.44, 20, 0);
+                    ```
+
+                    If we hope to do so, we have to put a **Constructer** into the **CLASS** definition.
+
+                    ---
+                    **Constructer** is like a method definition, like this:
+
+                    ```java
+                    public Customer(int givenAge, double givenYearIncome, int givenWorkYear, double givenRetireBonus){
+                        age = givenAge;
+                        yearIncome = givenYearIncome;
+                        workYear = givenWorkYear;
+                        retireBonus = givenRetireBonus;
+                    }
+                    ```
+
+                    It has to have the **SAME** name as the **class**.
+
+                    We specify parameters that will be assigned to variables in the **object**.
+                    
+                    Note:
+                    提示学生，除了没有返回值，**构造器**和方法的定义基本一样。然后构造器的这个名字和类名必须一模一样。
+
+                    ---
+                    Put the **constructer** into the **class** definition.
+
+                    ```java
+                    public Customer(int givenAge, double givenYearIncome, int givenWorkYear, double givenRetireBonus){
+                        age = givenAge;
+                        yearIncome = givenYearIncome;
+                        workYear = givenWorkYear;
+                        retireBonus = givenRetireBonus;
+                    }
+                    ```
+
+                    &#8659;
+
+                    ```java
+                    class Customer{
+                        int age;
+                        double yearIncome;
+                        int workYear;
+                        double retireBonus;
+                    
+                        /*We usually put constructers HERE,
+                        between variables declaration and methods definition of the object.*/
+
+                        public void creditCardLimit(double loanParameterBank){
+                            double cardLimit;
+                            if(age&lt18){
+                                cardLimit = 0;
+                            }
+                            else if(age&lt=65){
+                                cardLimit = 100 * yearIncome * loanParameterBank / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                            }
+                            else {
+                                cardLimit = 5 * retireBonus * loanParameterBank / ((age - 65)*(age - 65));
+                            }
+                    
+                            System.out.println("The credit card limit is:");
+                            System.out.println(cardLimit);
+                        }
+                    }
+                    ```
+
+                    ---
+                    Then we get this **class** with **constructer**:
+
+                    ```java[7-12]
+                    class Customer{
+                        int age;
+                        double yearIncome;
+                        int workYear;
+                        double retireBonus;
+                    
+                        public Customer(int givenAge, double givenYearIncome, int givenWorkYear, double givenRetireBonus){
+                            age = givenAge;
+                            yearIncome = givenYearIncome;
+                            workYear = givenWorkYear;
+                            retireBonus = givenRetireBonus;
+                        }
+
+                        public void creditCardLimit(double loanParameterBank){
+                            double cardLimit;
+                            if(age&lt18){
+                                cardLimit = 0;
+                            }
+                            else if(age&lt=65){
+                                cardLimit = 100 * yearIncome * loanParameterBank / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                            }
+                            else {
+                                cardLimit = 5 * retireBonus * loanParameterBank / ((age - 65)*(age - 65));
+                            }
+                    
+                            System.out.println("The credit card limit is:");
+                            System.out.println(cardLimit);
+                        }
+                    }
+                    ```
+
+                    And we can create an **object** for San more quickly:
+
+                    ```java
+                    Customer San = new Customer(41, 433234.44, 20, 0);
+                    ```
+
+                    Let's run the class with constructer and create San in *blueJ*.
+
+                    ---
+                    We can also use **constructer** to modify the original codes
+                    
+                    for Aly, Judy and Vivi.
+
+                    ```java
+                    Customer Aly = new Customer(27, 130824.3, 4, 0);
+                    Customer Judy = new Customer(54, 274423.4, 28, 0);
+                    Customer Vivi = new Customer(71, 83522.34, 28, 6348.5);
+
+                    Aly.creditCardLimit(loanParameterBankA);
+                    Judy.creditCardLimit(loanParameterBankA);
+                    Vivi.creditCardLimit(loanParameterBankA);
+                    ```
+
+                    Let's run *s7.jsh* and compare it with *s5.jsh*.
+
+                    ---
+                    
+                </textarea>
+            </section>
+
+            <section data-markdown data-separator="^\n\n\n" data-separator-vertical="^\n\n"
+                data-separator-notes="^Note:">
+                <textarea data-template>
+# Title
+
+## Sub-title
+
+
+Here is some content...
+
+Note:
+This will only display in the notes window.
+
+
+
+fsf
+                    </textarea>
+
+            </section>
+    </div>
+    </div>
+    <script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
+    <script src='https://unpkg.com/mermaid@8.1.0/dist/mermaid.min.js'></script>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+
+            autoAnimateDuration: 1.2,
+            width: 1400,
+            height: 800,
+
+            // Factor of the display size that should remain empty around
+            // the content
+            margin: 0.04,
+        });
+    </script>
+</body>
+
+</html>
