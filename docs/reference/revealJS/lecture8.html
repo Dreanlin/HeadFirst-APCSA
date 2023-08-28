@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>4.1 Class&Object</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/serif.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <style>
+        p{
+            text-align: left;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.4/mermaid.min.js"></script>
+</head>
+
+<body>
+    <div class="reveal">
+        <divb class="slides">
+            <!-- slides首页 -->
+            <section>
+                <img src="resources\lecture-1\HF-APCSA-cover.png" alt="HeadFirst-APCSA cover page">
+            </section>
+
+            <section data-markdown data-auto-animate data-separator-notes="^Note:">
+                <textarea data-template>
+                    ## 先修知识要求
+
+                    - 变量
+                    - 函数
+                    - 有参数无返回函数
+                    - 无参数无返回函数
+                    - 条件语句
+                    - OOP-1 --引出类和对象的概念、用法
+
+                    ---
+                    ### 从命令式编程到面向对象编程
+
+                    我们可以从更宏观的角度来想想，使用类和对象，到底对代码进行了什么优化？
+
+                    ---
+                    我们可以从更宏观的角度来想想，使用类和对象，到底对代码进行了什么优化？
+
+                    **原有方式的缺点**：
+
+                    其实就是把强关联的变量和方法直接打包在一起。省掉了把一堆相似的变量还有方法放在一起时，为了不混淆它们，非得把变量名和方法名起得又类似但是又不同。
+
+                    **使用类和对象的优点**：
+
+                    1. 使用了类与对象的技术后，变量就和调用自己的方法绑在了一个对象里，这样只要通过不同的对象名来区分一组组的变量和方法，就不会混淆。
+                    2. 并且我们使用构造器，就能简单的生成很多**属性**不同，但是整体结构一样的**对象**，写代码的工作量也随之减少了。
+
+                    ---
+                    我们再来看看我们使用了**类和对象**之后，处理这个信用卡额度问题的完整代码，假设现在的客户有Aly、Judy、Vivi、Nancy：
+
+                    ```java
+                    double loanParameterBankA = 1.17;
+
+                    //define Class Customer
+                    class Customer{
+                        int age;
+                        double yearIncome;
+                        int workYear;
+                        double retireBonus;
+
+                        public Customer(int givenAge, double givenYearIncome, int givenWorkYear, double givenRetireBonus){
+                            age = givenAge;
+                            yearIncome = givenYearIncome;
+                            workYear = givenWorkYear;
+                            retireBonus = givenRetireBonus;
+                        }
+
+                        public Customer(int givenAge){
+                            age = givenAge;
+                        }
+
+                        public void creditCardLimit(double loanParameterBank){
+                            double cardLimit;
+                            if(age&lt18){
+                                cardLimit = 0;
+                            }
+                            else if(age&lt=65){
+                                cardLimit = 100 * yearIncome * loanParameterBank / ((age-35)*(age-35)+ (workYear - 10)* (workYear - 10) + 500);
+                            }
+                            else {
+                                cardLimit = 5 * retireBonus * loanParameterBank / ((age - 65)*(age - 65));
+                            }
+
+                            System.out.println("The credit card limit is:");
+                            System.out.println(cardLimit);
+                        }
+                    }
+
+                    Customer Aly = new Customer(27, 130824.3, 4, 0);
+                    Aly.creditCardLimit(loanParameterBankA);
+
+                    Customer Judy = new Customer(54, 274423.4, 28, 0);
+                    Judy.creditCardLimit(loanParameterBankA);
+
+                    Customer Vivi = new Customer(71, 83522.34, 28, 6348.5);
+                    Vivi.creditCardLimit(loanParameterBankA);
+
+                    Customer Nancy = new Customer(61);
+                    Nancy.creditCardLimit(loanParameterBankA);
+                    ```
+
+                    Let's run the codes in *oop1.jsh*.
+
+                    ---
+
+                    假设，银行现在还需要一个在大厅广播当天贷款系数的功能，我们就需要*oop1.jsh*里加入这个方法：
+
+                    ```java
+                    public void announceLoanParameter(){
+                        System.out.println("The loan parameter is:");
+                        System.out.println(loanParameterBankA);
+                    }
+                    ```
+
+                    这样，每当我们调用这个*announceLoanParameter()* 方法，就能广播贷款系数了：
+
+                    ```java
+                    announceLoanParameter();
+                    ```
+
+                    Note:在oop1.jsh代码最后添加上面的方法定义、调用。
+
+                    ---
+                    但是这样一来，*oop1.jsh*代码就更加复杂了。
+                    
+                    它包含了：
+
+                    - 类的定义
+                    - 方法的定义
+                    - 变量声明和赋值
+                    - 对象的声明和new
+                    - 方法的调用
+
+                    这么多代码放在一个文件里，很难使用，也很难修改。
+
+                    并且，真实世界的业务、代码，只会更复杂、更多。
+                    
+                    所以，我们希望把*oop1.jsh*文件拆分成多个小的代码文件。
+
+                    Note:对着*oop1.jsh*代码，指明对应上面列出来的几块代码。
+
+                    ---
+                    那么问题来了，怎么拆呢？
+                    
+                    接下来我就介绍一下，拆分的方式。我们继续以*opp1.jsh*的代码为例来讲解。
+
+                    首先，我们分析一下这一大块代码:
+
+                    ```java
+                    double loanParameterBankA = 1.17;
+
+                    public void announceLoanParameter(){
+                        System.out.println("The loan parameter is:");
+                        System.out.println(loanParameterBankA);
+                    }
+                    ```
+
+                    Note:
+                    首先，我们分析一下这一大块代码:
+
+                    1. *announceLoanParameter()*方法的定义和变量声明赋值*double loanParameterBankA = 1.17;*是强关联的方法和变量，这两个东西是不能拆分的。
+                    2. 并且，为了防止以后某天我们修改代码的时候忘了这件事，而导致不小心拆分了这两个代码。我们现在就可以再定义一个新的**类**，把它们放进这个**class**里。
+
+                    ---
+                    因为它俩分别是一个属于银行的**属性**（英文：**attribute**）和**方法**，所以这个新的类我们直接取名Bank好了：
+
+                    ```java
+                    class Bank{
+                        double loanParameterBank;
+
+                        public Bank(double para){
+                            loanParameterBank = para;
+                        }
+
+                        public void announceLoanParameter(){
+                            System.out.println("The loan parameter is:");
+                            System.out.println(loanParameterBank);
+                        }
+                    }
+                    ```
+
+                    Note:
+                    把这个类代码加入到*oop1.jsh*最后。
+
+                    ---
+                    然后我们就可以删掉*oop1.jsh*里的这两块代码了：
+
+                    ```java
+                    double loanParameterBankA = 1.17;
+
+                    public void announceLoanParameter(){
+                        System.out.println("The loan parameter is:");
+                        System.out.println(loanParameterBankA);
+                    }
+                    announceLoanParameter();
+                    ```
+
+                    转而用类和对象的写法代替他俩：
+
+                    ```java
+                    Bank bankA = new Bank(1.17);
+                    bankA.announceLoanParameter();
+                    ```
+
+                    Note:
+                    按课件写的，删掉前面的代码；把后面这个代码加到*oop1.jsh*最后。
+
+                    ---
+                    同时，因为*loanParameterBankA* 变量已经没有了，所有的*creditCardLimit()* 方法里调用的*loanParameterBankA* 都得改成*bankA.loanParameterBank*：
+
+                    ```java
+                    Customer Aly = new Customer(27, 130824.3, 4, 0);
+                    Aly.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Judy = new Customer(54, 274423.4, 28, 0);
+                    Judy.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Vivi = new Customer(71, 83522.34, 28, 6348.5);
+                    Vivi.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Nancy = new Customer(61);
+                    Nancy.creditCardLimit(bankA.loanParameterBank);
+                    ```
+
+                    Note:
+                    对*oop1.jsh*进行这个修改。
+
+                    ---
+                    代码这样修改后，效果还是一样的，但是更紧凑。
+                    
+                    贷款系数和广播系数的方法也被绑定了。这就是我们拆分代码文件的**第1步**：
+
+                    1. **在写别的代码的时候，不要把强相关的变量和方法定义直接分开写，要打包进类的定义里。**
+
+                    > 即使有的方法没和什么变量有关联，也要把方法的定义放进类的定义里。总之，不要留下光秃秃的方法定义，定义方法的代码必须、且只能写在类的定义里面。
+
+                    按照这第一条准则处理过的*oop1.jsh*，或者任意一个别的大代码文件。就会有这样一种结果：
+
+                    代码里只有**类的定义代码**，以及*用类生成对象*、*调用对象中的方法*、*变量声明或者赋值语句*这三种代码了。
+
+                    Note:
+                    在*oop1.jsh*里指出这三种代码。
+
+                    ---
+                    代码里只有**类的定义代码**，以及*用类生成对象*、*调用对象中的方法*、*变量声明或者赋值语句*这三种代码了。
+
+                    而我们又知道，要*用类生成对象*、*调用对象里的方法* 这两件事，只能在**定义类**的代码之后执行。
+
+                    所以我们就可以提出代码文件拆分的第2步：
+
+                    2. **把所有定义类的代码放到整个文件的最前面，其余的用类生成对象、调用对象中的方法、变量声明或者赋值语句三类就保留原有的先后顺序，放在整个代码文件的后面。**
+
+                    ---
+                    以*oop1.jsh*这个代码为例，调整代码顺序后就得到了*oop2.jsh*这样更整洁的代码。
+
+                    > 因为**定义类的代码**只是一种给计算机看的模板，真正被计算机执行的还是*用类生成对象*、*调用对象中的方法*、*变量声明或者赋值语句* 这三种代码。而现在这三种代码的顺序保留了原有的顺序，所有整个代码的效果没变化。但是这样整理之后，整个代码文件更整洁了。
+
+                    Note:
+                    打开*oop2.jsh*展示代码给学生，说明“它前面是类的定义的代码，后面是真实执行的代码”。
+                    
+                    并同*oop1.jsh*的代码对比。
+
+                    跟学生说明，这样对代码是没影响的。
+
+                    ---
+                    接着，我们就可以执行拆分代码，最关键的第3步了，就是真的开始**拆分**：
+
+                    3. **我们把定义类的代码全拆出oop2.jsh文件，每个class单独放进一个新建的文件，文件名是这个class的类名加上 .java的后缀。同时，要在每个class的最前面加上一个 public 关键词。**
+
+                    然后，就得到了下面两个文件：
+
+                    - Customer.java
+                    - Bank.java
+
+                    Note:
+                    手动在示例代码的目录下新建*Customer.java*和*Bank.java*。
+
+                    然后把*Customer*、*Bank*类的代码从*oop2.jsh*粘贴过去，加上*public*修饰符。
+
+                    ---
+                    现在，*oop2.jsh*代码文件里就只剩下了这几行*真正被执行的代码* ：
+
+                    ```java
+                    Bank bankA = new Bank(1.17);
+                    bankA.announceLoanParameter();
+
+                    Customer Aly = new Customer(27, 130824.3, 4, 0);
+                    Aly.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Judy = new Customer(54, 274423.4, 28, 0);
+                    Judy.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Vivi = new Customer(71, 83522.34, 28, 6348.5);
+                    Vivi.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Nancy = new Customer(61);
+                    Nancy.creditCardLimit(bankA.loanParameterBank);
+                    ```
+
+                    最后，我们就要执行代码拆分的最后一步：
+
+                    4. **把剩余的这部分真正被执行的代码放进main方法，并且把main方法放进一个class里。**
+
+                    ---
+                    4.1. 先把*真正被执行的代码* 放进下面这个*main* 方法的方法体里:
+
+                    ```java
+                    Bank bankA = new Bank(1.17);
+                    bankA.announceLoanParameter();
+
+                    Customer Aly = new Customer(27, 130824.3, 4, 0);
+                    Aly.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Judy = new Customer(54, 274423.4, 28, 0);
+                    Judy.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Vivi = new Customer(71, 83522.34, 28, 6348.5);
+                    Vivi.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Nancy = new Customer(61);
+                    Nancy.creditCardLimit(bankA.loanParameterBank);
+                    ```
+                    Put  &#8659;  into
+                    ```java
+                    public static void main(String[] args) {
+                        // 真正要执行的代码放到这个方法里
+                    }
+                    ```
+
+                    ---
+                    4.2. 然后新建一个*.java*文件，在里面任意定义一个**public class**，这个类的名字可以随意命名，只要保证这个*java*文件的名字和类名一样就行。
+
+                    ```java
+                    public static void main(String[] args) {
+                        Bank bankA = new Bank(1.17);
+                        bankA.announceLoanParameter();
+
+                        Customer Aly = new Customer(27, 130824.3, 4, 0);
+                        Aly.creditCardLimit(bankA.loanParameterBank);
+
+                        Customer Judy = new Customer(54, 274423.4, 28, 0);
+                        Judy.creditCardLimit(bankA.loanParameterBank);
+
+                        Customer Vivi = new Customer(71, 83522.34, 28, 6348.5);
+                        Vivi.creditCardLimit(bankA.loanParameterBank);
+
+                        Customer Nancy = new Customer(61);
+                        Nancy.creditCardLimit(bankA.loanParameterBank);
+                    }
+                    ```
+                        
+                    Put  &#8659;  into
+
+                    ```java
+                    public class ProjectStarter{
+                        // 整个main方法放进这个ProjectStarter.java文件里的ProjectStarter类里
+                    }
+                    ```
+
+                    Note:
+                    手动在示例代码目录新建一个*ProjectStarter.java*，然后从*oop2.jsh*拿来*main*方法里的代码。
+
+                    ---
+                    现在，经过这四步拆分，我们就得到了这样的三个文件：
+                    
+                    *Customer.java*, *Bank.java*, *ProjectStarter.java*。
+                    
+                    它们里面分别定义了一个和文件同名的类：**Customer**, **Bank**, **ProjectStarter**。
+
+                    这样一来同学们可能就有疑问了：
+                    
+                    之前我们只有一个*oop2.jsh*文件的时候，毋庸置疑地，直接执行这个文件里的代码就行了。但是现在这么多文件，代码从哪里开始执行？
+
+                    ---
+                    之前我们说过，拆分前的*oop2.jsh*里，**class Customer**、**class Bank**只是一种给计算机看的模板。真正被计算机执行的还是最后的*用类生成对象*、*调用对象中的方法*、*变量声明或者赋值语句* 这三种代码：
+
+                    ```java[9-23]
+                    class Customer{
+                        /*Implementation not shown*/
+                    }
+
+                    class Bank{
+                        /*Implementation not shown*/
+                    }
+
+                    //以下是计算机真正执行的java代码
+                    Bank bankA = new Bank(1.17);
+                    bankA.announceLoanParameter();
+
+                    Customer Aly = new Customer(27, 130824.3, 4, 0);
+                    Aly.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Judy = new Customer(54, 274423.4, 28, 0);
+                    Judy.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Vivi = new Customer(71, 83522.34, 28, 6348.5);
+                    Vivi.creditCardLimit(bankA.loanParameterBank);
+
+                    Customer Nancy = new Customer(61);
+                    Nancy.creditCardLimit(bankA.loanParameterBank);
+                    ```
+
+                    Note:
+                    我也给同学们演示过，计算机在执行这段代码时候，代码执行的流程是什么样的、对应的内存中发生的事情是什么样的。
+
+                    而我们现在拆分出来的这三个java文件，虽然有改动，但是只要把他们摆在一起（像*oop3.jsh*这样）
+                    
+                    大家一眼就能看出它们和*oop2.jsh*的相似，计算机当然也能看出来。我们来对比*oop2.jsh*和*oop3.jsh*看看。
+
+                    ---
+                    拆分出的文件，*Customer.java*, *Bank.java*也只是包含了**类定义**的模板代码。我们要执行的依然是这个包含了*真正被执行的代码* 的*ProjectStarter.java*文件。
+
+                    只不过执行这个*ProjectStarter.java*的方式不再是直接使用*jshell*执行了，需要用真正的java来执行。具体是这样的：
+
+                    1. 编译这个ProjectStarter.java文件：
+
+                        ```shell
+                        javac ProjectStarter.java
+                        ```
+
+                    2. 执行生成的ProjectStarter.class文件：
+
+                    ```shell
+                    java ProjectStarter
+                    ```
+
+                    Note:
+
+                    1. 我们可以看到，**执行**的结果和原来的一整个代码文件的结果一样。
+                    2. 然后我现在也像之前**讲解代码运行流程和内存变化**一样，给大家讲解一下这样运行java代码的时候，计算机到底是怎么做的吧。
+
+                    > 配合blueJ内存的示意图，再次讲解一下代码的运行流程、内存中变化情况
+
+                    ---
+                    ### 面向对象编程
+
+                    整个项目的代码，都是由一个一个定义了**类**的java文件构成。然后程序开始运行的入口在被我们直接执行的那个*java*文件里的*main* 方法里。整个程序的运作，就是通过一个又一个的被*new*出来的对象互相交互来实现了。这种编程的方式，我们就叫它**面向对象编程**。
+
+                    ### 脚本式编程
+
+                    以前在*jshell*里，我们非常随意的想到啥代码就写啥，直接命令计算机一条指令一条指令的执行，这种方式我们叫它**命令式编程**或者**脚本式编程**。
+
+                    Note:
+                    而Java是一门非常典型的面向对象编程语言，APCSA考试也只用面向对象的方式来考核我们。所以我们之后的课程中，就不太会使用jshell来讲解代码和讲课了。会使用这种标准的先编译、后运行的方式来执行代码。并且写代码也都要用这种面向对象的方式来写，请大家慢慢习惯起来。
+
+                </textarea>
+            </section>
+
+    </div>
+    </div>
+    <script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
+    <script src='https://unpkg.com/mermaid@8.1.0/dist/mermaid.min.js'></script>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+
+            autoAnimateDuration: 1.2,
+            width: 1400,
+            height: 800,
+
+            // Factor of the display size that should remain empty around
+            // the content
+            margin: 0.04,
+        });
+    </script>
+</body>
+
+</html>

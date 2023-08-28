@@ -921,29 +921,51 @@
                     Let's run *s7.jsh* and compare it with *s5.jsh*.
 
                     ---
+                    ### As we said, **constructor** is like a method,
+
+                    ### we can **overload** constructors as methods.
+
+                    > You can overload a method/constructor name by using the same name, but having different parameters: 
+                      > - Different number of parameters, and/or
+                      > - Different types of parameters
+
+                    ---
+                    Examples of **overloaded constructors**:
+
+                    ```java
+                    class Customer{
+                        /*Variable declaration not shown*/
+                        public Customer(int givenAge, double givenYearIncome, int givenWorkYear, double givenRetireBonus){
+                            age = givenAge;
+                            yearIncome = givenYearIncome;
+                            workYear = givenWorkYear;
+                            retireBonus = givenRetireBonus;
+                        }
+
+                        public Customer(int givenAge){
+                            age = givenAge;
+                        }
+
+                        public Customer(){
+                            // this constructor does nothing
+                        }
+                        /*Methods definition not shown*/
+                    }
+                    ```
+
+                    And now we can call different constructors, try in *blueJ*:
                     
+                    ```java
+                    Customer normalCustomer = new Customer(37, 162342.3, 12, 0);
+                    Customer onlyKnowAgeCustomer = new Customer(52);
+                    Customer noInfoKnownCustomer = new Customer();
+                    ```
+                    Note:补充给学生说这种啥都不干啥参数都不要的构造器，是每个类都自带的构造器。
+                    只要没手动定义过构造器，这个类在new对象的时候用的就是这个默认构造器。
+                    但是如果有了手动定义的构造器，这个空构造器就不能用来new对象了，除非我们手动写一个空构造器。
                 </textarea>
             </section>
 
-            <section data-markdown data-separator="^\n\n\n" data-separator-vertical="^\n\n"
-                data-separator-notes="^Note:">
-                <textarea data-template>
-# Title
-
-## Sub-title
-
-
-Here is some content...
-
-Note:
-This will only display in the notes window.
-
-
-
-fsf
-                    </textarea>
-
-            </section>
     </div>
     </div>
     <script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
